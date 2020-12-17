@@ -1,15 +1,23 @@
-import React from "react";
-import { render } from "react-dom";
-import HtmlDraftEditor from "../../lib";
-import "./styles.css";
+import React from 'react'
+import { render } from 'react-dom'
+import HtmlDraftEditor from '../../lib'
+import './styles.css'
 
 function Demo() {
-  return (
-    <div>
-      <h1>Demo with examples of the component</h1>
-      <HtmlDraftEditor />
-    </div>
-  );
+    function keystoneOnChange() {
+        console.log('keystoneOnChange')
+    }
+    return (
+        <div>
+            <h1>Demo with examples of the component</h1>
+            <HtmlDraftEditor
+                KeyStoneOnChange={keystoneOnChange}
+                autoFocus={null}
+                field={null}
+                value={null}
+            />
+        </div>
+    )
 }
 
-render(<Demo />, document.getElementById("app"));
+render(<Demo />, document.getElementById('app'))

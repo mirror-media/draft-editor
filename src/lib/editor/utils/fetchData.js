@@ -1,5 +1,6 @@
 import { createApolloFetch } from 'apollo-fetch'
 import gql from 'graphql-tag'
+// this will fix webpack bundling ES7 async/await cause error
 import 'regenerator-runtime/runtime.js'
 
 const fetch = createApolloFetch({
@@ -24,7 +25,7 @@ export const fetchDataWithGql = async (
     page,
     setCallBack
 ) => {
-    console.log('fetchDataWithGql')
+    // console.log('fetchDataWithGql')
     const selectString = generateSelectString(columns)
     const whereString = generateWhereString(columns)
 
@@ -51,7 +52,7 @@ export const fetchDataCountWithGql = async (
     { list, columns, maxItemsPerPage },
     search
 ) => {
-    console.log('fetchDataCountWithGql')
+    // console.log('fetchDataCountWithGql')
     const whereString = generateWhereString(columns)
     const {
         data: {

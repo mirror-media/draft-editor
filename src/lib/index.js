@@ -46,7 +46,7 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
     // Handle both editorstate and keystone value change
     const onEditorStateChange = (newEditorState) => {
         setEditorState(newEditorState)
-        // KeyStoneOnChange(newEditorState)
+        KeyStoneOnChange(newEditorState)
     }
 
     function focus() {
