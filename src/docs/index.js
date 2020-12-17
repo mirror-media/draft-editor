@@ -4,9 +4,7 @@ import HtmlDraftEditor from '../../lib'
 import './styles.css'
 
 function Demo() {
-    function keystoneOnChange() {
-        console.log('keystoneOnChange')
-    }
+    function keystoneOnChange() {}
     return (
         <div>
             <h1>Demo with examples of the component</h1>

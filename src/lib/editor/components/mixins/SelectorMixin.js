@@ -211,7 +211,6 @@ export class SelectorMixin extends Component {
         //         </InputGroup.Section>
         //     </InputGroup>
         // )
-
         return (
             <div>
                 <Input

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import objectAssign from 'object-assign'
+import '@fortawesome/fontawesome-free/js/fontawesome'
 
 class ImageItem extends Component {
     constructor(props) {
@@ -82,6 +83,7 @@ class ImageItem extends Component {
         ) : (
             <i className="fa" />
         )
+
         return (
             <div
                 onClick={this._handleSelect.bind(this)}
@@ -141,6 +143,7 @@ class ImageGrid extends Component {
 
     render() {
         const { images, selectedImages } = this.state
+        console.log(selectedImages)
         const { columns, padding } = this.props
         const width = Math.floor(100 / columns)
         const imageNodes = images.map((image, index) => {

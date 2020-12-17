@@ -343,7 +343,7 @@ export class EntityEditingBlock extends Component {
 
 // block settings
 const BLOCK_TYPES = [
-    { label: 'H2', style: 'header-two', icon: 'fa-header', text: '2' },
+    { label: 'H2', style: 'header-two', icon: '', text: 'H2' },
     { label: 'OL', style: 'ordered-list-item', icon: 'fa-list-ol', text: '' },
     { label: 'UL', style: 'unordered-list-item', icon: 'fa-list-ul', text: '' },
 ]
