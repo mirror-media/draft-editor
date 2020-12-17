@@ -31,7 +31,10 @@ import DraftConverter from './K3/draft-converter'
 import blockStyleFn from './editor/base/block-style-fn'
 
 import './editor/styles/editor.css'
-import '@fortawesome/fontawesome-free/css/all.min.css'
+import '@fortawesome/fontawesome-free/js/fontawesome'
+import '@fortawesome/fontawesome-free/js/solid'
+import '@fortawesome/fontawesome-free/js/regular'
+import '@fortawesome/fontawesome-free/js/brands'
 
 function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
     const initialEditorState = getInitialState(value)
@@ -427,8 +430,8 @@ const styleMap = {
 // block settings
 const BLOCK_TYPES = [
     { label: 'Normal', style: 'unstyled', icon: '', text: 'Normal' },
-    { label: 'H1', style: 'header-one', icon: 'fa-header', text: 'H1' },
-    { label: 'H2', style: 'header-two', icon: 'fa-header', text: 'H2' },
+    { label: 'H1', style: 'header-one', icon: '', text: 'H1' },
+    { label: 'H2', style: 'header-two', icon: '', text: 'H2' },
     { label: 'Code Block', style: 'code-block', icon: 'fa-code', text: '' },
     {
         label: 'Blockquote',

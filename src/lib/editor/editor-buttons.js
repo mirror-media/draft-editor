@@ -36,6 +36,10 @@ class StyleButton extends React.Component {
             className += ' RichEditor-activeButton'
         }
 
+        const icon = this.props.icon ? (
+            <i className={'fa ' + this.props.icon}></i>
+        ) : null
+
         return (
             <Button
                 type="default"
@@ -45,7 +49,7 @@ class StyleButton extends React.Component {
                 size="normal"
                 style={{ marginLeft: '0' }}
             >
-                <i className={'fa ' + this.props.icon}></i>
+                {icon}
                 <span>{this.props.text}</span>
             </Button>
         )
