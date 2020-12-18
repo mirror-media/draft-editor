@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ImageGrid } from './ImageGrid'
+import ImageGrid from './ImageGrid'
 import SelectionMixin from './mixins/SelectionMixin'
 // import merge from 'lodash/merge'
 
@@ -38,12 +38,12 @@ export class ImageSelection extends SelectionMixin {
     }
 }
 
-ImageSelection.propTypes = {
-    images: PropTypes.array,
-    selectedImages: PropTypes.array,
-    selectionLimit: PropTypes.number,
-    updateSelection: PropTypes.func.isRequired,
-}
+// ImageSelection.propTypes = {
+//     images: PropTypes.array,
+//     selectedImages: PropTypes.array,
+//     selectionLimit: PropTypes.number,
+//     updateSelection: PropTypes.func.isRequired,
+// }
 
 ImageSelection.defaultProps = {
     images: [],
