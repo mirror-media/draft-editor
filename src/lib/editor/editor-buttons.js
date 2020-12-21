@@ -292,7 +292,7 @@ export const EntityButtons = (props) => {
                         key={entity}
                         label={entity}
                         onToggle={onToggle}
-                        icon="fab fa-youtube fa-2"
+                        icon="fab fa-youtube"
                         iconText=""
                         youtubeId={data ? data.youtubeId : ''}
                     />

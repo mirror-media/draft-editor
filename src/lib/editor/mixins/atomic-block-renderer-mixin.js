@@ -55,7 +55,6 @@ export class AtomicBlockRendererMixin extends Component {
     }
 
     _toggleEditMode(e) {
-        console.log('_toggleEditMode')
         if (typeof _.get(e, 'stopPropagation') === 'function') {
             e.stopPropagation()
         }

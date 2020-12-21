@@ -3,6 +3,7 @@
 // import { Slideshow } from '@twreporter/react-article-components/dist/components/article/index'
 import { Slide } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
+import './slideshow.css'
 
 import ENTITY from '../entities'
 import AtomicBlockRendererMixin from '../mixins/atomic-block-renderer-mixin'
@@ -21,7 +22,6 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
     }
 
     _renderImageSelector(props) {
-        console.log('edit slideshow')
         return <ImageSelector {...props} />
     }
 
@@ -32,7 +32,6 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
 
         let images = _.get(this.state.data, 'content', [])
 
-        console.log(this.state.editMode)
         const EditBlock = this.state.editMode
             ? this._renderImageSelector({
                   apiPath: 'images',
@@ -52,10 +51,6 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
             arrows: true,
             pauseOnHover: true,
             onChange: (oldIndex, newIndex) => {},
-        }
-
-        function clickHandler(e) {
-            console.log('click')
         }
 
         return (
