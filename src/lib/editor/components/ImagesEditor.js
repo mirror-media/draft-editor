@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import { DragSource, DropTarget, DragDropContext } from 'react-dnd'
-import { ImageItem } from './ImageGrid'
+import ImageItem from './ImageItem'
 import { Form, Input } from 'element-react'
 
 // import update from 'react/lib/update'

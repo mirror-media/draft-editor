@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ImageGrid from './ImageGrid'
+import { ImageGrid } from './ImageGrid'
 import SelectionMixin from './mixins/SelectionMixin'
 // import merge from 'lodash/merge'
 

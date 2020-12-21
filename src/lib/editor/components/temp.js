@@ -143,7 +143,6 @@ class ImageGrid extends Component {
 
     render() {
         const { images, selectedImages } = this.state
-        console.log(selectedImages)
         const { columns, padding } = this.props
         const width = Math.floor(100 / columns)
         const imageNodes = images.map((image, index) => {

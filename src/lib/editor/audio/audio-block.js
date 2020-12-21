@@ -1,6 +1,6 @@
 import AtomicBlockRendererMixin from '../mixins/atomic-block-renderer-mixin'
 import React from 'react'
-import ReactPlayer from 'react-player'
+// import ReactPlayer from 'react-player'
 
 export default class AudioBlock extends AtomicBlockRendererMixin {
     constructor(props) {
@@ -15,13 +15,13 @@ export default class AudioBlock extends AtomicBlockRendererMixin {
         const { title, url, id } = this.state.data.content[0]
         return (
             <div contentEditable={false} style={{ userSelect: 'none' }}>
-                <ReactPlayer
+                {/* <ReactPlayer
                     url="url"
                     controls={true}
                     width="100%"
                     height="55px"
                     style={{ margin: '5px 0' }}
-                />
+                /> */}
                 <h6>{title}</h6>
             </div>
         )
