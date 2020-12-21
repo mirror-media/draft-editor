@@ -21,6 +21,7 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
     }
 
     _renderImageSelector(props) {
+        console.log('edit slideshow')
         return <ImageSelector {...props} />
     }
 
@@ -31,6 +32,7 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
 
         let images = _.get(this.state.data, 'content', [])
 
+        console.log(this.state.editMode)
         const EditBlock = this.state.editMode
             ? this._renderImageSelector({
                   apiPath: 'images',
@@ -42,20 +44,6 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
               })
             : null
 
-        // return (
-        //     <div
-        //         contentEditable={false}
-        //         className="slideshow-container"
-        //         style={{
-        //             position: 'relative',
-        //         }}
-        //     >
-        //         <Slideshow {...this.state.data} device={this.props.device} />
-        //         <EditingBt onClick={this.toggleEditMode} />
-        //         {EditBlock}
-        //     </div>
-        // )
-
         const properties = {
             duration: 5000,
             transitionDuration: 500,
@@ -64,6 +52,10 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
             arrows: true,
             pauseOnHover: true,
             onChange: (oldIndex, newIndex) => {},
+        }
+
+        function clickHandler(e) {
+            console.log('click')
         }
 
         return (

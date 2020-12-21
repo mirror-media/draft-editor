@@ -2,8 +2,8 @@ import React from 'react'
 
 export default ({ onClick }) => {
     return (
-        <i
-            className="fas fa-pen-square"
+        <div
+            className="editingBt"
             onClick={onClick}
             style={{
                 position: 'absolute',
@@ -12,13 +12,17 @@ export default ({ onClick }) => {
                 left: '50%',
                 transform: 'translate(-50%,-50%)',
                 width: '55px',
-                height: '50px',
-
+                height: '55px',
                 backgroundColor: '#FFF',
                 borderRadius: '5px',
                 textAlign: 'center',
                 cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
             }}
-        />
+        >
+            <i className="fas fa-pen-square" />
+        </div>
     )
 }
