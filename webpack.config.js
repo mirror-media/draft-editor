@@ -23,6 +23,10 @@ module.exports = {
                 // include: /images/,
                 use: ['url-loader'],
             },
+            {
+                test: /\.(scss|sass)$/,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
         ],
     },
     plugins: [

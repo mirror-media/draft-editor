@@ -4,6 +4,14 @@
 import { Slide } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
 import './slideshow.css'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore from 'swiper'
+// import './swiper.scss'
+import 'swiper/swiper-bundle.css'
+import './customStyle.css'
+// import 'swiper/components/navigation/navigation.scss'
+// import 'swiper/components/pagination/pagination.scss'
+// import 'swiper/components/scrollbar/scrollbar.scss'
 
 import ENTITY from '../entities'
 import AtomicBlockRendererMixin from '../mixins/atomic-block-renderer-mixin'
@@ -90,6 +98,7 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
                         </div>
                     ))}
                 </Slide>
+
                 <EditingBt onClick={this.toggleEditMode} />
                 {EditBlock}
             </div>
