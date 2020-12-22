@@ -70,7 +70,15 @@ export default class ImageBlock extends AtomicBlockRendererMixin {
                         onClick={this.toggleEditMode}
                     />
 
-                    <h6 style={{ margin: '0.944rem auto 0 auto' }}>{title}</h6>
+                    <h6
+                        style={{
+                            margin: '0 auto ',
+                            // textAlign: 'center',
+                            opacity: '0.5',
+                        }}
+                    >
+                        {title}
+                    </h6>
                     {EditBlock}
                 </div>
             </AlignedWrapper>

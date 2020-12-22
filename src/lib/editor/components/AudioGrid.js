@@ -162,7 +162,7 @@ class AudioGrid extends React.Component {
         })
     }
     _handleSelect(audio) {
-        console.log(audio)
+        // console.log(audio)
         this.props.onSelect(audio)
     }
 

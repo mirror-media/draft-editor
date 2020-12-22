@@ -13,7 +13,7 @@ export class SelectionMixin extends Component {
 
     // // replacement of componentWillReceiveProps
     static getDerivedStateFromProps(nextProps, prevState) {
-        console.log(nextProps.images)
+        // console.log(nextProps.images)
         return {
             items: nextProps.items,
             selectedItems: nextProps.selectedItems,

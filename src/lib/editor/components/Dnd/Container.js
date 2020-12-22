@@ -41,7 +41,6 @@ export const Container = (props) => {
     }
 
     const renderCard = (image, index) => {
-        console.log(image)
         return (
             <ImageItem
                 key={index}
