@@ -1,8 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import objectAssign from 'object-assign'
 import '@fortawesome/fontawesome-free/js/fontawesome'
+
+import { useDrag, useDrop } from 'react-dnd'
+import { ItemTypes } from '../components/Dnd/ItemTypes'
 
 class ImageItem extends Component {
     constructor(props) {
@@ -15,10 +18,15 @@ class ImageItem extends Component {
 
     // replacement of componentWillReceiveProps
     static getDerivedStateFromProps(nextProps, prevState) {
-        return {
-            isSelected: nextProps.isSelected,
-            image: nextProps.image,
-        }
+        if (
+            nextProps.image !== prevState.image ||
+            nextProps.isSelected !== prevState.isSelected
+        ) {
+            return {
+                isSelected: nextProps.isSelected,
+                image: nextProps.image,
+            }
+        } else return null
     }
 
     _handleSelect(e) {
@@ -28,10 +36,11 @@ class ImageItem extends Component {
     }
 
     _handleRemove(e) {
-        this.props.onRemove(e)
+        this.props.onRemove(this.state.image)
     }
 
     render() {
+        // console.log(this.state.image)
         const { width, padding, doShowRemove, style } = this.props
         const { isSelected } = this.state
         const { url, id } = this.state.image
@@ -51,7 +60,7 @@ class ImageItem extends Component {
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 cursor: 'pointer',
-                paddingBottom: '100%',
+                paddingTop: '100%',
                 position: 'relative',
                 textAlign: 'right',
                 width: '100%',
@@ -73,16 +82,17 @@ class ImageItem extends Component {
         }
 
         const bt = doShowRemove ? (
-            <i
-                className="fas fa-times-circle"
+            <div
+                style={{ display: 'inline-block' }}
                 onClick={this._handleRemove.bind(this)}
-                style={btStyle}
-            />
+            >
+                <i className="fas fa-times-circle" style={btStyle} />
+            </div>
         ) : isSelected ? (
-            <i className="fas fa-check-circle" style={btStyle} />
-        ) : (
-            <i className="fa" />
-        )
+            <div style={{ display: 'inline-block' }}>
+                <i className="fas fa-check-circle" style={btStyle} />
+            </div>
+        ) : null
 
         return (
             <div
@@ -163,8 +173,15 @@ class ImageGrid extends Component {
                 />
             )
         })
-
-        return <div className="imageGrid">{imageNodes}</div>
+        const imageGridStyle = {
+            //     display: 'flex',
+            //     flexWrap: 'wrap',
+        }
+        return (
+            <div className="imageGrid" style={imageGridStyle}>
+                {imageNodes}
+            </div>
+        )
     }
 }
 

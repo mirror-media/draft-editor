@@ -7,19 +7,21 @@ import PropTypes from 'prop-types'
 function Dnd(props) {
     const [images, setImages] = useState(props.selectedImages)
 
+    // When props update, update corresponding state.
     useEffect(() => {
-        console.log(props.selectedImages)
         setImages(props.selectedImages)
     }, [props])
 
-    const handleRemove = (imageToRemove) => {
+    const handleImageRemove = (imageToRemove) => {
         const filtered = images.filter((image) => image.id !== imageToRemove.id)
-
         setImages(filtered)
-        props.onChange(filtered)
+
+        if (props.onChange) {
+            props.onChange(filtered)
+        }
     }
 
-    const handleChange = (imageToChange) => {
+    const handleImageDataChange = (imageToChange) => {
         const changed = images.map((image) => {
             if (image.id === imageToChange.id) {
                 return imageToChange
@@ -27,18 +29,20 @@ function Dnd(props) {
             return image
         })
         setImages(changed)
-        props.onChange(changed)
+
+        if (props.onChange) {
+            props.onChange(changed)
+        }
     }
+
     return (
-        <div className="App">
-            <DndProvider backend={HTML5Backend}>
-                <Container
-                    images={images}
-                    onChange={handleChange}
-                    onRemove={handleRemove}
-                />
-            </DndProvider>
-        </div>
+        <DndProvider backend={HTML5Backend}>
+            <Container
+                images={images}
+                onRemove={handleImageRemove}
+                onChange={handleImageDataChange}
+            />
+        </DndProvider>
     )
 }
 

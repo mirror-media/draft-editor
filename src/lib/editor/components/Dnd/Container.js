@@ -8,7 +8,7 @@ import update from 'immutability-helper'
 const style = {
     display: 'flex',
     flexWrap: 'wrap',
-    marginTop: '10px',
+    marginTop: '26px',
 }
 export const Container = (props) => {
     const [images, setImages] = useState(props.images)
@@ -43,7 +43,7 @@ export const Container = (props) => {
     const renderCard = (image, index) => {
         return (
             <ImageItem
-                key={image.id}
+                key={index}
                 doShowRemove
                 image={image}
                 width={33}
@@ -56,13 +56,13 @@ export const Container = (props) => {
                 style={{ border: '1px solid gainsboro' }}
             >
                 <Form
-                    key={image.id}
+                    key={index}
                     label=""
                     htmlFor="image-caption-input"
                     style={{ paddingTop: '5px' }}
                 >
                     <Input
-                        key={image.id}
+                        key={index}
                         placeholder="input caption here"
                         // multiline
                         defaultValue={image.title}
