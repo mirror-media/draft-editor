@@ -102,10 +102,11 @@ class DnDContainer extends Component {
         this.findImage = this._findImage.bind(this)
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
+    // replacement of componentWillReceiveProps
+    static getDerivedStateFromProps(nextProps, prevState) {
+        return {
             images: nextProps.images,
-        })
+        }
     }
 
     _handleChange(image, e) {

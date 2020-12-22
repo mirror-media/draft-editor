@@ -2,7 +2,8 @@ import _ from 'lodash'
 // import sizeOf from 'image-size';
 import ApiDataInstance from './api-data-instance'
 import ENTITY from './entities'
-import htmlparser from 'htmlparser2'
+// import htmlparser2 from 'htmlparser2'
+const htmlparser2 = require('htmlparser2')
 
 const processor = {
     convertBlock(entityMap, block) {
@@ -51,6 +52,7 @@ const processor = {
                 break
             case ENTITY.EMBEDDEDCODE.type:
                 alignment = (entity.data && entity.data.alignment) || alignment
+
                 let caption = _.get(entity, ['data', 'caption'], '')
                 let embeddedCode = _.get(entity, ['data', 'code'], '')
                 let script = {}
@@ -58,8 +60,7 @@ const processor = {
                 let scriptTagStart = false
                 let height
                 let width
-                console.log(htmlparser)
-                let parser = new htmlparser.Parser({
+                let parser = new htmlparser2.Parser({
                     onopentag: (name, attribs) => {
                         if (name === 'script') {
                             scriptTagStart = true
@@ -81,6 +82,7 @@ const processor = {
                         }
                     },
                 })
+
                 parser.write(embeddedCode)
                 parser.end()
 

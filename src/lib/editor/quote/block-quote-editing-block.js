@@ -22,8 +22,6 @@ export class BlockQuoteEditingBlock extends EntityEditingBlockMixin {
 
     // overwrite EntityEditingBlock._decomposeEditingFields
     _decomposeEditingFields(fields) {
-        console.log('_decomposeEditingFields')
-
         // return formated inputfield's data, make it accessable to Field's entity handler(toggleEntity)
         return {
             quoteBy: fields.quoteBy.value,

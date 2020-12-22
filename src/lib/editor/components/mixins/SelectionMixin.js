@@ -11,7 +11,7 @@ export class SelectionMixin extends Component {
         this.handleSelect = this._handleSelect.bind(this)
     }
 
-    // // replacement of componentWillReceiveProps
+    //  replacement of componentWillReceiveProps
     static getDerivedStateFromProps(nextProps, prevState) {
         // console.log(nextProps.images)
         return {

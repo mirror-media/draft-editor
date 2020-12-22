@@ -155,12 +155,15 @@ class AudioGrid extends React.Component {
             selectedAudios: props.selectedAudios,
         }
     }
-    componentWillReceiveProps(nextProps) {
-        this.setState({
+
+    // replacement of componentWillReceiveProps
+    static getDerivedStateFromProps(nextProps, prevState) {
+        return {
             audios: nextProps.audios,
             selectedAudios: nextProps.selectedAudios,
-        })
+        }
     }
+
     _handleSelect(audio) {
         // console.log(audio)
         this.props.onSelect(audio)

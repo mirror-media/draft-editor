@@ -165,11 +165,13 @@ class VideoGrid extends Component {
             selectedVideos: props.selectedVideos,
         }
     }
-    componentWillReceiveProps(nextProps) {
-        this.setState({
+
+    // replacement of componentWillReceiveProps
+    static getDerivedStateFromProps(nextProps, prevState) {
+        return {
             Videos: nextProps.Videos,
             selectedVideos: nextProps.selectedVideos,
-        })
+        }
     }
     _handleSelect(Video) {
         this.props.onSelect(Video)

@@ -24,11 +24,12 @@ export default class ImagesDiff extends Component {
         })
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
+    // replacement of componentWillReceiveProps
+    static getDerivedStateFromProps(nextProps, prevState) {
+        return {
             width: nextProps.width || this.state.width,
             height: nextProps.height || this.state.height,
-        })
+        }
     }
 
     handleImgLoad(ref) {

@@ -13,10 +13,11 @@ export class EntityStyleButton extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
+    // replacement of componentWillReceiveProps
+    static getDerivedStateFromProps(nextProps, prevState) {
+        return {
             active: nextProps.active,
-        })
+        }
     }
 
     render() {
