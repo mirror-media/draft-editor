@@ -15,10 +15,15 @@ class ImageItem extends Component {
 
     // replacement of componentWillReceiveProps
     static getDerivedStateFromProps(nextProps, prevState) {
-        return {
-            isSelected: nextProps.isSelected,
-            image: nextProps.image,
-        }
+        if (
+            nextProps.image !== prevState.image ||
+            nextProps.isSelected !== prevState.isSelected
+        ) {
+            return {
+                isSelected: nextProps.isSelected,
+                image: nextProps.image,
+            }
+        } else return null
     }
 
     _handleSelect(e) {
@@ -28,10 +33,11 @@ class ImageItem extends Component {
     }
 
     _handleRemove(e) {
-        this.props.onRemove(e)
+        this.props.onRemove(this.state.image)
     }
 
     render() {
+        // console.log(this.state.image)
         const { width, padding, doShowRemove, style } = this.props
         const { isSelected } = this.state
         const { url, id } = this.state.image
@@ -73,12 +79,11 @@ class ImageItem extends Component {
         }
 
         const bt = doShowRemove ? (
-            <div style={{ display: 'inline-block' }}>
-                <i
-                    className="fas fa-times-circle"
-                    onClick={this._handleRemove.bind(this)}
-                    style={btStyle}
-                />
+            <div
+                style={{ display: 'inline-block' }}
+                onClick={this._handleRemove.bind(this)}
+            >
+                <i className="fas fa-times-circle" style={btStyle} />
             </div>
         ) : isSelected ? (
             <div style={{ display: 'inline-block' }}>

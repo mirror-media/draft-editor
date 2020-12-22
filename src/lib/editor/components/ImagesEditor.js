@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import { DragSource, DropTarget, DragDropContext } from 'react-dnd'
-import ImageItem from './ImageItem'
+import { ImageItem } from './ImageGrid'
 import { Form, Input } from 'element-react'
+
+import Dnd from './Dnd/Dnd'
 
 // import update from 'react/lib/update'
 import HTML5Backend from 'react-dnd-html5-backend'
@@ -238,7 +240,9 @@ class ImagesEditor extends Component {
     }
 
     _handleRemove(imageToRemove) {
+        // console.log('remove')
         let { images } = this.state
+        // console.log(imageToRemove)
         const filtered = images.filter((image) => image.id !== imageToRemove.id)
         this.setState(
             {
@@ -276,7 +280,12 @@ class ImagesEditor extends Component {
             //     onRemove={this._handleRemove.bind(this)}
             //     onChange={this._handleChange.bind(this)}
             // />
-            <h6>Here's ImageDnDContainer (coming soon...)</h6>
+            // <h6>Here's ImageDnDContainer (coming soon...)</h6>
+            <Dnd
+                images={images}
+                onRemove={this._handleRemove.bind(this)}
+                onChange={this._handleChange.bind(this)}
+            />
         )
     }
 }
