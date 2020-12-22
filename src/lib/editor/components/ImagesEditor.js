@@ -225,78 +225,25 @@ const ImageDnDContainer = null
 // )
 
 class ImagesEditor extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            images: props.images,
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            images: nextProps.images,
-        })
-    }
-
-    _handleRemove(imageToRemove) {
-        // console.log('remove')
-        let { images } = this.state
-        // console.log(imageToRemove)
-        const filtered = images.filter((image) => image.id !== imageToRemove.id)
-        this.setState(
-            {
-                images: filtered,
-            },
-            () => {
-                this.props.onChange(filtered)
-            }
-        )
-    }
-
-    _handleChange(imageToChange) {
-        let { images } = this.state
-        const changed = images.map((image) => {
-            if (image.id === imageToChange.id) {
-                return imageToChange
-            }
-            return image
-        })
-        this.setState(
-            {
-                images: changed,
-            },
-            () => {
-                this.props.onChange(changed)
-            }
-        )
-    }
-
     render() {
-        const { images } = this.state
+        const selectedImages = this.props.selectedImages
+
         return (
-            // <ImageDnDContainer
-            //     images={images}
-            //     onRemove={this._handleRemove.bind(this)}
-            //     onChange={this._handleChange.bind(this)}
-            // />
-            // <h6>Here's ImageDnDContainer (coming soon...)</h6>
             <Dnd
-                images={images}
-                onRemove={this._handleRemove.bind(this)}
-                onChange={this._handleChange.bind(this)}
+                selectedImages={selectedImages}
+                onChange={this.props.onChange}
             />
         )
     }
 }
 
 ImagesEditor.propTypes = {
-    images: PropTypes.array,
+    selectedImages: PropTypes.array,
     onChange: PropTypes.func.isRequired,
 }
 
 ImagesEditor.defaultProps = {
-    images: [],
+    selectedImages: [],
 }
 
 export default ImagesEditor

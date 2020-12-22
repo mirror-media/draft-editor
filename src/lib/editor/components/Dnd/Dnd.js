@@ -1,47 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import Container from './Container'
+import PropTypes from 'prop-types'
 
 function Dnd(props) {
-    const cards = [
-        {
-            id: 1,
-            text: 'Write a cool JS library',
-        },
-        {
-            id: 2,
-            text: 'Make it generic enough',
-        },
-        {
-            id: 3,
-            text: 'Write README',
-        },
-        {
-            id: 4,
-            text: 'Create some examples',
-        },
-        {
-            id: 5,
-            text:
-                'Spam in Twitter and IRC to promote it (note that this element is taller than the others)',
-        },
-        {
-            id: 6,
-            text: '???',
-        },
-        {
-            id: 7,
-            text: 'PROFIT',
-        },
-    ]
+    const [images, setImages] = useState(props.selectedImages)
+
+    useEffect(() => {
+        console.log(props.selectedImages)
+        setImages(props.selectedImages)
+    }, [props])
+
+    const handleRemove = (imageToRemove) => {
+        const filtered = images.filter((image) => image.id !== imageToRemove.id)
+
+        setImages(filtered)
+        props.onChange(filtered)
+    }
+
+    const handleChange = (imageToChange) => {
+        const changed = images.map((image) => {
+            if (image.id === imageToChange.id) {
+                return imageToChange
+            }
+            return image
+        })
+        setImages(changed)
+        props.onChange(changed)
+    }
     return (
         <div className="App">
             <DndProvider backend={HTML5Backend}>
                 <Container
-                    images={props.images}
-                    onChange={props.onChange}
-                    onRemove={props.onRemove}
+                    images={images}
+                    onChange={handleChange}
+                    onRemove={handleRemove}
                 />
             </DndProvider>
         </div>
@@ -49,3 +43,12 @@ function Dnd(props) {
 }
 
 export default Dnd
+
+Dnd.propTypes = {
+    images: PropTypes.array,
+    onChange: PropTypes.func.isRequired,
+}
+
+Dnd.defaultProps = {
+    images: [],
+}

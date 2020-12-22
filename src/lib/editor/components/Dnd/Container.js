@@ -8,10 +8,11 @@ import update from 'immutability-helper'
 const style = {
     display: 'flex',
     flexWrap: 'wrap',
+    marginTop: '10px',
 }
 export const Container = (props) => {
-    // const [cards, setCards] = useState(props.cards)
     const [images, setImages] = useState(props.images)
+    const { onRemove, onChange } = props
 
     // When props update, update corresponding state.
     useEffect(() => {
@@ -32,17 +33,15 @@ export const Container = (props) => {
         },
         [images]
     )
-    const renderCard = (image, index) => {
-        const { onRemove, onChange } = props
 
+    const handleInputChange = (value, image) => {
+        let newImageData = image
+        newImageData.title = value
+        onChange(newImageData)
+    }
+
+    const renderCard = (image, index) => {
         return (
-            // <Card
-            //     key={card.id}
-            //     index={index}
-            //     id={card.id}
-            //     text={card.title}
-            //     moveCard={moveCard}
-            // />
             <ImageItem
                 key={image.id}
                 doShowRemove
@@ -50,7 +49,7 @@ export const Container = (props) => {
                 width={33}
                 // id={image.id}
                 // link={image.link}
-                // onChange={this._handleChange.bind(this, image)}
+                onChange={onChange}
                 onRemove={onRemove}
                 padding={10}
                 url={image.url}
@@ -66,9 +65,9 @@ export const Container = (props) => {
                         key={image.id}
                         placeholder="input caption here"
                         // multiline
-                        defaultValue={image.description}
+                        defaultValue={image.title}
                         name="image-caption-input"
-                        // onChange={this._handleInputChange.bind(this, image)}
+                        onChange={(value) => handleInputChange(value, image)}
                     />
                 </Form>
             </ImageItem>

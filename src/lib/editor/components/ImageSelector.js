@@ -104,7 +104,7 @@ export class ImageSelector extends SelectorMixin {
                     </div>
                     <div>
                         <ImagesEditor
-                            images={selectedItems}
+                            selectedImages={selectedItems}
                             onChange={this.updateSelection}
                         />
                     </div>
