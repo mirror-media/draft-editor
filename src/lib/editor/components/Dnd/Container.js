@@ -41,6 +41,7 @@ export const Container = (props) => {
     }
 
     const renderCard = (image, index) => {
+        console.log(image)
         return (
             <ImageItem
                 key={index}
@@ -54,6 +55,9 @@ export const Container = (props) => {
                 padding={10}
                 url={image.url}
                 style={{ border: '1px solid gainsboro' }}
+                moveCard={moveCard}
+                id={image.id}
+                index={index}
             >
                 <Form
                     key={index}
@@ -65,7 +69,8 @@ export const Container = (props) => {
                         key={index}
                         placeholder="input caption here"
                         // multiline
-                        defaultValue={image.title}
+                        // defaultValue={image.title}
+                        value={image.title}
                         name="image-caption-input"
                         onChange={(value) => handleInputChange(value, image)}
                     />

@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import objectAssign from 'object-assign'
@@ -10,6 +10,7 @@ import { ItemTypes } from '../components/Dnd/ItemTypes'
 function ImageItem(props) {
     const [image, setImage] = useState(props.image)
     const [isSelected, setIsSelected] = useState(props.isSelected)
+    const ref = useRef(null)
 
     useEffect(() => {
         setImage(props.image)
@@ -26,7 +27,7 @@ function ImageItem(props) {
         props.onRemove(image)
     }
 
-    const { width, padding, doShowRemove, style } = props
+    const { width, padding, doShowRemove, style, moveCard, index } = props
     const { url, id } = image
     const styles = {
         imageGridItem: objectAssign(
@@ -75,11 +76,66 @@ function ImageItem(props) {
         </div>
     ) : null
 
+    let opacity = {}
+    // Only image in Dng area would have this property\
+    if (moveCard) {
+        const [, drop] = useDrop({
+            accept: ItemTypes.CARD,
+            hover(item, monitor) {
+                if (!ref.current) {
+                    return
+                }
+                const dragIndex = item.index
+                const hoverIndex = index
+                // Don't replace items with themselves
+                if (dragIndex === hoverIndex) {
+                    return
+                }
+                // Determine rectangle on screen
+                const hoverBoundingRect = ref.current?.getBoundingClientRect()
+                // Get horizontal middle
+                const hoverMiddleX =
+                    (hoverBoundingRect.right - hoverBoundingRect.left) / 2
+                // Determine mouse position
+                const clientOffset = monitor.getClientOffset()
+                // Get pixels to the top
+                // const hoverClientY = clientOffset.y - hoverBoundingRect.top
+                const hoverClientX = hoverBoundingRect.right - clientOffset.x
+                // Only perform the move when the mouse has crossed half of the items height
+                // When dragging downwards, only move when the cursor is below 50%
+                // When dragging upwards, only move when the cursor is above 50%
+                // Dragging downwards
+                if (dragIndex < hoverIndex && hoverClientX > hoverMiddleX) {
+                    return
+                }
+                // Dragging upwards
+                if (dragIndex > hoverIndex && hoverClientX < hoverMiddleX) {
+                    return
+                }
+                // Time to actually perform the action
+                moveCard(dragIndex, hoverIndex)
+                // Note: we're mutating the monitor item here!
+                // Generally it's better to avoid mutations,
+                // but it's good here for the sake of performance
+                // to avoid expensive index searches.
+                item.index = hoverIndex
+            },
+        })
+        const [{ isDragging }, drag] = useDrag({
+            item: { type: ItemTypes.CARD, id, index },
+            collect: (monitor) => ({
+                isDragging: monitor.isDragging(),
+            }),
+        })
+        opacity = isDragging ? 1 : 1
+        drag(drop(ref))
+    }
     return (
         <div
             onClick={handleSelect}
             className="imageGridItem"
-            style={styles.imageGridItem}
+            style={{ ...styles.imageGridItem, opacity }}
+            ref={ref}
         >
             <div className="imageWrapper" style={styles.imageWrapper}>
                 <div className="iconWrapper" style={styles.iconWrapper}>
