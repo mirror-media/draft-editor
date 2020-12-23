@@ -1,24 +1,23 @@
 let mobileStyle = {
-	width: '100%',
-};
+    position: 'relative',
+    width: '100%',
+}
 let tabletFullStyle = {
-	maxWidth: '100%',
-};
+    position: 'relative',
+    maxWidth: '100%',
+}
 let tabletMaxStyle = {
-	maxWidth: '833px',
-};
+    position: 'relative',
+    maxWidth: '833px',
+}
 let tabletMinStyle = {
-	width: '644px',
-};
+    position: 'relative',
+    width: '644px',
+}
 /*
 // wait for spec
 let descktopStyle = {
 };
 */
 
-export {
-	mobileStyle,
-	tabletMinStyle,
-	tabletMaxStyle,
-	tabletFullStyle,
-};
+export { mobileStyle, tabletMinStyle, tabletMaxStyle, tabletFullStyle }

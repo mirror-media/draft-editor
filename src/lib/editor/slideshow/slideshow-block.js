@@ -3,6 +3,7 @@
 // import { Slideshow } from '@twreporter/react-article-components/dist/components/article/index'
 import { Slide } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
+import AlignedWrapper from '../components/AlignedWrapper/AlignedWrapper'
 
 import './customStyle.css'
 
@@ -55,46 +56,51 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
         }
 
         return (
-            <div
-                className="slide-container"
-                style={{
-                    width: '500px',
-                    position: 'relative',
-                    userSelect: 'none',
-                }}
-                contentEditable={false}
-            >
-                <Slide {...properties}>
-                    {images.map((image, index) => (
-                        <div key={`slideshow-${index}`} className="each-slide">
+            <AlignedWrapper isEnlarged={this.props.blockProps.isEnlarged}>
+                <div
+                    className="slide-container"
+                    style={{
+                        width: '100%',
+                        position: 'relative',
+                        userSelect: 'none',
+                    }}
+                    contentEditable={false}
+                >
+                    <Slide {...properties}>
+                        {images.map((image, index) => (
                             <div
-                                className="image-wrapper"
-                                style={{
-                                    // backgroundColor: 'GhostWhite',
-                                    width: '100%',
-                                    height: 'auto',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}
+                                key={`slideshow-${index}`}
+                                className="each-slide"
                             >
-                                <img
-                                    src={image.url}
-                                    alt={image.title}
+                                <div
+                                    className="image-wrapper"
                                     style={{
+                                        // backgroundColor: 'GhostWhite',
                                         width: '100%',
-                                        objectFit: 'cover',
+                                        height: 'auto',
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
                                     }}
-                                />
+                                >
+                                    <img
+                                        src={image.url}
+                                        alt={image.title}
+                                        style={{
+                                            width: '100%',
+                                            objectFit: 'cover',
+                                        }}
+                                    />
+                                </div>
+                                <h6>{image.title}</h6>
                             </div>
-                            <h6>{image.title}</h6>
-                        </div>
-                    ))}
-                </Slide>
+                        ))}
+                    </Slide>
 
-                <EditingBt onClick={this.toggleEditMode} />
-                {EditBlock}
-            </div>
+                    <EditingBt onClick={this.toggleEditMode} />
+                    {EditBlock}
+                </div>
+            </AlignedWrapper>
         )
     }
 }
