@@ -1,6 +1,6 @@
 {
     "name": "@liyibass/html-draft-editor",
-    "version": "0.1.7",
+    "version": "0.1.9",
     "description": "html-draft-editor",
     "main": "lib/index.js",
     "scripts": {

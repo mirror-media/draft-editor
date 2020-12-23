@@ -14,6 +14,11 @@ import ImageSelector from '../components/ImageSelector'
 import React from 'react'
 import get from 'lodash/get'
 
+import '@fortawesome/fontawesome-free/js/fontawesome'
+import '@fortawesome/fontawesome-free/js/solid'
+import '@fortawesome/fontawesome-free/js/regular'
+import '@fortawesome/fontawesome-free/js/brands'
+
 const _ = {
     get,
 }
@@ -21,6 +26,7 @@ const _ = {
 export default class SlideshowBlock extends AtomicBlockRendererMixin {
     constructor(props) {
         super(props)
+        this.slideshowRef = React.createRef()
     }
 
     _renderImageSelector(props) {
@@ -45,13 +51,27 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
               })
             : null
 
+        const prevArrow = (
+            <div className="default-nav">
+                <i className="fas fa-arrow-circle-left"></i>
+            </div>
+        )
+        const nextArrow = (
+            <div className="default-nav">
+                <i className="fas fa-arrow-circle-right"></i>
+            </div>
+        )
+
         const properties = {
             duration: 5000,
             transitionDuration: 500,
             infinite: true,
             indicators: true,
             arrows: true,
+            autoplay: true,
             pauseOnHover: true,
+            prevArrow: prevArrow,
+            nextArrow: nextArrow,
             onChange: (oldIndex, newIndex) => {},
         }
 
@@ -66,7 +86,8 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
                     }}
                     contentEditable={false}
                 >
-                    <Slide {...properties}>
+                    {this.PrefArrow}
+                    <Slide {...properties} ref={this.slideshowRef}>
                         {images.map((image, index) => (
                             <div
                                 key={`slideshow-${index}`}
