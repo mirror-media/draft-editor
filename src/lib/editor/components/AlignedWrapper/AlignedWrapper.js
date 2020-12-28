@@ -4,12 +4,13 @@ import './AlignedWrapper.style.css'
 function AlignedWrapper(props) {
     // Hide align style and controller when not enlarged.
     const { isEnlarged } = props
-    const [float, setFloat] = useState('left')
+    const [float, setFloat] = useState('center')
 
     let style = {}
     switch (float) {
         case 'left':
             style = {
+                zIndex: '1',
                 width: '50%',
                 float: 'left',
                 marginLeft: '0',
@@ -19,6 +20,7 @@ function AlignedWrapper(props) {
             break
         case 'center':
             style = {
+                zIndex: '1',
                 width: '100%',
                 float: 'none',
                 margin: '0',
@@ -26,6 +28,7 @@ function AlignedWrapper(props) {
             break
         case 'right':
             style = {
+                zIndex: '1',
                 width: '50%',
                 float: 'right',
                 marginLeft: '1.11111rem',

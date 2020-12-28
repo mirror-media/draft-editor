@@ -3,3 +3,8 @@
     flex-direction: column;
     justify-content: flex-end;
 }
+
+.default-nav > svg {
+    font-size: 30px;
+    color: black;
+}

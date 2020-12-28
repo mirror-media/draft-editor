@@ -66,7 +66,7 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
             duration: 5000,
             transitionDuration: 500,
             infinite: true,
-            indicators: true,
+            indicators: false,
             arrows: true,
             autoplay: true,
             pauseOnHover: true,
