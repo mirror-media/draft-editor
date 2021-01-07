@@ -42,7 +42,7 @@ export class ImageSelector extends SelectorMixin {
         return new Promise((resolve, reject) => {
             const dataConfig = {
                 list: 'Image',
-                columns: ['title', 'urlDesktopSized'],
+                columns: ['name', 'urlDesktopSized'],
                 maxItemsPerPage: 12,
             }
 

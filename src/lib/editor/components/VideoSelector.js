@@ -47,7 +47,7 @@ export class VideoSelector extends SelectorMixin {
         return new Promise((resolve, reject) => {
             const dataConfig = {
                 list: 'Video',
-                columns: ['title', 'url'],
+                columns: ['name', 'url'],
                 maxItemsPerPage: 12,
             }
 
@@ -58,7 +58,6 @@ export class VideoSelector extends SelectorMixin {
                     //     // format fetched data's format
                     //     return parseImageAPIResponse(image)
                     // })
-
                     resolve(items)
                 })
                 .catch((err) => reject(err))

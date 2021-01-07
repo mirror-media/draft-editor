@@ -79,10 +79,12 @@ class AudioItem extends React.Component {
             audio,
             coverPhoto,
             isSelected,
-            title,
+            name,
             description,
             width,
         } = this.props
+
+        console.log(this.props)
 
         let style = {
             AudioItem: {
@@ -113,8 +115,10 @@ class AudioItem extends React.Component {
                 /> */}
                 <div className="info_container">
                     <div className="info_topic" style={style.infoTopic}>
-                        <img src={coverPhoto} alt={title} />
-                        <h5>{title}</h5>
+                        {coverPhoto ? (
+                            <img src={coverPhoto} alt={name} />
+                        ) : null}
+                        <h5>{name}</h5>
                     </div>
                     <div className="info_detail">
                         <p>{description}</p>
@@ -133,7 +137,7 @@ AudioItem.propTypes = {
     isSelected: PropTypes.bool,
     onRemove: PropTypes.func,
     onSelect: PropTypes.func,
-    title: PropTypes.string,
+    name: PropTypes.string,
     width: PropTypes.number.isRequired,
 }
 
@@ -143,7 +147,7 @@ AudioItem.defaultProps = {
     description: '',
     doShowRemove: false,
     isSelected: false,
-    title: '',
+    name: '',
     width: 100,
 }
 
@@ -187,7 +191,7 @@ class AudioGrid extends React.Component {
                     isSelected={isSelected}
                     key={audio.id}
                     onSelect={this._handleSelect.bind(this, audio)}
-                    title={_.get(audio, 'title')}
+                    name={_.get(audio, 'name')}
                     width={width}
                 />
             )

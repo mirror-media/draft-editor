@@ -46,7 +46,7 @@ export class AudioSelector extends SelectorMixin {
         return new Promise((resolve, reject) => {
             const dataConfig = {
                 list: 'Audio',
-                columns: ['title', 'url'],
+                columns: ['name', 'url'],
                 maxItemsPerPage: 12,
             }
 
@@ -57,7 +57,7 @@ export class AudioSelector extends SelectorMixin {
                     //     // format fetched data's format
                     //     return parseImageAPIResponse(image)
                     // })
-
+                    console.log(items)
                     resolve(items)
                 })
                 .catch((err) => reject(err))

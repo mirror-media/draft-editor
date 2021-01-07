@@ -83,6 +83,7 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
                         width: '100%',
                         position: 'relative',
                         userSelect: 'none',
+                        zIndex: '0',
                     }}
                     contentEditable={false}
                 >

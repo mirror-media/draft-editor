@@ -79,7 +79,7 @@ class VideoItem extends Component {
             Video,
             coverPhoto,
             isSelected,
-            title,
+            name,
             description,
             width,
         } = this.props
@@ -109,7 +109,7 @@ class VideoItem extends Component {
                         {
                             url: Video,
                             coverPhoto,
-                            title,
+                            name,
                             description,
                         },
                     ]}
@@ -123,8 +123,8 @@ class VideoItem extends Component {
                 /> */}
                 <div className="info_container">
                     <div className="info_topic" style={style.infoTopic}>
-                        <img src={coverPhoto} alt={title} />
-                        <h5>{title}</h5>
+                        <img src={coverPhoto} alt={name} />
+                        <h5>{name}</h5>
                     </div>
                     <div className="info_detail">
                         <p>{description}</p>
@@ -143,7 +143,7 @@ VideoItem.propTypes = {
     isSelected: PropTypes.bool,
     onRemove: PropTypes.func,
     onSelect: PropTypes.func,
-    title: PropTypes.string,
+    name: PropTypes.string,
     width: PropTypes.number.isRequired,
 }
 
@@ -153,7 +153,7 @@ VideoItem.defaultProps = {
     description: '',
     doShowRemove: false,
     isSelected: false,
-    title: '',
+    name: '',
     width: 100,
 }
 
@@ -195,7 +195,7 @@ class VideoGrid extends Component {
                     isSelected={isSelected}
                     key={Video.id}
                     onSelect={this._handleSelect.bind(this, Video)}
-                    title={_.get(Video, 'title')}
+                    name={_.get(Video, 'name')}
                     width={width}
                 />
             )
