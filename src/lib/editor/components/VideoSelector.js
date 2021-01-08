@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-// import {
-//     parseVideoAPIResponse,
-//     parseImageAPIResponse,
-// } from '../utils/parseAPIResponse'
+import {
+    parseVideoAPIResponse,
+    parseImageAPIResponse,
+} from '../utils/parseAPIResponse'
 import { Button, Input, Dialog, Pagination } from 'element-react'
 
 import VideoSelection from './VideoSelection'
@@ -47,74 +47,23 @@ export class VideoSelector extends SelectorMixin {
         return new Promise((resolve, reject) => {
             const dataConfig = {
                 list: 'Video',
-                columns: ['name', 'url'],
+                columns: ['name', 'url', 'coverPhoto{id,name,urlDesktopSized}'],
                 maxItemsPerPage: 12,
             }
 
             // call loadItemsFromGql in SelectorMixin
             this.loadItemsFromCMS(querystring, dataConfig)
                 .then((items) => {
-                    // const reFormatData = items.map((image) => {
+                    // items.map((video) => {
                     //     // format fetched data's format
-                    //     return parseImageAPIResponse(image)
+                    //     video.coverPhoto = parseImageAPIResponse(
+                    //         audio.coverPhoto
+                    //     )
                     // })
                     resolve(items)
                 })
                 .catch((err) => reject(err))
         })
-    }
-
-    _loadImage(imageId) {
-        // return new Promise((resolve, reject) => {
-        //     if (!imageId) {
-        //         return reject(new Error('Should provide imageId'))
-        //     }
-        //     xhr(
-        //         {
-        //             url: Keystone.adminPath + this.API + 'images/' + imageId,
-        //             responseType: 'json',
-        //         },
-        //         (err, resp, data) => {
-        //             if (err) {
-        //                 console.error('Error loading item:', err)
-        //                 return reject(err)
-        //             }
-        //             resolve(parseImageAPIResponse(data))
-        //         }
-        //     )
-        // })
-    }
-
-    _loadCoverPhotoForVideo(Video) {
-        // return new Promise((resolve, reject) => {
-        //     let imageId = _.get(Video, ['fields', 'coverPhoto'])
-        //     this._loadImage(imageId).then(
-        //         (image) => {
-        //             _.set(Video, ['fields', 'coverPhoto'], image)
-        //             resolve(parseVideoAPIResponse(Video))
-        //         },
-        //         (err) => {
-        //             resolve(parseVideoAPIResponse(Video))
-        //         }
-        //     )
-        // })
-    }
-
-    _loadCoverPhotoForVideos(Videos) {
-        // return new Promise((resolve, reject) => {
-        //     let promises = []
-        //     _.forEach(Videos, (Video) => {
-        //         promises.push(this._loadCoverPhotoForVideo(Video))
-        //     })
-        //     Promise.all(promises).then(
-        //         (Videos) => {
-        //             resolve(Videos)
-        //         },
-        //         (err) => {
-        //             reject(err)
-        //         }
-        //     )
-        // })
     }
 
     render() {
@@ -128,6 +77,7 @@ export class VideoSelector extends SelectorMixin {
                 title="Select Video"
                 visible={isSelectionOpen}
                 onCancel={this.handleCancel}
+                size="large"
             >
                 <Dialog.Body>
                     <div>

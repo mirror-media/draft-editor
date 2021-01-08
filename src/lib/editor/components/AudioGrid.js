@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import raf from 'raf' // requestAnimationFrame polyfill
 import get from 'lodash/get'
-// import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player'
 
 const _ = {
     get,
@@ -84,8 +84,6 @@ class AudioItem extends React.Component {
             width,
         } = this.props
 
-        console.log(this.props)
-
         let style = {
             AudioItem: {
                 border: isSelected ? '1px solid rgb(44,162,252)' : '',
@@ -106,18 +104,26 @@ class AudioItem extends React.Component {
                 onClick={this._handleSelect.bind(this)}
                 style={style.AudioItem}
             >
-                {/* <ReactPlayer
+                <ReactPlayer
                     url={audio}
                     controls={true}
                     width="100%"
                     height="20px"
                     style={{ margin: '5px 0' }}
-                /> */}
+                />
                 <div className="info_container">
                     <div className="info_topic" style={style.infoTopic}>
-                        {coverPhoto ? (
-                            <img src={coverPhoto} alt={name} />
-                        ) : null}
+                        {/* display coverPhoto (Todo) */}
+                        {/* {coverPhoto ? (
+                            <div className="cover_photo">
+                                <img
+                                    src={coverPhoto.url}
+                                    alt={coverPhoto.name}
+                                    style={{ width: '100%' }}
+                                />
+                            </div>
+                        ) : null} */}
+
                         <h5>{name}</h5>
                     </div>
                     <div className="info_detail">

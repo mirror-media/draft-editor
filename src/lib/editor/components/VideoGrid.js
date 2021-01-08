@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import raf from 'raf' // requestAnimationFrame polyfill
 import get from 'lodash/get'
-// import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player'
 
 const _ = {
     get,
@@ -114,16 +114,15 @@ class VideoItem extends Component {
                         },
                     ]}
                 /> */}
-                {/* <ReactPlayer
+                <ReactPlayer
                     url={Video}
                     controls={true}
                     width="100%"
-                    height="20px"
                     style={{ margin: '5px 0' }}
-                /> */}
+                />
                 <div className="info_container">
                     <div className="info_topic" style={style.infoTopic}>
-                        <img src={coverPhoto} alt={name} />
+                        {/* <img src={coverPhoto.url} alt={coverPhoto.name} /> */}
                         <h5>{name}</h5>
                     </div>
                     <div className="info_detail">

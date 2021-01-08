@@ -28,30 +28,35 @@ function composeImageSet(imageObj = {}) {
     })
 }
 
-export const parseImageAPIResponse = function(apiResponse) {
+export const parseImageAPIResponse = function (apiResponse) {
+    // console.log('apiResponse')
+    // console.log(apiResponse)
     let imageObj = _.get(apiResponse, ['fields', 'image'], {})
     let id = apiResponse.id
     // let description = _.get(apiResponse, ['fields', 'description'])
     // let keywords = _.get(apiResponse, ['fields', 'keywords'])
-    let title = apiResponse.title
+    let name = apiResponse.name
     let url = apiResponse.urlDesktopSized
-    let image = _.merge({}, imageObj, { id, title, url })
+    let image = _.merge({}, imageObj, { id, name, url })
     return composeImageSet(image)
 }
 
-export const parseAudioAPIResponse = function(apiResponse) {
-    let audio = _.get(apiResponse, ['fields', 'audio'], {})
-    audio = _.pick(audio, ['filetype', 'title', 'url'])
-    let coverPhoto = composeImageSet(
-        _.get(apiResponse, ['fields', 'coverPhoto'], {})
-    )
-    let description = _.get(apiResponse, ['fields', 'description', 'html'], '')
-    let title = _.get(apiResponse, ['fields', 'title'], '')
-    audio = _.merge(audio, {
-        id: apiResponse.id,
-        coverPhoto,
-        description,
-        title,
-    })
-    return audio
+export const parseAudioAPIResponse = function (apiResponse) {
+    // let audio = _.get(apiResponse, ['fields', 'audio'], {})
+
+    // audio = _.pick(audio, ['filetype', 'name', 'url'])
+
+    // let coverPhoto = composeImageSet(
+    //     _.get(apiResponse, ['fields', 'coverPhoto'], {})
+    // )
+    // let description = _.get(apiResponse, ['fields', 'description', 'html'], '')
+    // let name = _.get(apiResponse, ['fields', 'name'], '')
+    // audio = _.merge(audio, {
+    //     id: apiResponse.id,
+    //     coverPhoto,
+    //     description,
+    //     name,
+    // })
+    // return audio
+    return apiResponse
 }

@@ -2,7 +2,7 @@
 // import { Video } from '@twreporter/react-article-components/dist/components/article/index'
 import AtomicBlockRendererMixin from '../mixins/atomic-block-renderer-mixin'
 import React from 'react'
-// import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player'
 
 export default class VideoBlock extends AtomicBlockRendererMixin {
     constructor(props) {
@@ -15,14 +15,15 @@ export default class VideoBlock extends AtomicBlockRendererMixin {
         }
 
         const { title, url, id } = this.state.data.content[0]
+        console.log(this.state.data)
         return (
             <div contentEditable={false} style={{ userSelect: 'none' }}>
-                {/* <ReactPlayer
+                <ReactPlayer
                     url={url}
                     controls={true}
                     width="100%"
                     style={{ margin: '5px 0' }}
-                /> */}
+                />
                 <h6>{title}</h6>
             </div>
         )
