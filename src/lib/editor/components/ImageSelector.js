@@ -42,7 +42,13 @@ export class ImageSelector extends SelectorMixin {
         return new Promise((resolve, reject) => {
             const dataConfig = {
                 list: 'Image',
-                columns: ['name', 'urlDesktopSized'],
+                columns: [
+                    'name',
+                    'urlDesktopSized',
+                    'urlTabletSized',
+                    'urlMobileSized',
+                    'urlTinySized',
+                ],
                 maxItemsPerPage: 12,
             }
 
@@ -54,7 +60,6 @@ export class ImageSelector extends SelectorMixin {
                         // format fetched data's format
                         return parseImageAPIResponse(image)
                     })
-
                     resolve(reFormatData)
                 })
                 .catch((err) => reject(err))

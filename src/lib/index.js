@@ -219,6 +219,7 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
     }
 
     function toggleEntity(entity, value) {
+        console.log('entity value', value)
         switch (entity) {
             case ENTITY.AUDIO.type:
                 return _toggleAudio(entity, value)

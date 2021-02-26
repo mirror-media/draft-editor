@@ -4,8 +4,8 @@ import gql from 'graphql-tag'
 import 'regenerator-runtime/runtime.js'
 
 const fetch = createApolloFetch({
-    uri: '/admin/api',
-    // uri: 'https://cms-dev.mnews.tw/admin/api',
+    // uri: '/admin/api',
+    uri: 'https://cms-dev.mnews.tw/admin/api',
 })
 
 function generateSelectString(columns) {
