@@ -206,6 +206,8 @@ function convertToHtml(inlineTagMap, entityTagMap, entityMap, block) {
         block.entityRanges,
         tagInsertMap
     )
+    console.log('entityMap', entityMap)
+    console.log('tagInsertMap', tagInsertMap)
     tagInsertMap = _inlineTag(inlineTagMap, inlineStyleRanges, tagInsertMap)
 
     // sort on position, as we'll need to keep track of offset

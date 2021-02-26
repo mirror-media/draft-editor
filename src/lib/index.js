@@ -219,7 +219,7 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
     }
 
     function toggleEntity(entity, value) {
-        console.log('entity value', value)
+        // entity(array) has all block's entity data
         switch (entity) {
             case ENTITY.AUDIO.type:
                 return _toggleAudio(entity, value)

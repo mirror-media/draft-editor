@@ -37,16 +37,16 @@ export const parseImageAPIResponse = function (apiResponse) {
     // let keywords = _.get(apiResponse, ['fields', 'keywords'])
     let name = apiResponse.name
     let url = apiResponse.urlDesktopSized
-    let urlTablet = apiResponse.urlTabletSized
-    let urlMoblie = apiResponse.urlMobileSized
-    let urlTiny = apiResponse.urlTinySized
+    let urlTabletSized = apiResponse.urlTabletSized
+    let urlMobileSized = apiResponse.urlMobileSized
+    let urlTinySized = apiResponse.urlTinySized
     let image = _.merge({}, imageObj, {
         id,
         name,
         url,
-        urlTablet,
-        urlMoblie,
-        urlTiny,
+        urlTabletSized,
+        urlMobileSized,
+        urlTinySized,
     })
     return composeImageSet(image)
 }
