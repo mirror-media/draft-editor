@@ -35,6 +35,7 @@ export const parseImageAPIResponse = function (apiResponse) {
     let id = apiResponse.id
     // let description = _.get(apiResponse, ['fields', 'description'])
     // let keywords = _.get(apiResponse, ['fields', 'keywords'])
+    console.log('apiResponse', apiResponse)
     let name = apiResponse.name
     let url = apiResponse.urlOriginal
     let urlTabletSized = apiResponse.urlTabletSized

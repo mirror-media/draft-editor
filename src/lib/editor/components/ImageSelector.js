@@ -48,6 +48,7 @@ export class ImageSelector extends SelectorMixin {
                     'urlTabletSized',
                     'urlMobileSized',
                     'urlTinySized',
+                    'urlOriginal',
                 ],
                 maxItemsPerPage: 12,
             }

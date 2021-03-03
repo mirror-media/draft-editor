@@ -5,6 +5,7 @@ import 'regenerator-runtime/runtime.js'
 
 const fetch = createApolloFetch({
     uri: '/admin/api',
+    // uri: 'https://cms-dev.readr.tw/admin/api',
     // uri: 'https://cms-dev.mnews.tw/admin/api',
 })
 
@@ -34,6 +35,7 @@ export const fetchDataWithGql = async (
 ) => {
     // console.log('fetchDataWithGql')
     const selectString = generateSelectString(columns)
+    console.log(selectString)
     const whereString = generateWhereString(columns)
     const { data } = await fetch({
         query: `
