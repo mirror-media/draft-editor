@@ -46,7 +46,7 @@ export class AudioSelector extends SelectorMixin {
         return new Promise((resolve, reject) => {
             const dataConfig = {
                 list: 'Audio',
-                columns: ['name', 'url', 'coverPhoto{id,name,urlDesktopSized}'],
+                columns: ['name', 'url', 'coverPhoto{id,name,urlOriginal}'],
                 maxItemsPerPage: 12,
             }
 
