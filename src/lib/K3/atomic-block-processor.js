@@ -11,9 +11,6 @@ const processor = {
         let content
         let entityRange = block.entityRanges[0]
         let styles = {}
-        // current block's entity data
-        // ex:
-        // entity.type = IMAGE, entity.data={id,name,url...}
         const entity = entityMap[entityRange.key]
 
         let type = _.get(entity, 'type', '')
@@ -55,6 +52,7 @@ const processor = {
                 break
             case ENTITY.EMBEDDEDCODE.type:
                 alignment = (entity.data && entity.data.alignment) || alignment
+
                 let caption = _.get(entity, ['data', 'caption'], '')
                 let embeddedCode = _.get(entity, ['data', 'code'], '')
                 let script = {}
@@ -84,6 +82,7 @@ const processor = {
                         }
                     },
                 })
+
                 parser.write(embeddedCode)
                 parser.end()
 
