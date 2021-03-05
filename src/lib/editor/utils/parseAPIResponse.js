@@ -35,9 +35,9 @@ export const parseImageAPIResponse = function (apiResponse) {
     let id = apiResponse.id
     // let description = _.get(apiResponse, ['fields', 'description'])
     // let keywords = _.get(apiResponse, ['fields', 'keywords'])
-    console.log('apiResponse', apiResponse)
     let name = apiResponse.name
     let url = apiResponse.urlOriginal
+    // let urlDesktopSized = apiResponse.urlDesktopSized
     let urlTabletSized = apiResponse.urlTabletSized
     let urlMobileSized = apiResponse.urlMobileSized
     let urlTinySized = apiResponse.urlTinySized
@@ -45,6 +45,7 @@ export const parseImageAPIResponse = function (apiResponse) {
         id,
         name,
         url,
+        // urlDesktopSized,
         urlTabletSized,
         urlMobileSized,
         urlTinySized,

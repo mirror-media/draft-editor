@@ -35,7 +35,6 @@ export const fetchDataWithGql = async (
 ) => {
     // console.log('fetchDataWithGql')
     const selectString = generateSelectString(columns)
-    console.log(selectString)
     const whereString = generateWhereString(columns)
     const { data } = await fetch({
         query: `

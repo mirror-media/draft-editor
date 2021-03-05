@@ -47,8 +47,6 @@ export default class ImageBlock extends AtomicBlockRendererMixin {
 
         const { id, title, url } = image
 
-        console.log(this.props)
-
         return (
             <AlignedWrapper isEnlarged={this.props.blockProps.isEnlarged}>
                 <div
