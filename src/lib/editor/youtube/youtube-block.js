@@ -20,7 +20,7 @@ export class YoutubeBlock extends AtomicBlockRendererMixin {
         }
 
         let blockContent = _.get(this.state.data, ['content', 0], {})
-        let youtubeId = blockContent.youtubeId
+        let id = blockContent.id
         let description = blockContent.description
         const EditBlock = (
             <YoutubeEditingBlock
@@ -29,7 +29,7 @@ export class YoutubeBlock extends AtomicBlockRendererMixin {
                 isModalOpen={this.state.editMode}
                 onToggle={this.handleEditingBlockChange}
                 toggleModal={this.toggleEditMode}
-                youtubeId={youtubeId}
+                id={id}
             />
         )
 
@@ -54,7 +54,7 @@ export class YoutubeBlock extends AtomicBlockRendererMixin {
                         width="560"
                         alt={description}
                         height="315"
-                        src={'https://www.youtube.com/embed/' + youtubeId}
+                        src={'https://www.youtube.com/embed/' + id}
                         frameBorder="0"
                         allowFullScreen
                     />

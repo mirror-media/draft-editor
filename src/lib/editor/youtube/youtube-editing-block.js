@@ -10,7 +10,7 @@ export class YoutubeEditingBlock extends EntityEditingBlockMixin {
 
         this.state = {
             editingFields: {
-                youtubeId: props.youtubeId,
+                id: props.id,
                 description: props.description,
             },
         }
@@ -19,9 +19,9 @@ export class YoutubeEditingBlock extends EntityEditingBlockMixin {
     // overwrite
     _composeEditingFields(props) {
         return {
-            youtubeId: {
+            id: {
                 type: 'text',
-                value: props.youtubeId,
+                value: props.id,
             },
             description: {
                 type: 'textarea',
@@ -32,7 +32,7 @@ export class YoutubeEditingBlock extends EntityEditingBlockMixin {
     // overwrite
     _decomposeEditingFields(fields) {
         return {
-            youtubeId: fields.youtubeId.value,
+            id: fields.id.value,
             description: fields.description.value,
         }
     }
@@ -44,13 +44,13 @@ YoutubeEditingBlock.propTypes = {
     isModalOpen: PropTypes.bool,
     onToggle: PropTypes.func,
     toggleModal: PropTypes.func,
-    youtubeId: PropTypes.string,
+    id: PropTypes.string,
 }
 
 YoutubeEditingBlock.defaultProps = {
     description: '',
     isModalOpen: false,
-    youtubeId: '',
+    id: '',
 }
 
 export default YoutubeEditingBlock

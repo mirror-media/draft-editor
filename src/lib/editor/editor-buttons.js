@@ -294,7 +294,7 @@ export const EntityButtons = (props) => {
                         onToggle={onToggle}
                         icon="fab fa-youtube"
                         iconText=""
-                        youtubeId={data ? data.youtubeId : ''}
+                        id={data ? data.id : ''}
                     />
                 )
             default:
