@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import raf from 'raf' // requestAnimationFrame polyfill
 import get from 'lodash/get'
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/lazy'
 
 const _ = {
     get,
@@ -110,6 +110,7 @@ class AudioItem extends React.Component {
                     width="100%"
                     height="20px"
                     style={{ margin: '5px 0' }}
+                    light
                 />
                 <div className="info_container">
                     <div className="info_topic" style={style.infoTopic}>

@@ -2,7 +2,7 @@
 // import { Video } from '@twreporter/react-article-components/dist/components/article/index'
 import AtomicBlockRendererMixin from '../mixins/atomic-block-renderer-mixin'
 import React from 'react'
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/lazy'
 
 export default class VideoBlock extends AtomicBlockRendererMixin {
     constructor(props) {
@@ -23,6 +23,7 @@ export default class VideoBlock extends AtomicBlockRendererMixin {
                     controls={true}
                     width="100%"
                     style={{ margin: '5px 0' }}
+                    light
                 />
                 <h6>{title}</h6>
             </div>

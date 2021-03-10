@@ -28,7 +28,8 @@ function ImageItem(props) {
     }
 
     const { width, padding, doShowRemove, style, moveCard, index } = props
-    const { url, id } = image
+    const { url, id, urlMobileSized } = image
+    // console.log(image)
     const styles = {
         imageGridItem: objectAssign(
             {
@@ -40,6 +41,7 @@ function ImageItem(props) {
             style
         ),
         imageWrapper: {
+            // image snapshot url
             backgroundImage: `url(${url})`,
             backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat',

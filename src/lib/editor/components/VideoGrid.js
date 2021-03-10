@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import raf from 'raf' // requestAnimationFrame polyfill
 import get from 'lodash/get'
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/lazy'
 
 const _ = {
     get,
@@ -119,6 +119,7 @@ class VideoItem extends Component {
                     controls={true}
                     width="100%"
                     style={{ margin: '5px 0' }}
+                    light
                 />
                 <div className="info_container">
                     <div className="info_topic" style={style.infoTopic}>
