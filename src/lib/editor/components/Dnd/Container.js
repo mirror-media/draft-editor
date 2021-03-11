@@ -1,7 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react'
 // import { Card } from './Card'
 import { ImageItem } from '../ImageGrid'
-import { Form, Input } from 'element-react'
+import { Input } from '@arch-ui/input'
+import { Form } from 'element-react'
 
 import update from 'immutability-helper'
 
@@ -34,9 +35,9 @@ export const Container = (props) => {
         [images]
     )
 
-    const handleInputChange = (value, image) => {
+    const handleInputChange = (e, image) => {
         let newImageData = image
-        newImageData.title = value
+        newImageData.title = e.target.value
         onChange(newImageData)
     }
 
@@ -71,7 +72,7 @@ export const Container = (props) => {
                         // defaultValue={image.title}
                         value={image.title}
                         name="image-caption-input"
-                        onChange={(value) => handleInputChange(value, image)}
+                        onChange={(e) => handleInputChange(e, image)}
                     />
                 </Form>
             </ImageItem>

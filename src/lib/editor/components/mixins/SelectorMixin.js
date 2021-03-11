@@ -2,7 +2,8 @@
 // import { Button, FormInput, InputGroup } from 'elemental';
 import React, { Component } from 'react'
 import { Button } from '@arch-ui/button'
-import { Input, Dialog, Pagination } from 'element-react'
+import { Input } from '@arch-ui/input'
+import { Dialog, Pagination } from 'element-react'
 
 import qs from 'qs'
 import xhr from 'xhr'
@@ -167,8 +168,8 @@ export class SelectorMixin extends Component {
             )
     }
 
-    _searchFilterChange(value) {
-        this._searchInput = value
+    _searchFilterChange(event) {
+        this._searchInput = event.target.value
     }
 
     _searchByInput() {
@@ -213,16 +214,14 @@ export class SelectorMixin extends Component {
         //     </InputGroup>
         // )
         return (
-            <div>
+            <div style={{ display: 'flex' }}>
                 <Input
                     type="text"
                     placeholder="請輸入關鍵字搜尋"
                     defaultValue={this._searchInput}
                     onChange={this.searchFilterChange}
-                    append={
-                        <Button onClick={this.searchByInput}>Search</Button>
-                    }
                 />
+                <Button onClick={this.searchByInput}>Search</Button>
             </div>
         )
     }

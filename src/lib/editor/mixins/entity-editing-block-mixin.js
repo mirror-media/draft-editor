@@ -1,5 +1,6 @@
 import { Button } from '@arch-ui/button'
-import { Dialog, Input } from 'element-react'
+import { Input } from '@arch-ui/input'
+import { Dialog } from 'element-react'
 import 'element-theme-default'
 import {
     BlockMapBuilder,
@@ -156,8 +157,8 @@ export class EntityEditingBlock extends Component {
         this.refs.subEditor.focus()
     }
 
-    _handleEditingFieldChange(field, value) {
-        this._editingFields[field].value = value
+    _handleEditingFieldChange(field, event) {
+        this._editingFields[field].value = event.target.value
 
         this.setState({
             ...this.state,
@@ -231,13 +232,14 @@ export class EntityEditingBlock extends Component {
         return (
             <div key={field}>
                 <Input
-                    type={type}
+                    type="text"
+                    value={value ? value : ''}
+                    onChange={onChange}
                     multiline={type === 'textarea' ? 'true' : 'false'}
                     placeholder={'Enter ' + field}
                     name={'form-input-' + field}
-                    onChange={onChange}
-                    value={value}
                 />
+
                 <div style={{ margin: '20px 0' }}></div>
             </div>
         )

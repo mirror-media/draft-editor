@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 
 import { DragSource, DropTarget, DragDropContext } from 'react-dnd'
 import { ImageItem } from './ImageGrid'
-import { Form, Input } from 'element-react'
+
+import { Input } from '@arch-ui/input'
+import { Form } from 'element-react'
 
 import Dnd from './Dnd/Dnd'
 
