@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -6,7 +6,8 @@ import {
     parseImageAPIResponse,
 } from '../utils/parseAPIResponse'
 import { Button } from '@arch-ui/button'
-import { Dialog, Pagination } from 'element-react'
+import Dialog from '@arch-ui/dialog'
+import { Pagination } from 'element-react'
 
 import VideoSelection from './VideoSelection'
 import SelectorMixin from './mixins/SelectorMixin'
@@ -75,37 +76,43 @@ export class VideoSelector extends SelectorMixin {
         const { isSelectionOpen, items, selectedItems } = this.state
         return (
             <Dialog
-                title="Select Video"
-                visible={isSelectionOpen}
-                onCancel={this.handleCancel}
-                size="large"
+                heading="Select Video"
+                isOpen={isSelectionOpen}
+                onClose={this.handleCancel}
+                closeOnBlanketClick
+                width={1000}
             >
-                <Dialog.Body>
-                    <div>
-                        {this._renderSearchFilter()}
-                        <VideoSelection
-                            Videos={items}
-                            selectedVideos={selectedItems}
-                            selectionLimit={this.props.selectionLimit}
-                            updateSelection={this.updateSelection}
-                        />
-                        <Pagination
-                            pageSize={this.PAGE_SIZE}
-                            total={this.state.total}
-                            currentPage={this.state.currentPage}
-                            onCurrentChange={this.handlePageSelect}
-                            // limit={PAGINATION_LIMIT}
-                        />
-                    </div>
-                </Dialog.Body>
-                <Dialog.Footer>
-                    <Button type="primary" onClick={this.handleSave}>
-                        Save
-                    </Button>
-                    <Button type="link-cancel" onClick={this.handleCancel}>
-                        Cancel
-                    </Button>
-                </Dialog.Footer>
+                <div
+                    className="VideoSelector"
+                    style={{ height: '60vh', overflow: 'scroll' }}
+                >
+                    <Fragment>
+                        <div>
+                            {this._renderSearchFilter()}
+                            <VideoSelection
+                                Videos={items}
+                                selectedVideos={selectedItems}
+                                selectionLimit={this.props.selectionLimit}
+                                updateSelection={this.updateSelection}
+                            />
+                            <Pagination
+                                pageSize={this.PAGE_SIZE}
+                                total={this.state.total}
+                                currentPage={this.state.currentPage}
+                                onCurrentChange={this.handlePageSelect}
+                                // limit={PAGINATION_LIMIT}
+                            />
+                        </div>
+                    </Fragment>
+                    <Fragment>
+                        <Button type="primary" onClick={this.handleSave}>
+                            Save
+                        </Button>
+                        <Button type="link-cancel" onClick={this.handleCancel}>
+                            Cancel
+                        </Button>
+                    </Fragment>
+                </div>
             </Dialog>
         )
     }

@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import {
     parseAudioAPIResponse,
     parseImageAPIResponse,
 } from '../utils/parseAPIResponse'
 import { Button } from '@arch-ui/button'
-import { Dialog, Pagination } from 'element-react'
+import Dialog from '@arch-ui/dialog'
+import { Pagination } from 'element-react'
 
 import AudioSelection from './AudioSelection'
 import SelectorMixin from './mixins/SelectorMixin'
@@ -72,36 +73,43 @@ export class AudioSelector extends SelectorMixin {
         const { isSelectionOpen, items, selectedItems } = this.state
         return (
             <Dialog
-                title="Select Audio"
-                visible={isSelectionOpen}
-                onCancel={this.handleCancel}
+                heading="Select Audio"
+                isOpen={isSelectionOpen}
+                onClose={this.handleCancel}
+                closeOnBlanketClick
+                width={1000}
             >
-                <Dialog.Body>
-                    <div>
-                        {this._renderSearchFilter()}
-                        <AudioSelection
-                            audios={items}
-                            selectedAudios={selectedItems}
-                            selectionLimit={this.props.selectionLimit}
-                            updateSelection={this.updateSelection}
-                        />
-                        <Pagination
-                            pageSize={this.PAGE_SIZE}
-                            total={this.state.total}
-                            currentPage={this.state.currentPage}
-                            onCurrentChange={this.handlePageSelect}
-                            // limit={PAGINATION_LIMIT}
-                        />
-                    </div>
-                </Dialog.Body>
-                <Dialog.Footer>
-                    <Button type="primary" onClick={this.handleSave}>
-                        Save
-                    </Button>
-                    <Button type="link-cancel" onClick={this.handleCancel}>
-                        Cancel
-                    </Button>
-                </Dialog.Footer>
+                <div
+                    className="AudioSelector"
+                    style={{ height: '60vh', overflow: 'scroll' }}
+                >
+                    <Fragment>
+                        <div>
+                            {this._renderSearchFilter()}
+                            <AudioSelection
+                                audios={items}
+                                selectedAudios={selectedItems}
+                                selectionLimit={this.props.selectionLimit}
+                                updateSelection={this.updateSelection}
+                            />
+                            <Pagination
+                                pageSize={this.PAGE_SIZE}
+                                total={this.state.total}
+                                currentPage={this.state.currentPage}
+                                onCurrentChange={this.handlePageSelect}
+                                // limit={PAGINATION_LIMIT}
+                            />
+                        </div>
+                    </Fragment>
+                    <Fragment>
+                        <Button type="primary" onClick={this.handleSave}>
+                            Save
+                        </Button>
+                        <Button type="link-cancel" onClick={this.handleCancel}>
+                            Cancel
+                        </Button>
+                    </Fragment>
+                </div>
             </Dialog>
         )
     }

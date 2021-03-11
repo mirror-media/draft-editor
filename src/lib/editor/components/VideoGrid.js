@@ -118,6 +118,7 @@ class VideoItem extends Component {
                     url={Video}
                     controls={true}
                     width="100%"
+                    height="100px"
                     style={{ margin: '5px 0' }}
                     light
                 />

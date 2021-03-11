@@ -1,6 +1,8 @@
 import { Button } from '@arch-ui/button'
 import { Input } from '@arch-ui/input'
-import { Dialog } from 'element-react'
+import Dialog from '@arch-ui/dialog'
+// import { Dialog } from 'element-react'
+
 import 'element-theme-default'
 import {
     BlockMapBuilder,
@@ -21,7 +23,7 @@ import {
     InlineStyleButtons,
 } from '../editor-buttons'
 // import ENTITY from '../entities'
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import blockStyleFn from '../base/block-style-fn'
 import decorator from '../entity-decorator'
 
@@ -323,22 +325,23 @@ export class EntityEditingBlock extends Component {
     render() {
         return (
             <Dialog
-                title={`Insert ${this.props.label}`}
-                visible={this.props.isModalOpen}
-                onCancel={this.toggleModal}
+                heading={`Insert ${this.props.label}`}
+                isOpen={this.props.isModalOpen}
+                onClose={this.toggleModal}
                 lockScroll={false}
+                closeOnBlanketClick
             >
-                <Dialog.Body>
+                <Fragment>
                     {this._renderEditingFields(this.state.editingFields)}
-                </Dialog.Body>
-                <Dialog.Footer>
+                </Fragment>
+                <Fragment>
                     <Button type="primary" onClick={this.handleSave}>
                         Save
                     </Button>
                     <Button type="link-cancel" onClick={this.toggleModal}>
                         Cancel
                     </Button>
-                </Dialog.Footer>
+                </Fragment>
             </Dialog>
         )
     }

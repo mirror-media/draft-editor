@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 import { Button } from '@arch-ui/button'
-import { Dialog, Pagination } from 'element-react'
+import Dialog from '@arch-ui/dialog'
+import { Pagination } from 'element-react'
 
 import { parseImageAPIResponse } from '../utils/parseAPIResponse'
 import ImagesEditor from './ImagesEditor'
@@ -81,49 +82,49 @@ export class ImageSelector extends SelectorMixin {
         const { isSelectionOpen, items, selectedItems } = this.state
         return (
             <Dialog
-                title="Select image"
-                visible={isSelectionOpen}
-                onCancel={this.handleCancel}
-                size="large"
-                // backdropClosesModal
+                heading="Select image"
+                isOpen={isSelectionOpen}
+                onClose={this.handleCancel}
+                closeOnBlanketClick
+                width={1000}
             >
-                <Dialog.Body>
-                    <div
-                    // style={{
-                    //     marginBottom: '30px',
-                    //     borderBottom: '3px solid',
-                    // }}
-                    >
-                        {this._renderSearchFilter()}
-                        <ImageSelection
-                            images={items}
-                            selectedImages={selectedItems}
-                            selectionLimit={this.props.selectionLimit}
-                            updateSelection={this.updateSelection}
-                        />
-                        <Pagination
-                            pageSize={this.PAGE_SIZE}
-                            total={this.state.total}
-                            currentPage={this.state.currentPage}
-                            onCurrentChange={this.handlePageSelect}
-                            // limit={PAGINATION_LIMIT}
-                        />
-                    </div>
-                    <div>
-                        <ImagesEditor
-                            selectedImages={selectedItems}
-                            onChange={this.updateSelection}
-                        />
-                    </div>
-                </Dialog.Body>
-                <Dialog.Footer>
-                    <Button type="primary" onClick={this.handleSave}>
-                        Save
-                    </Button>
-                    <Button type="link-cancel" onClick={this.handleCancel}>
-                        Cancel
-                    </Button>
-                </Dialog.Footer>
+                <div
+                    className="ImageSelector"
+                    style={{ height: '60vh', overflow: 'scroll' }}
+                >
+                    <Fragment>
+                        <div>
+                            {this._renderSearchFilter()}
+                            <ImageSelection
+                                images={items}
+                                selectedImages={selectedItems}
+                                selectionLimit={this.props.selectionLimit}
+                                updateSelection={this.updateSelection}
+                            />
+                            <Pagination
+                                pageSize={this.PAGE_SIZE}
+                                total={this.state.total}
+                                currentPage={this.state.currentPage}
+                                onCurrentChange={this.handlePageSelect}
+                                // limit={PAGINATION_LIMIT}
+                            />
+                        </div>
+                        <div>
+                            <ImagesEditor
+                                selectedImages={selectedItems}
+                                onChange={this.updateSelection}
+                            />
+                        </div>
+                    </Fragment>
+                    <Fragment>
+                        <Button type="primary" onClick={this.handleSave}>
+                            Save
+                        </Button>
+                        <Button type="link-cancel" onClick={this.handleCancel}>
+                            Cancel
+                        </Button>
+                    </Fragment>
+                </div>
             </Dialog>
         )
     }

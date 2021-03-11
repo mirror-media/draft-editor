@@ -203,10 +203,7 @@ function ImageGrid(props) {
             />
         )
     })
-    const imageGridStyle = {
-        //     display: 'flex',
-        //     flexWrap: 'wrap',
-    }
+    const imageGridStyle = {}
     return (
         <div className="imageGrid" style={imageGridStyle}>
             {imageNodes}

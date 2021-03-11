@@ -3,7 +3,6 @@
 import React, { Component } from 'react'
 import { Button } from '@arch-ui/button'
 import { Input } from '@arch-ui/input'
-import { Dialog, Pagination } from 'element-react'
 
 import qs from 'qs'
 import xhr from 'xhr'
