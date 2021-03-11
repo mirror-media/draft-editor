@@ -1,7 +1,8 @@
 // 'use strict'
 // import { Button, FormInput, InputGroup } from 'elemental';
 import React, { Component } from 'react'
-import { Button, Input, Dialog, Pagination } from 'element-react'
+import { Button } from '@arch-ui/button'
+import { Input, Dialog, Pagination } from 'element-react'
 
 import qs from 'qs'
 import xhr from 'xhr'

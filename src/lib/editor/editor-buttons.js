@@ -1,6 +1,7 @@
 // 'use strict'
-import { Button } from 'element-react'
-import 'element-theme-default'
+// import { Button } from 'element-react'
+// import 'element-theme-default'
+import { Button } from '@arch-ui/button'
 
 import React from 'react'
 import map from 'lodash/map'

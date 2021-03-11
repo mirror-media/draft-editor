@@ -1,8 +1,9 @@
 // 'use strict'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button } from 'element-react'
-import 'element-theme-default'
+// import { Button } from 'element-react'
+// import 'element-theme-default'
+import { Button } from '@arch-ui/button'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 
 export class EntityStyleButton extends React.Component {

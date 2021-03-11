@@ -4,7 +4,9 @@ import {
     parseAudioAPIResponse,
     parseImageAPIResponse,
 } from '../utils/parseAPIResponse'
-import { Button, Input, Dialog, Pagination } from 'element-react'
+import { Button } from '@arch-ui/button'
+
+import { Input, Dialog, Pagination } from 'element-react'
 
 import AudioSelection from './AudioSelection'
 import SelectorMixin from './mixins/SelectorMixin'

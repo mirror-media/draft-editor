@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Button, Dialog, Pagination } from 'element-react'
+import { Button } from '@arch-ui/button'
+import { Dialog, Pagination } from 'element-react'
 
 import { parseImageAPIResponse } from '../utils/parseAPIResponse'
 import ImagesEditor from './ImagesEditor'

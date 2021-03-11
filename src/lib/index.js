@@ -19,7 +19,7 @@ import {
     InlineStyleButtons,
     EntityButtons,
 } from './editor/editor-buttons'
-import { Button } from 'element-react'
+import { Button } from '@arch-ui/button'
 import 'element-theme-default'
 
 import ENTITY from './K3/entities'
