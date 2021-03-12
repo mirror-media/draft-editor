@@ -1,0 +1,12 @@
+.Selector {
+    max-height: 70vh;
+    overflow: scroll;
+}
+
+.Selector__button {
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}

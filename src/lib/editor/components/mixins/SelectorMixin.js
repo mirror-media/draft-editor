@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import { Button } from '@arch-ui/button'
 import { Input } from '@arch-ui/input'
-import './Selector.style.scss'
+import './Selector.css'
 
 import qs from 'qs'
 import xhr from 'xhr'

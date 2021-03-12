@@ -1,0 +1,11 @@
+.EntityEditingBlock {
+    max-height: 70vh;
+    overflow: scroll;
+}
+
+.EntityEditingBlock__button {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}

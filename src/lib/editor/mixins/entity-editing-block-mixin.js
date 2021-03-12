@@ -26,7 +26,7 @@ import blockStyleFn from '../base/block-style-fn'
 import decorator from '../entity-decorator'
 
 import '../styles/editor.css'
-import './entity-editing-block-mixin.style.scss'
+import './entity-editing-block-mixin.css'
 import dialogCjsDev from '@arch-ui/dialog/dist/dialog.cjs.dev'
 
 const { isCtrlKeyCommand } = KeyBindingUtil
