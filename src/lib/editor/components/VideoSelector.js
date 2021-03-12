@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -82,36 +82,32 @@ export class VideoSelector extends SelectorMixin {
                 closeOnBlanketClick
                 width={1000}
             >
-                <div
-                    className="VideoSelector"
-                    style={{ height: '60vh', overflow: 'scroll' }}
-                >
-                    <Fragment>
-                        <div>
-                            {this._renderSearchFilter()}
-                            <VideoSelection
-                                Videos={items}
-                                selectedVideos={selectedItems}
-                                selectionLimit={this.props.selectionLimit}
-                                updateSelection={this.updateSelection}
-                            />
-                            <Pagination
-                                pageSize={this.PAGE_SIZE}
-                                total={this.state.total}
-                                currentPage={this.state.currentPage}
-                                onCurrentChange={this.handlePageSelect}
-                                // limit={PAGINATION_LIMIT}
-                            />
-                        </div>
-                    </Fragment>
-                    <Fragment>
+                <div className="VideoSelector Selector">
+                    <div className="Selector__container">
+                        {this._renderSearchFilter()}
+                        <VideoSelection
+                            Videos={items}
+                            selectedVideos={selectedItems}
+                            selectionLimit={this.props.selectionLimit}
+                            updateSelection={this.updateSelection}
+                        />
+                        <Pagination
+                            pageSize={this.PAGE_SIZE}
+                            total={this.state.total}
+                            currentPage={this.state.currentPage}
+                            onCurrentChange={this.handlePageSelect}
+                            // limit={PAGINATION_LIMIT}
+                        />
+                    </div>
+
+                    <div className="Selector__button">
                         <Button type="primary" onClick={this.handleSave}>
                             Save
                         </Button>
                         <Button type="link-cancel" onClick={this.handleCancel}>
                             Cancel
                         </Button>
-                    </Fragment>
+                    </div>
                 </div>
             </Dialog>
         )

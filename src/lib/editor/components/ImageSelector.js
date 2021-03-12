@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Button } from '@arch-ui/button'
@@ -88,11 +88,8 @@ export class ImageSelector extends SelectorMixin {
                 closeOnBlanketClick
                 width={1000}
             >
-                <div
-                    className="ImageSelector"
-                    style={{ height: '60vh', overflow: 'scroll' }}
-                >
-                    <Fragment>
+                <div className="ImageSelector Selector">
+                    <div className="Selector__container">
                         <div>
                             {this._renderSearchFilter()}
                             <ImageSelection
@@ -115,15 +112,16 @@ export class ImageSelector extends SelectorMixin {
                                 onChange={this.updateSelection}
                             />
                         </div>
-                    </Fragment>
-                    <Fragment>
+                    </div>
+
+                    <div className="Selector__button">
                         <Button type="primary" onClick={this.handleSave}>
                             Save
                         </Button>
                         <Button type="link-cancel" onClick={this.handleCancel}>
                             Cancel
                         </Button>
-                    </Fragment>
+                    </div>
                 </div>
             </Dialog>
         )

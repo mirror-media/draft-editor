@@ -28,6 +28,8 @@ import blockStyleFn from '../base/block-style-fn'
 import decorator from '../entity-decorator'
 
 import '../styles/editor.css'
+import './entity-editing-block-mixin.style.scss'
+import dialogCjsDev from '@arch-ui/dialog/dist/dialog.cjs.dev'
 
 const { isCtrlKeyCommand } = KeyBindingUtil
 
@@ -331,17 +333,20 @@ export class EntityEditingBlock extends Component {
                 lockScroll={false}
                 closeOnBlanketClick
             >
-                <Fragment>
-                    {this._renderEditingFields(this.state.editingFields)}
-                </Fragment>
-                <Fragment>
-                    <Button type="primary" onClick={this.handleSave}>
-                        Save
-                    </Button>
-                    <Button type="link-cancel" onClick={this.toggleModal}>
-                        Cancel
-                    </Button>
-                </Fragment>
+                <div className="EntityEditingBlock">
+                    <div className="EntityEditingBlock__container">
+                        {this._renderEditingFields(this.state.editingFields)}
+                    </div>
+
+                    <div className="EntityEditingBlock__button">
+                        <Button type="primary" onClick={this.handleSave}>
+                            Save
+                        </Button>
+                        <Button type="link-cancel" onClick={this.toggleModal}>
+                            Cancel
+                        </Button>
+                    </div>
+                </div>
             </Dialog>
         )
     }
