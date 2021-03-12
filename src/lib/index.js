@@ -246,7 +246,6 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
     }
 
     function _toggleAudio(entity, value) {
-        console.log(value)
         const audio = Array.isArray(value) ? value[0] : null
         if (!audio) {
             return
@@ -255,7 +254,6 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
     }
 
     function _toggleVideo(entity, value) {
-        console.log(value)
         const video = Array.isArray(value) ? value[0] : null
         if (!video) {
             return

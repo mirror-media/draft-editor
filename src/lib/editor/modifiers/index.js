@@ -8,9 +8,12 @@ import removeBlock from './remove-block'
 const handleAtomicEdit = (editorState, blockKey, valueChanged) => {
     const block = editorState.getCurrentContent().getBlockForKey(blockKey)
     const entityKey = block.getEntityAt(0)
+    const contentState = editorState.getCurrentContent()
+    const entityInstance = contentState.getEntity(entityKey)
+
     let blockType
     try {
-        blockType = entityKey ? Entity.get(entityKey).getType() : ''
+        blockType = entityKey ? entityInstance.getType() : ''
     } catch (e) {
         console.log('Get entity type in the block occurs error ', e)
         return editorState

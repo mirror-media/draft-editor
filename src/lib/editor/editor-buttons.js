@@ -122,8 +122,9 @@ export const EntityButtons = (props) => {
         entityKey = startBlock.getEntityAt(0)
     }
 
+    const contentState = editorState.getCurrentContent()
     if (entityKey !== null) {
-        entityInstance = Entity.get(entityKey)
+        entityInstance = contentState.getEntity(entityKey)
         data = entityInstance.getData()
     }
 

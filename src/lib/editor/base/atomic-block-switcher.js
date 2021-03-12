@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ENTITY from '../entities'
-// import Wrapper from './block-wrapper'
+import Wrapper from './block-wrapper'
 
 import BlockQuoteBlock from '../quote/block-quote-block'
 import EmbeddedCodeBlock from '../embedded-code/embedded-code-block'
@@ -55,9 +55,12 @@ export class AtomicBlockSwitcher extends Component {
     // }
 
     render() {
-        const entityKey = this.props.block.getEntityAt(0)
-        // Entity.get need to be replaced(TODO)
-        let type = entityKey ? Entity.get(entityKey).getType() : ''
+        const contentState = this.props.contentState
+        const contentBlock = this.props.block
+        const entityKey = contentBlock.getEntityAt(0)
+        const entityInstance = contentState.getEntity(entityKey)
+
+        let type = entityKey ? entityInstance.getType() : ''
         // backward compatible. Old data type is lower case
         type = type && type.toUpperCase()
 

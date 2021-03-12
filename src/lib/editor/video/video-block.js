@@ -15,7 +15,6 @@ export default class VideoBlock extends AtomicBlockRendererMixin {
         }
 
         const { title, url, id } = this.state.data.content[0]
-        console.log(this.state.data)
         return (
             <div contentEditable={false} style={{ userSelect: 'none' }}>
                 <ReactPlayer
