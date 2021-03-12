@@ -4,7 +4,8 @@ import ButtonIcon from './button-icon'
 function btWrapper(props) {
     const [isToggled, setIsToggled] = useState(false)
 
-    const _toggleModal = () => {
+    const _toggleModal = (e) => {
+        if (e) e.preventDefault()
         setIsToggled(!isToggled)
     }
 

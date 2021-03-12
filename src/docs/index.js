@@ -16,18 +16,20 @@ function Demo() {
 
     return (
         <div>
-            <h1>Demo with examples of the component</h1>
-            <HtmlDraftEditor
-                KeyStoneOnChange={setEditorState}
-                autoFocus={null}
-                field={null}
-                editorState={editorState}
-            />
+            <form action="">
+                <h1>Demo with examples of the component</h1>
+                <HtmlDraftEditor
+                    KeyStoneOnChange={setEditorState}
+                    autoFocus={null}
+                    field={null}
+                    editorState={editorState}
+                />
 
-            <h1>---------</h1>
-            {cHtml}
-            <h1>---------</h1>
-            {apiData}
+                <h1>---------</h1>
+                {cHtml}
+                <h1>---------</h1>
+                {apiData}
+            </form>
         </div>
     )
 }
