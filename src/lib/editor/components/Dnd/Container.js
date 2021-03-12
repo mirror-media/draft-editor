@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from 'react'
 // import { Card } from './Card'
 import { ImageItem } from '../ImageGrid'
 import { Input } from '@arch-ui/input'
-import { Form } from 'element-react'
 
 import update from 'immutability-helper'
 
@@ -59,7 +58,7 @@ export const Container = (props) => {
                 id={image.id}
                 index={index}
             >
-                <Form
+                <div
                     key={index}
                     label=""
                     htmlFor="image-caption-input"
@@ -74,7 +73,7 @@ export const Container = (props) => {
                         name="image-caption-input"
                         onChange={(e) => handleInputChange(e, image)}
                     />
-                </Form>
+                </div>
             </ImageItem>
         )
     }
