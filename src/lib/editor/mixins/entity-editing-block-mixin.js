@@ -1,9 +1,7 @@
 import { Button } from '@arch-ui/button'
 import { Input } from '@arch-ui/input'
 import Dialog from '@arch-ui/dialog'
-// import { Dialog } from 'element-react'
 
-import 'element-theme-default'
 import {
     BlockMapBuilder,
     Editor,

@@ -55,6 +55,17 @@
     "@babel/runtime" "^7.12.13"
     "@emotion/core" "^10.1.1"
 
+"@arch-ui/layout@^0.2.15":
+  version "0.2.15"
+  resolved "https://registry.yarnpkg.com/@arch-ui/layout/-/layout-0.2.15.tgz#cc22be5d2c7842db4018f158fbc7ee78d22ac01c"
+  integrity sha512-qsiT7tBrk8RKPqIMfeiF2ZEXWUekP+8UghrmULQduKKIPrYzU9BuazweesUOHAMmW37sOxQEqWfcCqawv5SgiA==
+  dependencies:
+    "@arch-ui/common" "0.0.13"
+    "@arch-ui/theme" "0.0.12"
+    "@babel/runtime" "^7.12.13"
+    "@emotion/core" "^10.1.1"
+    "@emotion/styled" "^10.0.27"
+
 "@arch-ui/loading@^0.0.19":
   version "0.0.19"
   resolved "https://registry.yarnpkg.com/@arch-ui/loading/-/loading-0.0.19.tgz#cedf08a18b191bd65edbbd3ae31645c7584e1a74"
@@ -78,6 +89,21 @@
     "@emotion/styled" "^10.0.27"
     react-scrolllock "^5.0.1"
     react-transition-group "^4.4.1"
+
+"@arch-ui/pagination@^0.0.27":
+  version "0.0.27"
+  resolved "https://registry.yarnpkg.com/@arch-ui/pagination/-/pagination-0.0.27.tgz#53b5cc4559e52e076cddca3a8f80e9be7fee525a"
+  integrity sha512-2SXdm5ao/PrWd6EhhmoTPnlFRdHhB/ydH7WrR1ui83dh6FwocgLy8rts4u6d9YM3a3paNkp+qqqPJDmf3xFGtw==
+  dependencies:
+    "@arch-ui/button" "^0.0.23"
+    "@arch-ui/layout" "^0.2.15"
+    "@arch-ui/loading" "^0.0.19"
+    "@arch-ui/theme" "^0.0.12"
+    "@babel/runtime" "^7.12.13"
+    "@emotion/core" "^10.1.1"
+    "@emotion/styled" "^10.0.27"
+    "@primer/octicons-react" "^11.3.0"
+    react-router-dom "5.2.0"
 
 "@arch-ui/theme@0.0.12", "@arch-ui/theme@^0.0.12":
   version "0.0.12"
@@ -1165,6 +1191,11 @@
     path-is-absolute "^1.0.0"
     readdirp "^2.2.1"
     upath "^1.1.1"
+
+"@primer/octicons-react@^11.3.0":
+  version "11.3.0"
+  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-11.3.0.tgz#794641d95ff5749a9438a2e0c201956b2a377b60"
+  integrity sha512-4sVhkrBKuj3h+PFw69yOyO/l3nQB/mm95V+Kz7LRSlIrbZr6hZarZD5Ft4ewdONPROkIHQM/6KSK90+OAimxsQ==
 
 "@react-dnd/asap@^4.0.0":
   version "4.0.0"

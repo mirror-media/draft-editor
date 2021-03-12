@@ -6,7 +6,7 @@ import {
 } from '../utils/parseAPIResponse'
 import { Button } from '@arch-ui/button'
 import Dialog from '@arch-ui/dialog'
-import { Pagination } from 'element-react'
+import { Pagination } from '@arch-ui/pagination'
 
 import AudioSelection from './AudioSelection'
 import SelectorMixin from './mixins/SelectorMixin'
@@ -89,11 +89,11 @@ export class AudioSelector extends SelectorMixin {
                             updateSelection={this.updateSelection}
                         />
                         <Pagination
+                            currentPage={this.state.currentPage}
                             pageSize={this.PAGE_SIZE}
                             total={this.state.total}
-                            currentPage={this.state.currentPage}
-                            onCurrentChange={this.handlePageSelect}
-                            // limit={PAGINATION_LIMIT}
+                            onChange={this.handlePageSelect}
+                            limit={PAGINATION_LIMIT}
                         />
                     </div>
 

@@ -220,7 +220,7 @@ ImageGrid.propTypes = {
 }
 
 ImageGrid.defaultProps = {
-    columns: 4,
+    columns: 6,
     images: [],
     padding: 10,
     selectedImages: [],

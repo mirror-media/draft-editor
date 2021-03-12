@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Button } from '@arch-ui/button'
 import Dialog from '@arch-ui/dialog'
-import { Pagination } from 'element-react'
+import { Pagination } from '@arch-ui/pagination'
 
 import { parseImageAPIResponse } from '../utils/parseAPIResponse'
 import ImagesEditor from './ImagesEditor'
@@ -99,11 +99,11 @@ export class ImageSelector extends SelectorMixin {
                                 updateSelection={this.updateSelection}
                             />
                             <Pagination
+                                currentPage={this.state.currentPage}
                                 pageSize={this.PAGE_SIZE}
                                 total={this.state.total}
-                                currentPage={this.state.currentPage}
-                                onCurrentChange={this.handlePageSelect}
-                                // limit={PAGINATION_LIMIT}
+                                onChange={this.handlePageSelect}
+                                limit={PAGINATION_LIMIT}
                             />
                         </div>
                         <div>
