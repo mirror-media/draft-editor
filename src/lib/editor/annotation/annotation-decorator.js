@@ -23,7 +23,7 @@ class Annotation extends React.Component {
             this.props.entityKey
         ).getData()
         return (
-            <div
+            <abbr
                 className="annotation"
                 title={pureAnnotationText}
                 style={{ cursor: 'pointer', borderBottom: 0 }}
@@ -48,7 +48,7 @@ class Annotation extends React.Component {
                         lineHeight: 1.5,
                     }}
                 />
-            </div>
+            </abbr>
         )
     }
 }
