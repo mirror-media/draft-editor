@@ -1,6 +1,7 @@
 import get from 'lodash/get'
 import merge from 'lodash/merge'
 import pick from 'lodash/pick'
+const probe = require('probe-image-size')
 
 const _ = {
     get,
@@ -28,9 +29,20 @@ function composeImageSet(imageObj = {}) {
     })
 }
 
+async function getUrlImageDimentions(url) {
+    // console.log('getUrlImageDimentions', url)
+    // try {
+    //     let result = await probe(url, { rejectUnauthorized: false })
+    //     console.log(result) // =>
+    // } catch (err) {
+    //     console.log(err) // =>
+    // }
+    return null
+}
+
 export const parseImageAPIResponse = function (apiResponse) {
-    // console.log('apiResponse')
-    // console.log(apiResponse)
+    console.log('apiResponse')
+    console.log(apiResponse)
     let imageObj = _.get(apiResponse, ['fields', 'image'], {})
     let id = apiResponse.id
     // let description = _.get(apiResponse, ['fields', 'description'])
@@ -42,14 +54,27 @@ export const parseImageAPIResponse = function (apiResponse) {
     let urlTabletSized = apiResponse.urlTabletSized
     let urlMobileSized = apiResponse.urlMobileSized
     let urlTinySized = apiResponse.urlTinySized
+    getUrlImageDimentions(url)
+    // getUrlImageDimentions(urlDesktopSized)
+    // getUrlImageDimentions(urlTabletSized)
+    // getUrlImageDimentions(urlMobileSized)
+    // getUrlImageDimentions(urlTinySized)
     let image = _.merge({}, imageObj, {
         id,
         name,
         url,
-        urlDesktopSized,
-        urlTabletSized,
-        urlMobileSized,
-        urlTinySized,
+        desktop: {
+            url: urlDesktopSized,
+        },
+        tablet: {
+            url: urlTabletSized,
+        },
+        mobile: {
+            url: urlMobileSized,
+        },
+        tiny: {
+            url: urlTinySized,
+        },
     })
     return composeImageSet(image)
 }
