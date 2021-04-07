@@ -61,14 +61,14 @@ let defaultEntityTagMap = {
         '</img>',
     ],
     [ENTITY.IMAGE.type]: [
-        '<img alt="<%=data.name%>" src="<%=data.url%>" srcset="<%= data.urlMobileSized %> 800w,  <%= data.urlTabletSized %> 1280w, <%= data.urlDesktopSized %> 2400w" class="center">',
+        '<img alt="<%=data.name%>" src="<%=data.url%>" srcset="<%= data.mobile.url %> 800w,  <%= data.tablet.url %> 1280w, <%= data.desktop.url %> 2400w" class="center">',
         '</img>',
     ],
     /*[ENTITY.IMAGEDIFF.type]: ['<!-- imageDiff component start --> <ol class="image-diff-container"> <% _.forEach(data, function(image, index) { if (index > 1) { return; } %><li class="image-diff-item"><img src="<%- image.url %>" /></li><% }); %>', '</ol><!-- imageDiff component end-->'],
 	[ENTITY.IMAGELINK.type]: ['<img alt="<%= data.description %>" src="<%= data.url %>" class="<%= data.alignment %>">', '</img>'],*/
     [ENTITY.LINK.type]: ['<a target="_blank" href="<%= data.url %>">', '</a>'],
     [ENTITY.SLIDESHOW.type]: [
-        '<!-- slideshow component start --> <ol class="slideshow-container"> <%  _.forEach(data, function(image) { %><li class="slideshow-slide"><img alt="<%- image.name %>" src="<%- image.urlOriginal %>" srcset="<%= image.urlMobileSized %> 800w,  <%= image.urlTabletSized %> 1280w, <%= image.urlDesktopSized %> 2400w" /></li><% }); %>',
+        '<!-- slideshow component start --> <ol class="slideshow-container"> <%  _.forEach(data, function(image) { %><li class="slideshow-slide"><img alt="<%- image.name %>" src="<%- image.url %>" srcset="<%= image.mobile.url %> 800w,  <%= image.tablet.url %> 1280w, <%= image.desktop.url %> 2400w" /></li><% }); %>',
         '</ol><!-- slideshow component end -->',
     ],
     [ENTITY.VIDEO.type]: [

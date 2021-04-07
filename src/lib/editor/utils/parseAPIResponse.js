@@ -8,6 +8,35 @@ const _ = {
     pick,
 }
 
+const imageApiDataEmpty = {
+    url: '',
+    original: {
+        url: '',
+        width: 0,
+        height: 0,
+    },
+    desktop: {
+        url: '',
+        width: 0,
+        height: 0,
+    },
+    tablet: {
+        url: '',
+        width: 0,
+        height: 0,
+    },
+    mobile: {
+        url: '',
+        width: 0,
+        height: 0,
+    },
+    tiny: {
+        url: '',
+        width: 0,
+        height: 0,
+    },
+}
+
 function composeImageSet(imageObj = {}) {
     let resizedTargets = _.get(imageObj, 'resizedTargets')
     if (!resizedTargets) {
@@ -32,33 +61,30 @@ export const parseImageAPIResponse = function (apiResponse) {
     // console.log('apiResponse')
     // console.log(apiResponse)
     let imageObj = _.get(apiResponse, ['fields', 'image'], {})
-    let id = apiResponse.id
+    const id = apiResponse.id
     // let description = _.get(apiResponse, ['fields', 'description'])
     // let keywords = _.get(apiResponse, ['fields', 'keywords'])
     // console.log("fetch image and get it's height and width")
-    let name = apiResponse.name
-    let url = apiResponse.urlOriginal
-    let urlDesktopSized = apiResponse.urlDesktopSized
-    let urlTabletSized = apiResponse.urlTabletSized
-    let urlMobileSized = apiResponse.urlMobileSized
-    let urlTinySized = apiResponse.urlTinySized
+    const name = apiResponse.name
+    const urlOriginal = apiResponse.urlOriginal
+    const urlDesktopSized = apiResponse.urlDesktopSized
+    const urlTabletSized = apiResponse.urlTabletSized
+    const urlMobileSized = apiResponse.urlMobileSized
+    const urlTinySized = apiResponse.urlTinySized
+
+    let imageApiData = JSON.parse(apiResponse.imageApiData) || imageApiDataEmpty
+    imageApiData.url = urlOriginal
+    imageApiData.original.url = urlOriginal
+    imageApiData.desktop.url = urlDesktopSized
+    imageApiData.tablet.url = urlTabletSized
+    imageApiData.mobile.url = urlMobileSized
+    imageApiData.tiny.url = urlTinySized
+    console.log(imageApiData)
 
     let image = _.merge({}, imageObj, {
+        ...imageApiData,
         id,
         name,
-        url,
-        desktop: {
-            url: urlDesktopSized,
-        },
-        tablet: {
-            url: urlTabletSized,
-        },
-        mobile: {
-            url: urlMobileSized,
-        },
-        tiny: {
-            url: urlTinySized,
-        },
     })
     return composeImageSet(image)
 }
