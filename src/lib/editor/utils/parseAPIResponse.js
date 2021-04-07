@@ -58,27 +58,49 @@ function composeImageSet(imageObj = {}) {
 }
 
 export const parseImageAPIResponse = function (apiResponse) {
-    // console.log('apiResponse')
-    // console.log(apiResponse)
     let imageObj = _.get(apiResponse, ['fields', 'image'], {})
     const id = apiResponse.id
-    // let description = _.get(apiResponse, ['fields', 'description'])
-    // let keywords = _.get(apiResponse, ['fields', 'keywords'])
-    // console.log("fetch image and get it's height and width")
     const name = apiResponse.name
     const urlOriginal = apiResponse.urlOriginal
     const urlDesktopSized = apiResponse.urlDesktopSized
     const urlTabletSized = apiResponse.urlTabletSized
     const urlMobileSized = apiResponse.urlMobileSized
     const urlTinySized = apiResponse.urlTinySized
+    const storedImageApiData = JSON.parse(apiResponse.imageApiData)
 
-    let imageApiData = JSON.parse(apiResponse.imageApiData) || imageApiDataEmpty
+    let imageApiData = isStoredImageApiDataIsValid(storedImageApiData)
+        ? storedImageApiData
+        : imageApiDataEmpty
+
+    // if (!storedImageApiData) {
+    //     imageApiData = storedImageApiData
+    // } else if (!storedImageApiData.original) {
+    //     imageApiData = imageApiDataEmpty
+    // } else {
+    //     imageApiData = imageApiDataEmpty
+    // }
+
+    // !storedImageApiData || !storedImageApiData.original
+    //     ? imageApiDataEmpty
+    //     : storedImageApiData
+
     imageApiData.url = urlOriginal
     imageApiData.original.url = urlOriginal
     imageApiData.desktop.url = urlDesktopSized
     imageApiData.tablet.url = urlTabletSized
     imageApiData.mobile.url = urlMobileSized
     imageApiData.tiny.url = urlTinySized
+
+    // for (const key in imageApiData) {
+    //     if (key === 'url') continue
+    //     imageApiData[key] = {
+    //         ...imageApiData[key],
+    //         width: imageApiData[key].width || '',
+    //         height: imageApiData[key].height || '',
+    //     }
+    // }
+
+    // console.log(imageApiData)
 
     let image = _.merge({}, imageObj, {
         ...imageApiData,
@@ -106,4 +128,35 @@ export const parseAudioAPIResponse = function (apiResponse) {
     // })
     // return audio
     return apiResponse
+}
+
+function isStoredImageApiDataIsValid(storedImageApiData) {
+    if (storedImageApiData) {
+        const keys = Object.keys(storedImageApiData)
+
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i]
+            const currentKeyObject = storedImageApiData[key]
+
+            if (currentKeyObject) {
+                // storedImageApiData has "["url", "original", "desktop", "tablet", "mobile", "tiny"]" keys
+                // console.log(currentKeyObject)
+
+                // skip url key, only validate various size image
+                if (key === 'url') continue
+
+                // validate currentKey has {url, height, width}
+                const subKeys = Object.keys(currentKeyObject)
+                if (subKeys.length !== 3) {
+                    return false
+                }
+            } else {
+                return false
+            }
+        }
+
+        return true
+    } else {
+        return false
+    }
 }
