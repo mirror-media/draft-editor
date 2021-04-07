@@ -10,6 +10,7 @@ function Demo() {
     const [editorState, setEditorState] = useState(EditorState.createEmpty())
 
     const content = convertToRaw(editorState.getCurrentContent())
+    console.log(content)
     const cHtml = JSON.stringify(DraftConverter.convertToHtml(content))
 
     const apiData = JSON.stringify(DraftConverter.convertToApiData(content))

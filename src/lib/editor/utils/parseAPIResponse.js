@@ -79,7 +79,6 @@ export const parseImageAPIResponse = function (apiResponse) {
     imageApiData.tablet.url = urlTabletSized
     imageApiData.mobile.url = urlMobileSized
     imageApiData.tiny.url = urlTinySized
-    console.log(imageApiData)
 
     let image = _.merge({}, imageObj, {
         ...imageApiData,
