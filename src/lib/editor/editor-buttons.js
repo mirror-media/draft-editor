@@ -6,6 +6,7 @@ import React from 'react'
 import map from 'lodash/map'
 import { Entity } from 'draft-js'
 import ENTITY from './entities'
+import StyleButton from './editorButtons/StyleButton/StyleButton'
 import AnnotationBt from './annotation/annotation-bt'
 import AudioButton from './audio/audio-bt'
 import VideoButton from './video/video-bt'
@@ -21,40 +22,40 @@ const _ = {
     map,
 }
 
-class StyleButton extends React.Component {
-    constructor() {
-        super()
-        this.onToggle = (e) => {
-            e.preventDefault()
-            this.props.onToggle(this.props.style)
-        }
-    }
+// class StyleButton extends React.Component {
+//     constructor() {
+//         super()
+//         this.onToggle = (e) => {
+//             e.preventDefault()
+//             this.props.onToggle(this.props.style)
+//         }
+//     }
 
-    render() {
-        let className = ''
-        if (this.props.active) {
-            className += ' RichEditor-activeButton'
-        }
+//     render() {
+//         let className = ''
+//         if (this.props.active) {
+//             className += ' RichEditor-activeButton'
+//         }
 
-        const icon = this.props.icon ? (
-            <i className={'fa ' + this.props.icon}></i>
-        ) : null
+//         const icon = this.props.icon ? (
+//             <i className={'fa ' + this.props.icon}></i>
+//         ) : null
 
-        return (
-            <Button
-                type="default"
-                className={className + ' tooltip-box'}
-                onClick={this.onToggle}
-                data-tooltip={this.props.label}
-                size="normal"
-                style={{ marginLeft: '0' }}
-            >
-                {icon}
-                <span>{this.props.text}</span>
-            </Button>
-        )
-    }
-}
+//         return (
+//             <Button
+//                 type="default"
+//                 className={className + ' tooltip-box'}
+//                 onClick={this.onToggle}
+//                 data-tooltip={this.props.label}
+//                 size="normal"
+//                 style={{ marginLeft: '0' }}
+//             >
+//                 {icon}
+//                 <span>{this.props.text}</span>
+//             </Button>
+//         )
+//     }
+// }
 
 export const BlockStyleButtons = (props) => {
     const { editorState, buttons, onToggle } = props
@@ -63,16 +64,17 @@ export const BlockStyleButtons = (props) => {
         .getCurrentContent()
         .getBlockForKey(selection.getStartKey())
         .getType()
+
     return (
         <span className="button-groups">
             {_.map(buttons, (button) => (
                 <StyleButton
-                    key={button.label}
                     active={button.style === blockType}
-                    label={button.label}
                     onToggle={onToggle}
+                    key={button.label}
+                    iconClassName={button.icon}
+                    label={button.label}
                     style={button.style}
-                    icon={button.icon}
                     text={button.text}
                 />
             ))}
@@ -92,7 +94,7 @@ export const InlineStyleButtons = (props) => {
                     label={button.label}
                     onToggle={onToggle}
                     style={button.style}
-                    icon={button.icon}
+                    iconClassName={button.icon}
                     text={button.text}
                 />
             ))}

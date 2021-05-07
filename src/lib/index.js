@@ -390,6 +390,7 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
                         </Button>
                     </div>
                 </div>
+
                 <div
                     className={className + expandBtnClass}
                     onClick={() => focus()}
