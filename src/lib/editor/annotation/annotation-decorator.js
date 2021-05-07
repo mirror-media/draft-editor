@@ -1,5 +1,5 @@
 import { Entity } from 'draft-js'
-import ENTITY from '../entities'
+import ENTITY_LIST from '../entities'
 import React from 'react'
 import classNames from 'classnames'
 class Annotation extends React.Component {
@@ -59,7 +59,7 @@ function findAnnotationEntities(contentBlock, callback) {
         if (entityKey !== null) {
             let type = Entity.get(entityKey).getType()
             type = type && type.toUpperCase()
-            return type === ENTITY.ANNOTATION.type
+            return type === ENTITY_LIST.ANNOTATION.type
         }
         return false
     }, callback)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Entity } from 'draft-js'
-import ENTITY from '../entities'
+import ENTITY_LIST from '../entities'
 
 const styles = {
     link: {
@@ -27,7 +27,7 @@ function findLinkEntities(contentBlock, callback) {
         if (entityKey !== null) {
             let type = Entity.get(entityKey).getType()
             type = type && type.toUpperCase()
-            return type === ENTITY.LINK.type
+            return type === ENTITY_LIST.LINK.type
         }
         return false
     }, callback)

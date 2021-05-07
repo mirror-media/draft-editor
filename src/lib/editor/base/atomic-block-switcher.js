@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ENTITY from '../entities'
+import ENTITY_LIST from '../entities'
 import Wrapper from './block-wrapper'
 
 import BlockQuoteBlock from '../quote/block-quote-block'
@@ -109,7 +109,7 @@ export class AtomicBlockSwitcher extends Component {
         let style
 
         switch (type) {
-            case ENTITY.BLOCKQUOTE.type:
+            case ENTITY_LIST.BLOCKQUOTE.type:
                 BlockComponent = BlockQuoteBlock
                 if (device === 'mobile') {
                     style = mobileStyle
@@ -117,7 +117,7 @@ export class AtomicBlockSwitcher extends Component {
                     style = tabletMinStyle
                 }
                 break
-            case ENTITY.EMBEDDEDCODE.type:
+            case ENTITY_LIST.EMBEDDEDCODE.type:
                 BlockComponent = EmbeddedCodeBlock
                 if (device === 'mobile') {
                     style = mobileStyle
@@ -125,7 +125,7 @@ export class AtomicBlockSwitcher extends Component {
                     style = tabletMinStyle
                 }
                 break
-            case ENTITY.INFOBOX.type:
+            case ENTITY_LIST.INFOBOX.type:
                 BlockComponent = InfoBoxBlock
                 if (device === 'mobile') {
                     style = mobileStyle
@@ -133,7 +133,7 @@ export class AtomicBlockSwitcher extends Component {
                     style = tabletMinStyle
                 }
                 break
-            case ENTITY.AUDIO.type:
+            case ENTITY_LIST.AUDIO.type:
                 BlockComponent = AudioBlock
                 if (device === 'mobile') {
                     style = mobileStyle
@@ -141,7 +141,7 @@ export class AtomicBlockSwitcher extends Component {
                     style = tabletMinStyle
                 }
                 break
-            case ENTITY.VIDEO.type:
+            case ENTITY_LIST.VIDEO.type:
                 BlockComponent = VideoBlock
                 if (device === 'mobile') {
                     style = mobileStyle
@@ -149,7 +149,7 @@ export class AtomicBlockSwitcher extends Component {
                     style = tabletMinStyle
                 }
                 break
-            case ENTITY.IMAGE.type:
+            case ENTITY_LIST.IMAGE.type:
                 BlockComponent = ImageBlock
                 if (device === 'mobile') {
                     style = mobileStyle
@@ -157,7 +157,7 @@ export class AtomicBlockSwitcher extends Component {
                     style = tabletMaxStyle
                 }
                 break
-            case ENTITY.IMAGELINK.type:
+            case ENTITY_LIST.IMAGELINK.type:
                 //     BlockComponent = ImageLinkBlock
                 //     if (device === 'mobile') {
                 //         style = mobileStyle
@@ -165,7 +165,7 @@ export class AtomicBlockSwitcher extends Component {
                 //         style = tabletMaxStyle
                 //     }
                 break
-            case ENTITY.IMAGEDIFF.type:
+            case ENTITY_LIST.IMAGEDIFF.type:
                 //     BlockComponent = ImageDiffBlock
                 //     if (device === 'mobile') {
                 //         style = mobileStyle
@@ -173,7 +173,7 @@ export class AtomicBlockSwitcher extends Component {
                 //         style = tabletMaxStyle
                 //     }
                 break
-            case ENTITY.SLIDESHOW.type:
+            case ENTITY_LIST.SLIDESHOW.type:
                 BlockComponent = SlideshowBlock
                 if (device === 'mobile') {
                     style = mobileStyle
@@ -181,7 +181,7 @@ export class AtomicBlockSwitcher extends Component {
                     style = tabletMaxStyle
                 }
                 break
-            case ENTITY.YOUTUBE.type:
+            case ENTITY_LIST.YOUTUBE.type:
                 BlockComponent = YoutubeBlock
                 if (device === 'mobile') {
                     style = mobileStyle

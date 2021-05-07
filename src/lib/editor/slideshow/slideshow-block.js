@@ -7,7 +7,7 @@ import AlignedWrapper from '../components/AlignedWrapper/AlignedWrapper'
 
 import './customStyle.css'
 
-import ENTITY from '../entities'
+import ENTITY_LIST from '../entities'
 import AtomicBlockRendererMixin from '../mixins/atomic-block-renderer-mixin'
 import EditingBt from '../base/editing-bt'
 import ImageSelector from '../components/ImageSelector'
@@ -47,7 +47,7 @@ export default class SlideshowBlock extends AtomicBlockRendererMixin {
                   onChange: this.onValueChange,
                   onFinish: this.toggleEditMode,
                   selectedImages: images,
-                  selectionLimit: ENTITY.SLIDESHOW.slideshowSelectionLimit,
+                  selectionLimit: ENTITY_LIST.SLIDESHOW.slideshowSelectionLimit,
               })
             : null
 

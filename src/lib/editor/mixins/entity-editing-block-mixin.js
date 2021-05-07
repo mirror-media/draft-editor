@@ -20,7 +20,7 @@ import {
     EntityButtons,
     InlineStyleButtons,
 } from '../editor-buttons'
-// import ENTITY from '../entities'
+// import ENTITY_LIST from '../entities'
 import React, { Component, Fragment } from 'react'
 import blockStyleFn from '../base/block-style-fn'
 import decorator from '../entity-decorator'
@@ -202,7 +202,7 @@ export class EntityEditingBlock extends Component {
                             onToggle={this._toggleInlineStyle}
                         />
                         {/* <EntityButtons
-                            entities={[ENTITY.LINK.type]}
+                            entities={[ENTITY_LIST.LINK.type]}
                             editorState={editorState}
                             onToggle={this._toggleEntity}
                         /> */}
@@ -266,7 +266,7 @@ export class EntityEditingBlock extends Component {
 
     _toggleEntity(entity, value) {
         switch (entity) {
-            case ENTITY.LINK.type:
+            case ENTITY_LIST.LINK.type:
                 return this._toggleLink(entity, value)
             default:
                 return

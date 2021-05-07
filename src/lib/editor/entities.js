@@ -1,6 +1,6 @@
 // 'use strict';
 
-const ENTITY = {
+const ENTITY_LIST = {
     ANNOTATION: {
         type: 'ANNOTATION',
     },
@@ -40,4 +40,4 @@ const ENTITY = {
     },
 }
 
-export default ENTITY
+export default ENTITY_LIST

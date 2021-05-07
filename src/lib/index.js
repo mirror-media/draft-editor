@@ -22,7 +22,7 @@ import {
 import { Button } from '@arch-ui/button'
 import 'element-theme-default'
 
-import ENTITY from './K3/entities'
+import ENTITY_LIST_LIST from './K3/entities'
 import BlockModifier from './editor/modifiers/index'
 import decorator from './editor/entity-decorator'
 const { isCtrlKeyCommand } = KeyBindingUtil
@@ -221,24 +221,24 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
     function toggleEntity(entity, value) {
         // entity(array) has all block's entity data
         switch (entity) {
-            case ENTITY.AUDIO.type:
+            case ENTITY_LIST_LIST.AUDIO.type:
                 return _toggleAudio(entity, value)
-            case ENTITY.VIDEO.type:
+            case ENTITY_LIST_LIST.VIDEO.type:
                 return _toggleVideo(entity, value)
-            case ENTITY.BLOCKQUOTE.type:
-            case ENTITY.IMAGELINK.type:
-            case ENTITY.INFOBOX.type:
-            case ENTITY.EMBEDDEDCODE.type:
-            case ENTITY.YOUTUBE.type:
+            case ENTITY_LIST_LIST.BLOCKQUOTE.type:
+            case ENTITY_LIST_LIST.IMAGELINK.type:
+            case ENTITY_LIST_LIST.INFOBOX.type:
+            case ENTITY_LIST_LIST.EMBEDDEDCODE.type:
+            case ENTITY_LIST_LIST.YOUTUBE.type:
                 return _toggleAtomicBlock(entity, value)
-            case ENTITY.ANNOTATION.type:
-            case ENTITY.LINK.type:
+            case ENTITY_LIST_LIST.ANNOTATION.type:
+            case ENTITY_LIST_LIST.LINK.type:
                 return _toggleInlineEntity(entity, value)
-            case ENTITY.IMAGE.type:
+            case ENTITY_LIST_LIST.IMAGE.type:
                 return _toggleImage(entity, value)
-            case ENTITY.SLIDESHOW.type:
+            case ENTITY_LIST_LIST.SLIDESHOW.type:
                 return _toggleSlideshow(entity, value)
-            case ENTITY.IMAGEDIFF.type:
+            case ENTITY_LIST_LIST.IMAGEDIFF.type:
                 return _toggleImageDiff(entity, value)
             default:
                 return
@@ -367,7 +367,7 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
                         />
 
                         <EntityButtons
-                            entities={Object.keys(ENTITY)}
+                            entities={Object.keys(ENTITY_LIST_LIST)}
                             editorState={editorState}
                             onToggle={toggleEntity}
                         />

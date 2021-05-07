@@ -5,7 +5,7 @@ import { Button } from '@arch-ui/button'
 import React from 'react'
 import map from 'lodash/map'
 import { Entity } from 'draft-js'
-import ENTITY from './entities'
+import ENTITY_LIST from './entities'
 import StyleButton from './editorButtons/StyleButton/StyleButton'
 import AnnotationBt from './annotation/annotation-bt'
 import AudioButton from './audio/audio-bt'
@@ -140,7 +140,7 @@ export const EntityButtons = (props) => {
             : false
         let onToggle = _onToggle.bind(null, entity)
         switch (entity) {
-            case ENTITY.BLOCKQUOTE.type:
+            case ENTITY_LIST.BLOCKQUOTE.type:
                 return (
                     <BlockQuoteBt
                         active={active}
@@ -153,7 +153,7 @@ export const EntityButtons = (props) => {
                         quoteBy={data ? data.quoteBy : ''}
                     />
                 )
-            case ENTITY.ANNOTATION.type:
+            case ENTITY_LIST.ANNOTATION.type:
                 return (
                     <AnnotationBt
                         active={active}
@@ -168,7 +168,7 @@ export const EntityButtons = (props) => {
                     />
                 )
 
-            case ENTITY.LINK.type:
+            case ENTITY_LIST.LINK.type:
                 return (
                     <LinkButton
                         active={active}
@@ -181,7 +181,7 @@ export const EntityButtons = (props) => {
                         iconText=""
                     />
                 )
-            case ENTITY.INFOBOX.type:
+            case ENTITY_LIST.INFOBOX.type:
                 return (
                     <InfoBoxBt
                         active={active}
@@ -194,7 +194,7 @@ export const EntityButtons = (props) => {
                         iconText="infobox"
                     />
                 )
-            case ENTITY.EMBEDDEDCODE.type:
+            case ENTITY_LIST.EMBEDDEDCODE.type:
                 return (
                     <EmbeddedCodeBt
                         active={active}
@@ -206,7 +206,7 @@ export const EntityButtons = (props) => {
                         iconText=" Embed"
                     />
                 )
-            case ENTITY.AUDIO.type:
+            case ENTITY_LIST.AUDIO.type:
                 return (
                     <AudioButton
                         active={active}
@@ -219,7 +219,7 @@ export const EntityButtons = (props) => {
                     />
                 )
 
-            case ENTITY.VIDEO.type:
+            case ENTITY_LIST.VIDEO.type:
                 return (
                     <VideoButton
                         active={active}
@@ -232,7 +232,7 @@ export const EntityButtons = (props) => {
                     />
                 )
 
-            case ENTITY.IMAGE.type:
+            case ENTITY_LIST.IMAGE.type:
                 return (
                     <ImageButton
                         active={active}
@@ -244,7 +244,7 @@ export const EntityButtons = (props) => {
                         iconText=" Img"
                     />
                 )
-            case ENTITY.SLIDESHOW.type:
+            case ENTITY_LIST.SLIDESHOW.type:
                 return (
                     <ImageButton
                         active={active}
@@ -253,13 +253,13 @@ export const EntityButtons = (props) => {
                         label={entity}
                         onToggle={onToggle}
                         selectionLimit={
-                            ENTITY.SLIDESHOW.slideshowSelectionLimit
+                            ENTITY_LIST.SLIDESHOW.slideshowSelectionLimit
                         }
                         icon="fa fa-images"
                         iconText=" Slideshow"
                     />
                 )
-            // case ENTITY.IMAGEDIFF.type:
+            // case ENTITY_LIST.IMAGEDIFF.type:
             //     return (
             //         <ImageButton
             //             active={active}
@@ -273,7 +273,7 @@ export const EntityButtons = (props) => {
             //             iconText=" Diff"
             //         />
             //     )
-            // case ENTITY.IMAGELINK.type:
+            // case ENTITY_LIST.IMAGELINK.type:
             //     return (
             //         <ImageLinkButton
             //             active={active}
@@ -287,7 +287,7 @@ export const EntityButtons = (props) => {
             //         />
             //     )
 
-            case ENTITY.YOUTUBE.type:
+            case ENTITY_LIST.YOUTUBE.type:
                 return (
                     <YoutubeBt
                         active={active}
