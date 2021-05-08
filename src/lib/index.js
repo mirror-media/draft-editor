@@ -22,7 +22,8 @@ import {
 import { Button } from '@arch-ui/button'
 import 'element-theme-default'
 
-import ENTITY_LIST_LIST from './K3/entities'
+import ENTITY_LIST from './K3/entities'
+import toggleEntity from './editor/utils/toggleEntityHandler'
 import BlockModifier from './editor/modifiers/index'
 import decorator from './editor/entity-decorator'
 const { isCtrlKeyCommand } = KeyBindingUtil
@@ -49,43 +50,8 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
         KeyStoneOnChange(newEditorState)
     }
 
-    function focus() {
-        mainEditorRef.current.focus()
-    }
-
-    function getInitialState(value) {
-        let editorState
-        try {
-            if (value) {
-                // create an EditorState from the raw Draft data
-                let contentState = value.getCurrentContent()
-                editorState = EditorState.createWithContent(
-                    contentState,
-                    decorator
-                )
-            } else {
-                // create empty draft object
-                editorState = EditorState.createEmpty(decorator)
-            }
-        } catch (error) {
-            // create empty EditorState
-            editorState = EditorState.createEmpty(decorator)
-        }
-
-        return editorState
-
-        // return value ? value : EditorState.createEmpty()
-    }
-
-    function refreshEditorState(editorState) {
-        return EditorState.forceSelection(
-            editorState,
-            editorState.getCurrentContent().getSelectionAfter()
-        )
-    }
-
-    // After receiving key command, generate new state from RichUtils, and update state.
     const handleKeyCommand = (command, editorState) => {
+        // After receiving key command, generate new state from RichUtils, and update state.
         // RichUtils.handleKeyCommand will handle blocks in different cases which the default behavior of Editor does not handle.
         const newState = RichUtils.handleKeyCommand(editorState, command)
 
@@ -97,38 +63,20 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
             return 'not-handled'
         }
     }
-    // function handleKeyCommand(command) {
-    //     let newState
-    //     switch (command) {
-    //         case 'insert-soft-newline':
-    //             newState = RichUtils.insertSoftNewline(editorState)
-    //             break
-    //         default:
-    //             newState = RichUtils.handleKeyCommand(editorState, command)
-    //     }
-    //     if (newState) {
-    //         onEditorStateChange(newState)
-    //         return true
-    //     }
-    //     return false
-    // }
 
-    function keyBindingFn(e) {
-        if (e.keyCode === 13 /* `enter` key */) {
-            if (isCtrlKeyCommand(e) || e.shiftKey) {
-                return 'insert-soft-newline'
-            }
-        }
-        return getDefaultKeyBinding(e)
+    function focus() {
+        mainEditorRef.current.focus()
     }
 
+    // assign new eidtorState with new blocktype
     function toggleBlockType(blockType) {
-        let newEditorState = RichUtils.toggleBlockType(editorState, blockType)
+        const newEditorState = RichUtils.toggleBlockType(editorState, blockType)
         onEditorStateChange(newEditorState)
     }
 
+    // assign new editorState with new inlineStyle
     function toggleInlineStyle(inlineStyle) {
-        let newEditorState = RichUtils.toggleInlineStyle(
+        const newEditorState = RichUtils.toggleInlineStyle(
             editorState,
             inlineStyle
         )
@@ -218,113 +166,6 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
         return false
     }
 
-    function toggleEntity(entity, value) {
-        // entity(array) has all block's entity data
-        switch (entity) {
-            case ENTITY_LIST_LIST.AUDIO.type:
-                return _toggleAudio(entity, value)
-            case ENTITY_LIST_LIST.VIDEO.type:
-                return _toggleVideo(entity, value)
-            case ENTITY_LIST_LIST.BLOCKQUOTE.type:
-            case ENTITY_LIST_LIST.IMAGELINK.type:
-            case ENTITY_LIST_LIST.INFOBOX.type:
-            case ENTITY_LIST_LIST.EMBEDDEDCODE.type:
-            case ENTITY_LIST_LIST.YOUTUBE.type:
-                return _toggleAtomicBlock(entity, value)
-            case ENTITY_LIST_LIST.ANNOTATION.type:
-            case ENTITY_LIST_LIST.LINK.type:
-                return _toggleInlineEntity(entity, value)
-            case ENTITY_LIST_LIST.IMAGE.type:
-                return _toggleImage(entity, value)
-            case ENTITY_LIST_LIST.SLIDESHOW.type:
-                return _toggleSlideshow(entity, value)
-            case ENTITY_LIST_LIST.IMAGEDIFF.type:
-                return _toggleImageDiff(entity, value)
-            default:
-                return
-        }
-    }
-
-    function _toggleAudio(entity, value) {
-        const audio = Array.isArray(value) ? value[0] : null
-        if (!audio) {
-            return
-        }
-        _toggleAtomicBlock(entity, audio)
-    }
-
-    function _toggleVideo(entity, value) {
-        const video = Array.isArray(value) ? value[0] : null
-        if (!video) {
-            return
-        }
-        _toggleAtomicBlock(entity, video)
-    }
-
-    function _toggleAtomicBlock(entity, value) {
-        const _editorState = BlockModifier.insertAtomicBlock(
-            editorState,
-            entity,
-            value
-        )
-        onEditorStateChange(_editorState)
-    }
-
-    function _toggleInlineEntity(entity, value) {
-        const entityKey = Entity.create(entity, 'IMMUTABLE', value)
-        _toggleTextWithEntity(entityKey, _.get(value, 'text'))
-    }
-
-    function _toggleImage(entity, value) {
-        const image = Array.isArray(value) ? value[0] : null
-        if (!image) {
-            return
-        }
-        _toggleAtomicBlock(entity, image)
-    }
-
-    function _toggleImageDiff(entity, value) {
-        const images = Array.isArray(value) && value.length === 2 ? value : null
-        if (!images) {
-            return
-        }
-        _toggleAtomicBlock(entity, images)
-    }
-
-    function _toggleSlideshow(entity, value) {
-        const images = Array.isArray(value) && value.length > 0 ? value : null
-        if (!images) {
-            return
-        }
-        _toggleAtomicBlock(entity, images)
-    }
-
-    function _toggleTextWithEntity(entityKey, text) {
-        const selection = editorState.getSelection()
-        let contentState = editorState.getCurrentContent()
-
-        if (selection.isCollapsed()) {
-            contentState = Modifier.removeRange(
-                editorState.getCurrentContent(),
-                selection,
-                'backward'
-            )
-        }
-        contentState = Modifier.replaceText(
-            contentState,
-            selection,
-            text,
-            null,
-            entityKey
-        )
-        const _editorState = EditorState.push(
-            editorState,
-            contentState,
-            editorState.getLastChangeType()
-        )
-        onEditorStateChange(_editorState)
-    }
-
     const useSpellCheck = true
 
     // If the user changes block type before entering any text, we can
@@ -367,7 +208,7 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
                         />
 
                         <EntityButtons
-                            entities={Object.keys(ENTITY_LIST_LIST)}
+                            entities={Object.keys(ENTITY_LIST)}
                             editorState={editorState}
                             onToggle={toggleEntity}
                         />
@@ -450,3 +291,40 @@ var INLINE_STYLES = [
     { label: 'Underline', style: 'UNDERLINE', icon: 'fa-underline', text: '' },
     // { label: 'Monospace', style: 'CODE', icon: 'fa-terminal', text: '' },
 ]
+
+function getInitialState(value) {
+    let editorState
+    try {
+        if (value) {
+            // create an EditorState from the raw Draft data
+            let contentState = value.getCurrentContent()
+            editorState = EditorState.createWithContent(contentState, decorator)
+        } else {
+            // create empty draft object
+            editorState = EditorState.createEmpty(decorator)
+        }
+    } catch (error) {
+        // create empty EditorState
+        editorState = EditorState.createEmpty(decorator)
+    }
+
+    return editorState
+
+    // return value ? value : EditorState.createEmpty()
+}
+
+function refreshEditorState(editorState) {
+    return EditorState.forceSelection(
+        editorState,
+        editorState.getCurrentContent().getSelectionAfter()
+    )
+}
+
+function keyBindingFn(e) {
+    if (e.keyCode === 13 /* `enter` key */) {
+        if (isCtrlKeyCommand(e) || e.shiftKey) {
+            return 'insert-soft-newline'
+        }
+    }
+    return getDefaultKeyBinding(e)
+}

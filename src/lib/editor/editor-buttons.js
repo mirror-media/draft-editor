@@ -4,7 +4,7 @@ import { Button } from '@arch-ui/button'
 
 import React from 'react'
 import map from 'lodash/map'
-import { Entity } from 'draft-js'
+
 import ENTITY_LIST from './entities'
 import StyleButton from './editorButtons/StyleButton/StyleButton'
 import AnnotationBt from './annotation/annotation-bt'
@@ -57,8 +57,7 @@ const _ = {
 //     }
 // }
 
-export const BlockStyleButtons = (props) => {
-    const { editorState, buttons, onToggle } = props
+export const BlockStyleButtons = ({ buttons, editorState, onToggle }) => {
     const selection = editorState.getSelection()
     const blockType = editorState
         .getCurrentContent()
@@ -69,9 +68,9 @@ export const BlockStyleButtons = (props) => {
         <span className="button-groups">
             {_.map(buttons, (button) => (
                 <StyleButton
+                    key={button.label}
                     active={button.style === blockType}
                     onToggle={onToggle}
-                    key={button.label}
                     iconClassName={button.icon}
                     label={button.label}
                     style={button.style}
@@ -82,9 +81,9 @@ export const BlockStyleButtons = (props) => {
     )
 }
 
-export const InlineStyleButtons = (props) => {
-    const { editorState, buttons, onToggle } = props
+export const InlineStyleButtons = ({ buttons, editorState, onToggle }) => {
     let currentStyle = editorState.getCurrentInlineStyle()
+
     return (
         <span className="button-groups">
             {_.map(buttons, (button) => (
