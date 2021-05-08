@@ -126,7 +126,7 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
     function enlargeEditor() {
         // also set editorState to force editor to re-render
         setIsEnlarged((prevState) => !prevState)
-        onEditorStateChange(refreshEditorState(editorState))
+        // onEditorStateChange(refreshEditorState(editorState))
     }
 
     function handlePastedText(text, html, editorstate) {
@@ -174,7 +174,6 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
     // either style the placeholder or hide it. Let's just hide it now.
     let outerClassName = ''
     let className = 'RichEditor-editor'
-    let expandIcon = 'fa-expand'
     let expandBtnClass = ''
     let contentState = editorState.getCurrentContent()
 
@@ -186,10 +185,8 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
 
     if (isEnlarged) {
         outerClassName = 'DraftEditor-fullscreen'
-        expandIcon = 'fa-compress'
         expandBtnClass = ' expanded'
     }
-    console.log(isEnlarged)
 
     return (
         <div className={outerClassName}>
