@@ -125,25 +125,12 @@
     padding: 110px 15px 0;
 }
 
-.DraftEditor-expandButton {
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
 .DraftEditor-controls {
     position: relative;
     width: 100%;
 }
 .DraftEditor-controls .ButtonGroup {
     padding: 1px 2px;
-}
-.DraftEditor-expandButton.expanded {
-    right: 8px;
-    top: 8px;
-    z-index: 999;
-    background: rgba(255, 255, 255, 0.8);
 }
 
 .RichEditor-editor.expanded .DraftEditor-editorContainer {

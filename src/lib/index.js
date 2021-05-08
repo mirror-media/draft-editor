@@ -21,6 +21,7 @@ import {
 } from './editor/editor-buttons'
 import { Button } from '@arch-ui/button'
 import 'element-theme-default'
+import EnlargeButton from './editor/editorButtons/EnlargeButton/EnlargeButton'
 
 import ENTITY_LIST from './K3/entities'
 import toggleEntity from './editor/utils/toggleEntityHandler'
@@ -50,6 +51,7 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
         KeyStoneOnChange(newEditorState)
     }
 
+    // enable key command in draft
     const handleKeyCommand = (command, editorState) => {
         // After receiving key command, generate new state from RichUtils, and update state.
         // RichUtils.handleKeyCommand will handle blocks in different cases which the default behavior of Editor does not handle.
@@ -123,7 +125,7 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
 
     function enlargeEditor() {
         // also set editorState to force editor to re-render
-        setIsEnlarged(!isEnlarged)
+        setIsEnlarged((prevState) => !prevState)
         onEditorStateChange(refreshEditorState(editorState))
     }
 
@@ -187,6 +189,7 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
         expandIcon = 'fa-compress'
         expandBtnClass = ' expanded'
     }
+    console.log(isEnlarged)
 
     return (
         <div className={outerClassName}>
@@ -213,22 +216,10 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
                             onToggle={toggleEntity}
                         />
 
-                        <Button
-                            value="unordered-list-item"
-                            className={
-                                'hollow-primary DraftEditor-expandButton' +
-                                expandBtnClass
-                            }
-                            onClick={enlargeEditor}
-                            aria-haspopup="true"
-                            aria-expanded={isEnlarged}
-                            title="expand"
-                        >
-                            <i
-                                className={'fa ' + expandIcon}
-                                aria-hidden="true"
-                            ></i>
-                        </Button>
+                        <EnlargeButton
+                            isEnlarged={isEnlarged}
+                            enlargeEditorHandler={enlargeEditor}
+                        />
                     </div>
                 </div>
 
