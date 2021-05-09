@@ -25,7 +25,7 @@ import React, { Component, Fragment } from 'react'
 import blockStyleFn from '../base/block-style-fn'
 import decorator from '../entity-decorator'
 
-import '../styles/editor.css'
+// import '../styles/editor.css'
 import './entity-editing-block-mixin.css'
 import dialogCjsDev from '@arch-ui/dialog/dist/dialog.cjs.dev'
 

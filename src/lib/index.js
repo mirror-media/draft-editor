@@ -32,7 +32,7 @@ import AtomicBlockSwitcher from './editor/base/atomic-block-switcher'
 import DraftConverter from './K3/draft-converter'
 import blockStyleFn from './editor/base/block-style-fn'
 
-import './editor/styles/editorNew.css'
+import './editor/styles/editor.css'
 import './editor/styles/normalize.css'
 import '@fortawesome/fontawesome-free/js/fontawesome'
 import '@fortawesome/fontawesome-free/js/solid'
@@ -174,7 +174,7 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
 
     // If the user changes block type before entering any text, we can
     // either style the placeholder or hide it. Let's just hide it now.
-    let outerClassName = ''
+    let fullscreen = ''
     let className = 'RichEditor-editor'
     let expandBtnClass = ''
     let contentState = editorState.getCurrentContent()
@@ -186,16 +186,16 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
     }
 
     if (isEnlarged) {
-        outerClassName = 'DraftEditor-fullscreen'
+        fullscreen = 'draft-editor-fullscreen'
         expandBtnClass = ' expanded'
     }
 
     return (
-        <div className={`draft-editor ${outerClassName}`}>
-            <div className="draft-editor__wrapper RichEditor-root">
-                <div className={'DraftEditor-controls' + expandBtnClass}>
+        <div className={`draft-editor ${fullscreen}`}>
+            <div className={`draft-editor__wrapper ${fullscreen}`}>
+                <div className={`draft-editor__controls  ${fullscreen}`}>
                     <div
-                        className={'DraftEditor-controlsInner' + expandBtnClass}
+                        className={`draft-editor__controls_wrapper ${expandBtnClass}`}
                     >
                         <BlockStyleButtons
                             buttons={BLOCK_TYPES}
@@ -223,7 +223,7 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
                 </div>
 
                 <div
-                    className={className + expandBtnClass}
+                    className={`draft-editor__textarea ${fullscreen}`}
                     onClick={() => focus()}
                 >
                     <Editor

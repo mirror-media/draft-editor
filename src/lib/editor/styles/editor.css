@@ -1,153 +1,25 @@
-/**
- * @providesModule DraftEditor
- * @permanent
- */
-
-/**
- * We inherit the height of the container by default
- */
-
-.DraftEditor-root,
-.DraftEditor-editorContainer,
-.public-DraftEditor-content {
-    height: inherit;
-    text-align: initial;
-}
-
-.DraftEditor-root {
-    position: relative;
-    background: rgb(250, 251, 252);
-    min-height: 5rem;
-    padding: 1rem;
-}
-
-/**
- * Zero-opacity background used to allow focus in IE. Otherwise, clicks
- * fall through to the placeholder.
- */
-
-.DraftEditor-editorContainer {
-    /* background-color: rgba(255, 255, 255, 0); */
-    /* Repair mysterious missing Safari cursor */
-    border-left: 0.1px solid transparent;
-    position: relative;
-    /* z-index: 0; */
-    /* background: red; */
-    max-width: 664px;
-    margin: 0 auto 40px auto;
-
-    line-height: 1.7;
-}
-
-.public-DraftEditor-content {
-    outline: none;
-    white-space: pre-wrap;
-}
-
-.public-DraftEditor-block {
+.draft-editor {
     position: relative;
 }
 
-.DraftEditor-alignLeft .public-DraftEditor-block {
-    text-align: left;
-}
-
-.DraftEditor-alignLeft .public-DraftEditorPlaceholder-root {
-    left: 0;
-    text-align: left;
-}
-
-.DraftEditor-alignCenter .public-DraftEditor-block {
-    text-align: center;
-}
-
-.DraftEditor-alignCenter .public-DraftEditorPlaceholder-root {
-    margin: 0 auto;
-    text-align: center;
-    width: 100%;
-}
-
-.DraftEditor-alignRight .public-DraftEditor-block {
-    text-align: right;
-}
-
-.DraftEditor-alignRight .public-DraftEditorPlaceholder-root {
-    right: 0;
-    text-align: right;
-}
-/**
- * @providesModule DraftEditorPlaceholder
- */
-
-.public-DraftEditorPlaceholder-root {
-    color: #9197a3;
-    position: absolute;
-    z-index: 0;
-}
-
-.public-DraftEditorPlaceholder-hasFocus {
-    color: #bdc1c9;
-}
-
-.DraftEditorPlaceholder-hidden {
-    display: none;
-}
-/**
- * @providesModule DraftStyleDefault
- */
-
-.public-DraftStyleDefault-block {
-    position: relative;
-    white-space: pre-wrap;
-}
-
-/**
- * enlarged full-screen HTML editor
- */
-.DraftEditor-fullscreen {
-    box-sizing: border-box;
-    position: fixed;
+.draft-editor__wrapper {
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    padding-left: 3em;
-    padding-right: 3em;
-    background: rgba(0, 0, 0, 0.5);
-    overflow-y: scroll;
-}
-.DraftEditor-fullscreen .RichEditor-root {
-    height: 100%;
-    padding: 0;
-}
-.DraftEditor-fullscreen .DraftEditor-editorContainer {
-    padding: 110px 15px 0;
-}
-
-.DraftEditor-controls {
     position: relative;
-    width: 100%;
-}
-.DraftEditor-controls .ButtonGroup {
-    padding: 1px 2px;
+    /* background: rgb(250, 251, 252); */
+    background: rgb(255, 255, 255);
+    padding: 0 1rem 1rem;
+    box-sizing: border-box;
+    border-radius: 6px;
 }
 
-.RichEditor-editor.expanded .DraftEditor-editorContainer {
-    min-height: 100vh;
+.draft-editor__controls {
+    padding-top: 1rem;
+    width: 100%;
+    background: rgb(255, 255, 255);
 }
 
-.DraftEditor-controls.expanded {
-    position: fixed;
-    z-index: 200;
-    width: 100%;
-    top: 0;
-    left: 0;
-    padding: 0 3em;
-    box-sizing: border-box;
-}
-.DraftEditor-controlsInner {
-    box-sizing: border-box;
+.draft-editor__controls_wrapper {
     width: 100%;
     padding-right: 45px;
     position: relative;
@@ -158,46 +30,64 @@
 
 .button-groups {
     margin-right: 10px;
+}
+.button-groups .Button {
+    margin-bottom: 10px;
+}
+.button-groups .tooltip-box {
     margin-bottom: 10px;
 }
 
-.DraftEditor-controlsInner.expanded {
-    padding: 0.5em;
-    background: -moz-linear-gradient(
-        top,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 1) 67%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    background: -webkit-gradient(
-        left top,
-        left bottom,
-        color-stop(0%, rgba(255, 255, 255, 1)),
-        color-stop(67%, rgba(255, 255, 255, 1)),
-        color-stop(100%, rgba(255, 255, 255, 0))
-    );
-    background: -webkit-linear-gradient(
-        top,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 1) 67%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    background: -o-linear-gradient(
-        top,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 1) 67%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    background: -ms-linear-gradient(
-        top,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 1) 67%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 1) 67%,
-        rgba(255, 255, 255, 0) 100%
-    );
+.draft-editor__textarea {
+    background: rgb(250, 251, 252);
+    min-height: 5rem;
+    padding: 1rem;
+}
+
+.DraftEditor-root {
+    position: relative;
+    max-width: 664px;
+    margin: auto;
+}
+.public-DraftEditorPlaceholder-root {
+    color: #9197a3;
+    position: absolute;
+}
+
+.DraftEditor-editorContainer {
+    /* background-color: rgba(255, 255, 255, 0); */
+    /* Repair mysterious missing Safari cursor */
+    border-left: 0.1px solid transparent;
+    position: relative;
+    /* max-width: 664px; */
+    margin: 0 auto;
+
+    line-height: 1.7;
+}
+
+/* expand */
+.draft-editor.draft-editor-fullscreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    padding-left: 3em;
+    padding-right: 3em;
+    background: rgba(0, 0, 0, 0.5);
+}
+.draft-editor__wrapper.draft-editor-fullscreen {
+    overflow: scroll;
+    padding-bottom: 0;
+}
+
+.draft-editor__controls.draft-editor-fullscreen {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+.draft-editor__textarea.draft-editor-fullscreen {
+    min-height: 100vh;
+    padding-bottom: 0;
 }
