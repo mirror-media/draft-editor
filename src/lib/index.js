@@ -32,7 +32,8 @@ import AtomicBlockSwitcher from './editor/base/atomic-block-switcher'
 import DraftConverter from './K3/draft-converter'
 import blockStyleFn from './editor/base/block-style-fn'
 
-import './editor/styles/editor.css'
+import './editor/styles/editorNew.css'
+import './editor/styles/normalize.css'
 import '@fortawesome/fontawesome-free/js/fontawesome'
 import '@fortawesome/fontawesome-free/js/solid'
 import '@fortawesome/fontawesome-free/js/regular'
@@ -66,6 +67,7 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
         }
     }
 
+    // focus editor
     function focus() {
         mainEditorRef.current.focus()
     }
@@ -189,8 +191,8 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
     }
 
     return (
-        <div className={outerClassName}>
-            <div className="RichEditor-root">
+        <div className={`draft-editor ${outerClassName}`}>
+            <div className="draft-editor__wrapper RichEditor-root">
                 <div className={'DraftEditor-controls' + expandBtnClass}>
                     <div
                         className={'DraftEditor-controlsInner' + expandBtnClass}
