@@ -1,4 +1,5 @@
 import ENTITY_LIST from '../../K3/entities'
+import { EditorState, Modifier, Entity } from 'draft-js'
 
 export default function toggleEntity(entity, value) {
     // entity(array) has all block's entity data
