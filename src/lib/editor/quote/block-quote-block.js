@@ -3,7 +3,7 @@
 // import { AlignedQuoteBy } from '@twreporter/react-article-components/dist/components/article/index';
 import AtomicBlockRendererMixin from '../mixins/atomic-block-renderer-mixin'
 import BlockQuoteEditingBlock from './block-quote-editing-block'
-import BlockquoteBlock from './BlockquoteBlock/BlockquoteBlock'
+import UiBlockquoteBlock from './UiBlockquoteBlock/UiBlockquoteBlock'
 import React from 'react'
 import get from 'lodash/get'
 
@@ -59,7 +59,7 @@ export default class BlockQuoteBlock extends AtomicBlockRendererMixin {
             // 	</AlignedQuoteBy>
             // 	{EditBlock}
             // </div>
-            <BlockquoteBlock
+            <UiBlockquoteBlock
                 quote={quote}
                 quoteBy={quoteBy}
                 EditBlock={EditBlock}

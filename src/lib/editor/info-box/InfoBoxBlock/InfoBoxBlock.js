@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './BlockquoteBlock.css'
+import './InfoBoxBlock.css'
 
-function BlockquoteBlock({ quote, quoteBy, EditBlock, toggleEditMode }) {
+function InfoBoxBlock({ quote, quoteBy, EditBlock, toggleEditMode }) {
     return (
         <div
             className="block-quote-block"
@@ -17,11 +17,11 @@ function BlockquoteBlock({ quote, quoteBy, EditBlock, toggleEditMode }) {
     )
 }
 
-BlockquoteBlock.propTypes = {
+InfoBoxBlock.propTypes = {
     quote: PropTypes.string,
     quoteBy: PropTypes.string,
     EditBlock: PropTypes.object,
     toggleEditMode: PropTypes.func,
 }
 
-export default BlockquoteBlock
+export default InfoBoxBlock
