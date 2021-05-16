@@ -1,0 +1,25 @@
+.info-box-block {
+    background: #f7f7ff;
+    position: relative;
+    width: 100%;
+    float: none;
+    margin: 0;
+    cursor: pointer;
+    user-select: none;
+}
+.info-box-block__text {
+    padding: 2rem 1.33333rem 1.33333rem 1.33333rem;
+}
+.info-box-block__text_title {
+    font-size: 1rem;
+    line-height: 1.2;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+.info-box-block__text_content {
+    padding: 2rem 1.3rem 1.3rem;
+    line-height: 1.8;
+    text-align: justify;
+}

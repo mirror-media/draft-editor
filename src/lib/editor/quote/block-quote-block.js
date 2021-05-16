@@ -59,12 +59,15 @@ export default class BlockQuoteBlock extends AtomicBlockRendererMixin {
             // 	</AlignedQuoteBy>
             // 	{EditBlock}
             // </div>
-            <UiBlockquoteBlock
-                quote={quote}
-                quoteBy={quoteBy}
-                EditBlock={EditBlock}
-                toggleEditMode={this.toggleEditMode}
-            />
+            <>
+                <UiBlockquoteBlock
+                    quote={quote}
+                    quoteBy={quoteBy}
+                    toggleEditMode={this.toggleEditMode}
+                />
+
+                {EditBlock}
+            </>
         )
     }
 }

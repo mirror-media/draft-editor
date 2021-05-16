@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './UiBlockquoteBlock.css'
 
-function UiBlockquoteBlock({ quote, quoteBy, EditBlock, toggleEditMode }) {
+function UiBlockquoteBlock({ quote, quoteBy, toggleEditMode }) {
     return (
         <>
             <div
@@ -13,8 +13,6 @@ function UiBlockquoteBlock({ quote, quoteBy, EditBlock, toggleEditMode }) {
                 <div className="block-quote-block__quote">{quote}</div>
                 <div className="block-quote-block__quote_by">{`- ${quoteBy}`}</div>
             </div>
-
-            {EditBlock}
         </>
     )
 }
@@ -22,7 +20,7 @@ function UiBlockquoteBlock({ quote, quoteBy, EditBlock, toggleEditMode }) {
 UiBlockquoteBlock.propTypes = {
     quote: PropTypes.string,
     quoteBy: PropTypes.string,
-    EditBlock: PropTypes.object,
+
     toggleEditMode: PropTypes.func,
 }
 
