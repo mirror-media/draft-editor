@@ -1,0 +1,9 @@
+.block-quote-block {
+    background: rgb(247, 247, 255);
+    cursor: pointer;
+    padding: 16px 16px;
+}
+
+.block-quote-block__quote {
+    margin-bottom: 5px;
+}

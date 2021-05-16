@@ -87,8 +87,11 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
         onEditorStateChange(newEditorState)
     }
 
-    function _blockRenderer(block) {
-        if (block.getType() === 'atomic') {
+    // get contentBlock from editor
+    // then get atomic block inside
+    // determine which atomic is, and render different type block
+    function _blockRenderer(contentBlock) {
+        if (contentBlock.getType() === 'atomic') {
             return {
                 component: AtomicBlockSwitcher,
                 props: {

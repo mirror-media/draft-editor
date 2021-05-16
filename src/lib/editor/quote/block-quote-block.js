@@ -3,6 +3,7 @@
 // import { AlignedQuoteBy } from '@twreporter/react-article-components/dist/components/article/index';
 import AtomicBlockRendererMixin from '../mixins/atomic-block-renderer-mixin'
 import BlockQuoteEditingBlock from './block-quote-editing-block'
+import BlockquoteBlock from './BlockquoteBlock/BlockquoteBlock'
 import React from 'react'
 import get from 'lodash/get'
 
@@ -58,22 +59,12 @@ export default class BlockQuoteBlock extends AtomicBlockRendererMixin {
             // 	</AlignedQuoteBy>
             // 	{EditBlock}
             // </div>
-            <div
-                contentEditable={false}
-                style={{
-                    // backgroundColor: 'GhostWhite',
-                    cursor: 'pointer',
-                    // padding: '16px 0',
-                }}
-            >
-                <div className="Blockquote__text" onClick={this.toggleEditMode}>
-                    <blockquote>
-                        <div>{quote}</div>
-                        <h6>{`- ${quoteBy}`}</h6>
-                    </blockquote>
-                </div>
-                {EditBlock}
-            </div>
+            <BlockquoteBlock
+                quote={quote}
+                quoteBy={quoteBy}
+                EditBlock={EditBlock}
+                toggleEditMode={this.toggleEditMode}
+            />
         )
     }
 }

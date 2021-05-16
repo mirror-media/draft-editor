@@ -18,9 +18,8 @@ export class AtomicBlockRendererMixin extends Component {
         this.value = null
         this.toggleEditMode = this._toggleEditMode.bind(this)
         this.onValueChange = this._onValueChange.bind(this)
-        this.handleEditingBlockChange = this._handleEditingBlockChange.bind(
-            this
-        )
+        this.handleEditingBlockChange =
+            this._handleEditingBlockChange.bind(this)
     }
     // Make main draft read only to prevent cursor selection chaos
     componentDidUpdate() {
