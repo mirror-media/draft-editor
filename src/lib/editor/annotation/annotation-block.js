@@ -1,8 +1,13 @@
+/*
+this file is no use
+annotation is decorated by draft "decorator"
+*/
 import AtomicBlockRendererMixin from '../mixins/atomic-block-renderer-mixin'
+
 import AnnotationEditingBlock from './annotation-editing-block'
 import React from 'react'
 import get from 'lodash/get'
-
+import UiAnnotationBlock from './UiAnnotationBlock/UiAnnotationBlock'
 const _ = {
     get,
 }
@@ -36,15 +41,18 @@ export default class AnnotationBlock extends AtomicBlockRendererMixin(
         )
 
         return (
-            <div
-                contentEditable={false}
-                onClick={this.toggleEditMode}
-                style={{ cursor: 'pointer' }}
-            >
-                <div>要被註解的字串：{text}</div>
-                <div>註解：{annotation}</div>
+            <>
+                <div
+                    contentEditable={false}
+                    onClick={this.toggleEditMode}
+                    style={{ cursor: 'pointer' }}
+                >
+                    <div>要被註解的字串：{text}</div>
+                    <div>註解：{annotation}</div>
+                </div>
+
                 {EditBlock}
-            </div>
+            </>
         )
     }
 }

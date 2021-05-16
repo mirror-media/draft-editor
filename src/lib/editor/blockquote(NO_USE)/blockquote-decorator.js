@@ -1,8 +1,8 @@
-import quoteTypes from './quote-types(TODO)'
+import quoteTypes from './blockquote-types'
 import React from 'react'
 
 const Quote = (props) => {
-    return <blockquote {...props}>{props.children}</blockquote>
+    return <blockquote {...props}>FUCK</blockquote>
 }
 
 function findQuote(contentBlock, callback) {
