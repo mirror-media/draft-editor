@@ -1,0 +1,9 @@
+.video-item {
+    border-radius: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 10px;
+    background: rgb(255, 252, 252);
+    cursor: pointer;
+}

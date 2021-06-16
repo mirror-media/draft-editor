@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { VideoGrid } from './VideoGrid'
+import { VideoGrid } from './VideoGrid/VideoGrid'
 import SelectionMixin from './mixins/SelectionMixin'
 import merge from 'lodash/merge'
 
