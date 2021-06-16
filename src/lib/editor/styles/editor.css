@@ -91,3 +91,8 @@
     min-height: 100vh;
     padding-bottom: 0;
 }
+.RichEditor-blockquote {
+    background: rgb(247, 247, 255);
+    padding: 1rem;
+    font-family: 'Gill Sans';
+}

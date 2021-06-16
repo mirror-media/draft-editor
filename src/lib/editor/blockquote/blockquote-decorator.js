@@ -2,7 +2,9 @@ import quoteTypes from './blockquote-types'
 import React from 'react'
 
 const Quote = (props) => {
-    return <blockquote {...props}>FUCK</blockquote>
+    console.log('LIYI QUOTE PROPS')
+    console.log(props)
+    return <blockquote {...props}></blockquote>
 }
 
 function findQuote(contentBlock, callback) {
