@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ImageGrid } from './ImageGrid'
+import UiImageGrid from './UiImageGrid/UiImageGrid'
 import SelectionMixin from './mixins/SelectionMixin'
 // import merge from 'lodash/merge'
 
@@ -29,7 +29,7 @@ export class ImageSelection extends SelectionMixin {
 
     render() {
         return (
-            <ImageGrid
+            <UiImageGrid
                 images={this.state.items}
                 onSelect={this.handleSelect}
                 selectedImages={this.state.selectedItems}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { VideoGrid } from './VideoGrid/VideoGrid'
+import UiVideoGrid from './UiVideoGrid/UiVideoGrid'
 import SelectionMixin from './mixins/SelectionMixin'
 import merge from 'lodash/merge'
 
@@ -29,7 +29,7 @@ class VideoSelection extends SelectionMixin {
 
     render() {
         return (
-            <VideoGrid
+            <UiVideoGrid
                 Videos={this.state.items}
                 onSelect={this.handleSelect}
                 selectedVideos={this.state.selectedItems}

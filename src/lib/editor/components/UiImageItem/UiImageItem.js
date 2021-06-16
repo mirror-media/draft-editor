@@ -5,7 +5,8 @@ import objectAssign from 'object-assign'
 import '@fortawesome/fontawesome-free/js/fontawesome'
 
 import { useDrag, useDrop } from 'react-dnd'
-import { ItemTypes } from '../components/Dnd/ItemTypes'
+import { ItemTypes } from '../Dnd/ItemTypes'
+import './UiImageItem.style.css'
 
 function ImageItem(props) {
     const [image, setImage] = useState(props.image)
@@ -33,8 +34,6 @@ function ImageItem(props) {
     const styles = {
         imageGridItem: objectAssign(
             {
-                boxSizing: 'border-box',
-                display: 'inline-block',
                 padding,
                 width: `${width}%`,
             },
@@ -43,18 +42,6 @@ function ImageItem(props) {
         imageWrapper: {
             // image snapshot url
             backgroundImage: `url(${url})`,
-            backgroundPosition: 'center center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            cursor: 'pointer',
-            paddingTop: '100%',
-            position: 'relative',
-            textAlign: 'right',
-            width: '100%',
-        },
-        iconWrapper: {
-            height: '2rem',
-            position: 'relative',
         },
     }
 
@@ -135,14 +122,12 @@ function ImageItem(props) {
     return (
         <div
             onClick={handleSelect}
-            className="imageGridItem"
+            className="image-item"
             style={{ ...styles.imageGridItem, opacity }}
             ref={ref}
         >
-            <div className="imageWrapper" style={styles.imageWrapper}>
-                <div className="iconWrapper" style={styles.iconWrapper}>
-                    {bt}
-                </div>
+            <div className="image-wrapper" style={styles.imageWrapper}>
+                <div className="icon-wrapper">{bt}</div>
             </div>
             {props.children}
         </div>
@@ -168,62 +153,4 @@ ImageItem.defaultProps = {
     url: '',
     width: 100,
 }
-
-function ImageGrid(props) {
-    const [images, setImages] = useState(props.images)
-    const [selectedImages, setSelectedImages] = useState(props.selectedImages)
-
-    useEffect(() => {
-        setImages(props.images)
-        setSelectedImages(props.selectedImages)
-    }, [props])
-
-    const handleSelect = (image) => {
-        props.onSelect(image)
-    }
-
-    const { columns, padding } = props
-    const width = Math.floor(100 / columns)
-
-    const imageNodes = images.map((image) => {
-        const isSelected = selectedImages.find((element) => {
-            return element.id === image.id
-        })
-            ? true
-            : false
-
-        return (
-            <ImageItem
-                key={image.id}
-                image={image}
-                isSelected={isSelected}
-                onSelect={() => handleSelect(image)}
-                padding={padding}
-                width={width}
-            />
-        )
-    })
-    const imageGridStyle = {}
-    return (
-        <div className="imageGrid" style={imageGridStyle}>
-            {imageNodes}
-        </div>
-    )
-}
-
-ImageGrid.propTypes = {
-    columns: PropTypes.number,
-    images: PropTypes.array.isRequired,
-    onSelect: PropTypes.func,
-    padding: PropTypes.number,
-    selectedImages: PropTypes.array,
-}
-
-ImageGrid.defaultProps = {
-    columns: 6,
-    images: [],
-    padding: 10,
-    selectedImages: [],
-}
-
-export { ImageGrid, ImageItem }
+export default ImageItem

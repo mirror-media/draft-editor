@@ -1,0 +1,21 @@
+.image-item {
+    box-sizing: border-box;
+    display: inline-block;
+    /* padding,	 */
+}
+
+.image-wrapper {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    padding-top: 100%;
+    position: relative;
+    text-align: right;
+    width: 100%;
+}
+
+.icon-wrapper {
+    height: 2rem;
+    position: relative;
+}

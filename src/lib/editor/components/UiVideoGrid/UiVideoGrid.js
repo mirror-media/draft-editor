@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 
 import get from 'lodash/get'
 import UiVideoItem from '../UiVideoItem/UiVideoItem'
-import './VideoGrid.style.css'
+import './UiVideoGrid.style.css'
 
 const _ = {
     get,
 }
 
-class VideoGrid extends Component {
+class UiVideoGrid extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -53,11 +53,11 @@ class VideoGrid extends Component {
             )
         })
 
-        return <div className="VideoGrid new">{VideoItems}</div>
+        return <div className="video-grid">{VideoItems}</div>
     }
 }
 
-VideoGrid.propTypes = {
+UiVideoGrid.propTypes = {
     Videos: PropTypes.array.isRequired,
     columns: PropTypes.number,
     onSelect: PropTypes.func,
@@ -65,11 +65,11 @@ VideoGrid.propTypes = {
     selectedVideos: PropTypes.array,
 }
 
-VideoGrid.defaultProps = {
+UiVideoGrid.defaultProps = {
     Videos: [],
     columns: 3,
     padding: 10,
     selectedVideos: [],
 }
 
-export { VideoGrid }
+export default UiVideoGrid

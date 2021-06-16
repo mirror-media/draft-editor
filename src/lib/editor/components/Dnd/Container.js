@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react'
 // import { Card } from './Card'
-import { ImageItem } from '../ImageGrid'
+import ImageItem from '../UiImageItem/UiImageItem'
 import { Input } from '@arch-ui/input'
 
 import update from 'immutability-helper'
