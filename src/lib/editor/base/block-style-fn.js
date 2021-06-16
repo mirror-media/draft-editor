@@ -1,5 +1,5 @@
 // 'use strict';
-import quoteTypes from '../quote/quote-types(TODO)'
+import quoteTypes from '../blockquote(NO_USE)/blockquote-types'
 
 export default function blockStyleFn(contentBlock) {
     const blockType = contentBlock.getType()

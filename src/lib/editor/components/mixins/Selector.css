@@ -1,6 +1,6 @@
 .Selector {
     max-height: 70vh;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .Selector__button {

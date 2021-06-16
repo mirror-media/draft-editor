@@ -1,6 +1,6 @@
 .EntityEditingBlock {
     max-height: 70vh;
-    overflow: scroll;
+    /* overflow: scroll; */
 }
 
 .EntityEditingBlock__button {
