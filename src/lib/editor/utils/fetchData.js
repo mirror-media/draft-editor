@@ -6,7 +6,7 @@ import 'regenerator-runtime/runtime.js'
 const fetch = createApolloFetch({
     uri: '/admin/api',
     // uri: 'https://cms-dev.readr.tw/admin/api',
-    uri: 'https://cms-dev.mnews.tw/admin/api',
+    // uri: 'https://cms-dev.mnews.tw/admin/api',
 })
 
 function generateSelectString(columns) {
@@ -15,16 +15,29 @@ function generateSelectString(columns) {
 
 function generateWhereString(columns) {
     const exclusion = ['duration']
-    return `{OR: [${columns
-        .filter((column) => !exclusion.includes(column))
-        .map((column) => {
-            // for graphQL's coverPhoto part
-            const isRelationShipField = column.split('{').length > 1
-            if (isRelationShipField) {
-                return null
-            } else return `{${column}_contains: $search}`
-        })
-        .join()}]}`
+
+    const filteredColumns = columns.filter(
+        (column) => !exclusion.includes(column)
+    )
+
+    const whereArray = []
+    let filterString = ''
+
+    filteredColumns.map((column) => {
+        // for video's filtering youtube
+        if (column === 'youtubeUrl') {
+            // prettier-ignore
+            filterString='url_not_contains:"youtube"'
+        }
+
+        // for graphQL's coverPhoto part
+        const isRelationShipField = column.split('{').length > 1
+        if (!isRelationShipField) {
+            whereArray.push(`{${column}_contains: $search}`)
+        }
+    })
+
+    return `{OR: [${whereArray.join(',')}],${filterString}}`
 }
 
 export const fetchDataWithGql = async (
@@ -36,6 +49,7 @@ export const fetchDataWithGql = async (
     // console.log('fetchDataWithGql')
     const selectString = generateSelectString(columns)
     const whereString = generateWhereString(columns)
+    // console.log(whereString)
     const { data } = await fetch({
         query: `
         query fetch${list}s($search: String!, $skip: Int!, $first: Int!) {

@@ -49,7 +49,12 @@ export class VideoSelector extends SelectorMixin {
         return new Promise((resolve, reject) => {
             const dataConfig = {
                 list: 'Video',
-                columns: ['name', 'url', 'coverPhoto{id,name,urlOriginal}'],
+                columns: [
+                    'name',
+                    'url',
+                    'youtubeUrl',
+                    'coverPhoto{id,name,urlOriginal}',
+                ],
                 maxItemsPerPage: 12,
             }
 
