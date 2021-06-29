@@ -25,7 +25,9 @@ export class EmbeddedCodeBlock extends AtomicBlockRendererMixin {
         }
 
         let blockContent = _.get(this.state.data, ['content', 0], {})
-        let embeddedCode = blockContent.embeddedCode
+        // some post's embeddedCode is named as "code", not "embeddedCode"
+        // need to handle code property for safety
+        let embeddedCode = blockContent.embeddedCode || blockContent.code
         let description = blockContent.caption
         let style = {}
         if (blockContent.height) {
@@ -55,8 +57,8 @@ export class EmbeddedCodeBlock extends AtomicBlockRendererMixin {
         // const linkKey = blockWithLinkAtBeginning.getEntityAt(0)
         const data = contentState.getEntity(this.props.entityKey).getData()
         // const { url } = linkInstance.getData()
-        const { code, caption, alignment } = data
-
+        const { caption, alignment } = data
+        const code = data.embeddedCode || data.code
         const convertHtmlStringToReactComponent = htmlParser(code)
         return (
             <div
@@ -69,6 +71,7 @@ export class EmbeddedCodeBlock extends AtomicBlockRendererMixin {
                 })}
             >
                 {convertHtmlStringToReactComponent}
+                {caption}
                 <EditingBt onClick={this.toggleEditMode} />
                 {EditBlock}
             </div>

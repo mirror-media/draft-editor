@@ -194,6 +194,12 @@ export const EntityButtons = (props) => {
                     />
                 )
             case ENTITY_LIST.EMBEDDEDCODE.type:
+                let embeddedCode = ''
+                if (data) {
+                    embeddedCode = data.embeddedCode || data.code
+                    // data.code: for legacy post
+                }
+
                 return (
                     <EmbeddedCodeBt
                         active={active}
@@ -201,7 +207,7 @@ export const EntityButtons = (props) => {
                         label={entity}
                         onToggle={onToggle}
                         caption={data ? data.caption : ''}
-                        embeddedCode={data ? data.embeddedCode : ''}
+                        embeddedCode={data ? embeddedCode : ''}
                         iconText=" Embed"
                     />
                 )

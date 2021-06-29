@@ -399,6 +399,7 @@ function getInitialState(value) {
         if (value) {
             // create an EditorState from the raw Draft data
             let contentState = value.getCurrentContent()
+
             editorState = EditorState.createWithContent(contentState, decorator)
         } else {
             // create empty draft object
@@ -406,9 +407,9 @@ function getInitialState(value) {
         }
     } catch (error) {
         // create empty EditorState
+        console.log(error)
         editorState = EditorState.createEmpty(decorator)
     }
-
     return editorState
 
     // return value ? value : EditorState.createEmpty()

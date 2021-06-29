@@ -7,7 +7,7 @@ export class EmbeddedCodeEditingBlock extends EntityEditingBlockMixin {
         super(props)
         this.state.editingFields = {
             caption: props.caption,
-            code: props.embeddedCode,
+            embeddedCode: props.embeddedCode,
         }
     }
 
@@ -18,9 +18,9 @@ export class EmbeddedCodeEditingBlock extends EntityEditingBlockMixin {
                 type: 'text',
                 value: props.caption,
             },
-            code: {
+            embeddedCode: {
                 type: 'textarea',
-                value: props.code,
+                value: props.embeddedCode,
             },
         }
     }
@@ -29,7 +29,7 @@ export class EmbeddedCodeEditingBlock extends EntityEditingBlockMixin {
     _decomposeEditingFields(fields) {
         return {
             caption: fields.caption.value,
-            code: fields.code.value,
+            embeddedCode: fields.embeddedCode.value,
         }
     }
 }

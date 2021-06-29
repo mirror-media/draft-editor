@@ -56,7 +56,7 @@ const processor = {
             case ENTITY_LIST.EMBEDDEDCODE.type:
                 alignment = (entity.data && entity.data.alignment) || alignment
                 let caption = _.get(entity, ['data', 'caption'], '')
-                let embeddedCode = _.get(entity, ['data', 'code'], '')
+                let embeddedCode = _.get(entity, ['data', 'embeddedCode'], '')
                 let script = {}
                 let scripts = []
                 let scriptTagStart = false
@@ -86,7 +86,7 @@ const processor = {
                 })
                 parser.write(embeddedCode)
                 parser.end()
-
+                console.log(embeddedCode.replace(/<script(.+?)\/script>/g, ''))
                 content = [
                     {
                         caption,
