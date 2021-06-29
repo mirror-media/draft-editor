@@ -7,7 +7,7 @@ import DraftConverter from './editorToBackendUtil/draft-converter'
 import './styles.css'
 
 function Demo() {
-    const storedContentBlock = {
+    const storedContentBlock2 = {
         entityMap: {
             0: {
                 type: 'IMAGE',
@@ -422,7 +422,9 @@ function Demo() {
             },
         ],
     }
-    const storedContentState = convertFromRaw(storedContentBlock)
+    const storedContentBlock =
+        '{"blocks": [{"data": {}, "entityRanges": [], "inlineStyleRanges": [], "depth": 0, "type": "unstyled", "text": "民進黨高雄左營、楠梓市議員參選人黃偵琳今（31日）在臉書發文質疑，「為何黃昭順前立委能先打疫苗？」黃偵琳表示，接獲爆料黃昭順已施打疫苗，質疑黃昭順可不可以說明一下屬於哪一類人員？不然為何5月30日可以去教學醫院注射疫苗？", "key": "326nt"}, {"data": {}, "entityRanges": [], "inlineStyleRanges": [], "depth": 0, "type": "unstyled", "text": "黃偵琳指出，畢竟曾是長達30、40年的公眾民意代表，長期的國民黨中常委，在這個與病毒作戰的時刻，怎麼好意思用特權去跟第一線的醫護人員們搶疫苗、剝奪他們安全的屏障呢？", "key": "1kh5d"}, {"data": {}, "entityRanges": [], "inlineStyleRanges": [], "depth": 0, "type": "unstyled", "text": "對此，據《自由時報》報導，黃昭順說明，自己是現職藥師，屬第一線醫護人員，本來就在施打範圍內，只是造冊在台北，她為此請教醫院，台北造冊可否在高雄打，醫院說明照規定是不可以，但因為每瓶疫苗通常會有些許剩餘量，如果是剩下湊一湊幫她打，她認為沒問題，因為這樣可避免在台北、高雄跑來跑去。", "key": "cjvlu"}, {"data": {}, "entityRanges": [{"key": 0, "length": 1, "offset": 0}], "inlineStyleRanges": [], "depth": 0, "type": "atomic", "text": " ", "key": "dlq6s"}, {"data": {}, "entityRanges": [], "inlineStyleRanges": [], "depth": 0, "type": "unstyled", "text": "", "key": "dddta"}], "entityMap": {"0": {"data": {"embeddedCode": "<iframe src=\\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fapplewin0516%2Fposts%2F117768150481487&show_text=true&width=500\\" width=\\"500\\" height=\\"657\\" style=\\"border:none;overflow:hidden\\" scrolling=\\"no\\" frameborder=\\"0\\" allowfullscreen=\\"true\\" allow=\\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\\"></iframe>", "caption": "（取自黃偵琳 進擊的令果 左營楠梓臉書）"}, "mutability": "IMMUTABLE", "type": "EMBEDDEDCODE"}}}'
+    const storedContentState = convertFromRaw(JSON.parse(storedContentBlock))
     const storedEditorState = EditorState.createWithContent(storedContentState)
     const [editorState, setEditorState] = useState(storedEditorState)
     // const [editorState, setEditorState] = useState(stored)

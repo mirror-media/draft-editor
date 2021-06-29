@@ -86,7 +86,6 @@ const processor = {
                 })
                 parser.write(embeddedCode)
                 parser.end()
-                console.log(embeddedCode.replace(/<script(.+?)\/script>/g, ''))
                 content = [
                     {
                         caption,

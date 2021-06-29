@@ -42,7 +42,7 @@ export class EmbeddedCodeBlock extends AtomicBlockRendererMixin {
         const EditBlock = (
             <EmbeddedEditingBlock
                 caption={description}
-                code={embeddedCode}
+                embeddedCode={embeddedCode}
                 label="embedded"
                 isModalOpen={this.state.editMode}
                 onToggle={this.handleEditingBlockChange}
