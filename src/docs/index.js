@@ -470,6 +470,7 @@ function Demo() {
                     field={null}
                     value={editorState}
                     customEntityList={entityList}
+                    mediaApi=""
                 />
 
                 <h1>---------</h1>
