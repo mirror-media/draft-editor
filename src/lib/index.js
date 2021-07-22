@@ -39,7 +39,13 @@ import '@fortawesome/fontawesome-free/js/solid'
 import '@fortawesome/fontawesome-free/js/regular'
 import '@fortawesome/fontawesome-free/js/brands'
 
-function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
+function HtmlDraftEditor({
+    KeyStoneOnChange,
+    autoFocus,
+    field,
+    value,
+    customEntityList,
+}) {
     const initialEditorState = getInitialState(value)
     const [editorState, setEditorState] = useState(initialEditorState)
     const [isEnlarged, setIsEnlarged] = useState(false)
@@ -321,7 +327,9 @@ function HtmlDraftEditor({ KeyStoneOnChange, autoFocus, field, value }) {
                         />
 
                         <EntityButtons
-                            entities={Object.keys(ENTITY_LIST)}
+                            entities={Object.keys(
+                                customEntityList || ENTITY_LIST
+                            )}
                             editorState={editorState}
                             onToggle={toggleEntity}
                         />

@@ -6,6 +6,26 @@ import DraftConverter from './editorToBackendUtil/draft-converter'
 
 import './styles.css'
 
+const entityList = {
+    LINK: {
+        type: 'LINK',
+    },
+
+    VIDEO: {
+        type: 'VIDEO',
+    },
+    IMAGE: {
+        type: 'IMAGE',
+    },
+    SLIDESHOW: {
+        type: 'SLIDESHOW',
+        slideshowSelectionLimit: 30,
+    },
+    YOUTUBE: {
+        type: 'YOUTUBE',
+    },
+}
+
 function Demo() {
     const storedContentBlock2 = {
         blocks: [
@@ -448,8 +468,8 @@ function Demo() {
                     KeyStoneOnChange={setEditorState}
                     autoFocus={null}
                     field={null}
-                    // editorState={editorState}
                     value={editorState}
+                    customEntityList={entityList}
                 />
 
                 <h1>---------</h1>
