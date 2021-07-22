@@ -4,7 +4,7 @@
     /* padding,	 */
 }
 
-.image-wrapper {
+.image-item__image-wrapper {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,7 +15,7 @@
     width: 100%;
 }
 
-.icon-wrapper {
+.image-item__icon-wrapper {
     height: 2rem;
     position: relative;
 }

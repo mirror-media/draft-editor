@@ -126,8 +126,11 @@ function ImageItem(props) {
             style={{ ...styles.imageGridItem, opacity }}
             ref={ref}
         >
-            <div className="image-wrapper" style={styles.imageWrapper}>
-                <div className="icon-wrapper">{bt}</div>
+            <div
+                className="image-item__image-wrapper"
+                style={styles.imageWrapper}
+            >
+                <div className="image-item__icon-wrapper">{bt}</div>
             </div>
             {props.children}
         </div>
