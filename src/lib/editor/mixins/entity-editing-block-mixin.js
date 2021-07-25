@@ -92,9 +92,9 @@ export class EntityEditingBlock extends Component {
         }
         if (newState) {
             this._handleEditorStateChange(newState)
-            return true
+            return 'handled'
         }
-        return false
+        return 'not-handled'
     }
 
     _handlePastedText(text, html) {
@@ -107,29 +107,29 @@ export class EntityEditingBlock extends Component {
             return EditorState.push(editorState, newContent, 'insert-fragment')
         }
 
-        if (html) {
-            // remove meta tag
-            html = html.replace(/<meta (.+?)>/g, '')
-            // replace p, h2 by div.
-            // TODO need to find out how many block tags we need to replace
-            // currently, just handle p, h1, h2, ..., h6 tag
-            // NOTE: I don't know why header style can not be parsed into ContentBlock,
-            // so I replace it by div temporarily
-            html = html
-                .replace(/<p|<h1|<h2|<h3|<h4|<h5|<h6/g, '<div')
-                .replace(/<\/p|<\/h1|<\/h2|<\/h3|<\/h4|<\/h5|<\/h6/g, '</div')
+        // if (html) {
+        //     // remove meta tag
+        //     html = html.replace(/<meta (.+?)>/g, '')
+        //     // replace p, h2 by div.
+        //     // TODO need to find out how many block tags we need to replace
+        //     // currently, just handle p, h1, h2, ..., h6 tag
+        //     // NOTE: I don't know why header style can not be parsed into ContentBlock,
+        //     // so I replace it by div temporarily
+        //     html = html
+        //         .replace(/<p|<h1|<h2|<h3|<h4|<h5|<h6/g, '<div')
+        //         .replace(/<\/p|<\/h1|<\/h2|<\/h3|<\/h4|<\/h5|<\/h6/g, '</div')
 
-            let editorState = this.state.editorState
-            var htmlFragment = convertFromHTML(html)
-            if (htmlFragment) {
-                var htmlMap = BlockMapBuilder.createFromArray(htmlFragment)
-                this._handleEditorStateChange(
-                    insertFragment(editorState, htmlMap)
-                )
-                // prevent the default paste behavior.
-                return true
-            }
-        }
+        //     let editorState = this.state.editorState
+        //     var htmlFragment = convertFromHTML(html)
+        //     if (htmlFragment) {
+        //         var htmlMap = BlockMapBuilder.createFromArray(htmlFragment)
+        //         this._handleEditorStateChange(
+        //             insertFragment(editorState, htmlMap)
+        //         )
+        //         // prevent the default paste behavior.
+        //         return true
+        //     }
+        // }
         // use default paste behavior
         return false
     }

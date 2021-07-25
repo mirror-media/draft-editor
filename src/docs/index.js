@@ -469,7 +469,7 @@ function Demo() {
                     autoFocus={null}
                     field={null}
                     value={editorState}
-                    customEntityList={entityList}
+                    // customEntityList={entityList}
                     mediaApi=""
                 />
 

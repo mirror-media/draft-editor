@@ -141,9 +141,6 @@ function HtmlDraftEditor({
     }
 
     function handlePastedText(text, html, editorstate) {
-        // console.log(text)
-        // console.log(html)
-        // console.log(editorstate)
         function insertFragment(editorState, fragment) {
             let newContent = Modifier.replaceWithFragment(
                 editorState.getCurrentContent(),
