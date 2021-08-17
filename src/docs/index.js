@@ -5,6 +5,29 @@ import { Editor, EditorState, convertFromRaw, convertToRaw } from 'draft-js'
 import DraftConverter from './editorToBackendUtil/draft-converter'
 
 import './styles.css'
+// block settings
+const blocktypes = [
+    { label: 'Normal', style: 'unstyled', icon: '', text: 'Normal' },
+    { label: 'H1', style: 'header-one', icon: '', text: 'H1' },
+    { label: 'H2', style: 'header-two', icon: '', text: 'H2' },
+    { label: 'Code Block', style: 'code-block', icon: 'fa-code', text: '' },
+    {
+        label: 'Blockquote',
+        style: 'blockquote',
+        icon: 'fa-quote-left',
+        text: '',
+    },
+    { label: 'OL', style: 'ordered-list-item', icon: 'fa-list-ol', text: '' },
+    { label: 'UL', style: 'unordered-list-item', icon: 'fa-list-ul', text: '' },
+]
+
+// inline style settings
+var inlineStyles = [
+    { label: 'Bold', style: 'BOLD', icon: 'fa-bold', text: '' },
+    { label: 'Italic', style: 'ITALIC', icon: 'fa-italic', text: '' },
+    { label: 'Underline', style: 'UNDERLINE', icon: 'fa-underline', text: '' },
+    // { label: 'Monospace', style: 'CODE', icon: 'fa-terminal', text: '' },
+]
 
 const entityList = {
     LINK: {
@@ -469,7 +492,9 @@ function Demo() {
                     autoFocus={null}
                     field={null}
                     value={editorState}
-                    // customEntityList={entityList}
+                    customBlocktypes={blocktypes}
+                    customInlineStyles={inlineStyles}
+                    customEntityList={entityList}
                     mediaApi=""
                 />
 

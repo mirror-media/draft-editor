@@ -39,11 +39,37 @@ import '@fortawesome/fontawesome-free/js/solid'
 import '@fortawesome/fontawesome-free/js/regular'
 import '@fortawesome/fontawesome-free/js/brands'
 
+// block settings
+const BLOCK_TYPES = [
+    { label: 'Normal', style: 'unstyled', icon: '', text: 'Normal' },
+    { label: 'H1', style: 'header-one', icon: '', text: 'H1' },
+    { label: 'H2', style: 'header-two', icon: '', text: 'H2' },
+    { label: 'Code Block', style: 'code-block', icon: 'fa-code', text: '' },
+    {
+        label: 'Blockquote',
+        style: 'blockquote',
+        icon: 'fa-quote-left',
+        text: '',
+    },
+    { label: 'OL', style: 'ordered-list-item', icon: 'fa-list-ol', text: '' },
+    { label: 'UL', style: 'unordered-list-item', icon: 'fa-list-ul', text: '' },
+]
+
+// inline style settings
+const INLINE_STYLES = [
+    { label: 'Bold', style: 'BOLD', icon: 'fa-bold', text: '' },
+    { label: 'Italic', style: 'ITALIC', icon: 'fa-italic', text: '' },
+    { label: 'Underline', style: 'UNDERLINE', icon: 'fa-underline', text: '' },
+    // { label: 'Monospace', style: 'CODE', icon: 'fa-terminal', text: '' },
+]
+
 function HtmlDraftEditor({
     KeyStoneOnChange,
     autoFocus,
     field,
     value,
+    customBlocktypes,
+    customInlineStyles,
     customEntityList,
 }) {
     const initialEditorState = getInitialState(value)
@@ -312,13 +338,13 @@ function HtmlDraftEditor({
                         className={`draft-editor__controls_wrapper ${expandBtnClass}`}
                     >
                         <BlockStyleButtons
-                            buttons={BLOCK_TYPES}
+                            buttons={customBlocktypes || BLOCK_TYPES}
                             editorState={editorState}
                             onToggle={toggleBlockType}
                         />
 
                         <InlineStyleButtons
-                            buttons={INLINE_STYLES}
+                            buttons={customInlineStyles || INLINE_STYLES}
                             editorState={editorState}
                             onToggle={toggleInlineStyle}
                         />
@@ -373,30 +399,6 @@ const styleMap = {
         padding: 2,
     },
 }
-
-// block settings
-const BLOCK_TYPES = [
-    { label: 'Normal', style: 'unstyled', icon: '', text: 'Normal' },
-    { label: 'H1', style: 'header-one', icon: '', text: 'H1' },
-    { label: 'H2', style: 'header-two', icon: '', text: 'H2' },
-    { label: 'Code Block', style: 'code-block', icon: 'fa-code', text: '' },
-    {
-        label: 'Blockquote',
-        style: 'blockquote',
-        icon: 'fa-quote-left',
-        text: '',
-    },
-    { label: 'OL', style: 'ordered-list-item', icon: 'fa-list-ol', text: '' },
-    { label: 'UL', style: 'unordered-list-item', icon: 'fa-list-ul', text: '' },
-]
-
-// inline style settings
-var INLINE_STYLES = [
-    { label: 'Bold', style: 'BOLD', icon: 'fa-bold', text: '' },
-    { label: 'Italic', style: 'ITALIC', icon: 'fa-italic', text: '' },
-    { label: 'Underline', style: 'UNDERLINE', icon: 'fa-underline', text: '' },
-    // { label: 'Monospace', style: 'CODE', icon: 'fa-terminal', text: '' },
-]
 
 function getInitialState(value) {
     let editorState
