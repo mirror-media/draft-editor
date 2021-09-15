@@ -30,10 +30,24 @@ var inlineStyles = [
 ]
 
 const entityList = {
+    ANNOTATION: {
+        type: 'ANNOTATION',
+    },
+    BLOCKQUOTE: {
+        type: 'BLOCKQUOTE',
+    },
     LINK: {
         type: 'LINK',
     },
-
+    INFOBOX: {
+        type: 'INFOBOX',
+    },
+    EMBEDDEDCODE: {
+        type: 'EMBEDDEDCODE',
+    },
+    AUDIO: {
+        type: 'AUDIO',
+    },
     VIDEO: {
         type: 'VIDEO',
     },
@@ -42,7 +56,7 @@ const entityList = {
     },
     SLIDESHOW: {
         type: 'SLIDESHOW',
-        slideshowSelectionLimit: 30,
+        slideshowSelectionLimit: 50,
     },
     YOUTUBE: {
         type: 'YOUTUBE',
@@ -469,9 +483,12 @@ function Demo() {
     const storedContentBlock =
         '{"blocks": [{"data": {}, "entityRanges": [], "inlineStyleRanges": [], "depth": 0, "type": "unstyled", "text": "民進黨高雄左營、楠梓市議員參選人黃偵琳今（31日）在臉書發文質疑，「為何黃昭順前立委能先打疫苗？」黃偵琳表示，接獲爆料黃昭順已施打疫苗，質疑黃昭順可不可以說明一下屬於哪一類人員？不然為何5月30日可以去教學醫院注射疫苗？", "key": "326nt"}, {"data": {}, "entityRanges": [], "inlineStyleRanges": [], "depth": 0, "type": "unstyled", "text": "黃偵琳指出，畢竟曾是長達30、40年的公眾民意代表，長期的國民黨中常委，在這個與病毒作戰的時刻，怎麼好意思用特權去跟第一線的醫護人員們搶疫苗、剝奪他們安全的屏障呢？", "key": "1kh5d"}, {"data": {}, "entityRanges": [], "inlineStyleRanges": [], "depth": 0, "type": "unstyled", "text": "對此，據《自由時報》報導，黃昭順說明，自己是現職藥師，屬第一線醫護人員，本來就在施打範圍內，只是造冊在台北，她為此請教醫院，台北造冊可否在高雄打，醫院說明照規定是不可以，但因為每瓶疫苗通常會有些許剩餘量，如果是剩下湊一湊幫她打，她認為沒問題，因為這樣可避免在台北、高雄跑來跑去。", "key": "cjvlu"}, {"data": {}, "entityRanges": [{"key": 0, "length": 1, "offset": 0}], "inlineStyleRanges": [], "depth": 0, "type": "atomic", "text": " ", "key": "dlq6s"}, {"data": {}, "entityRanges": [], "inlineStyleRanges": [], "depth": 0, "type": "unstyled", "text": "", "key": "dddta"}], "entityMap": {"0": {"data": {"embeddedCode": "<iframe src=\\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fapplewin0516%2Fposts%2F117768150481487&show_text=true&width=500\\" width=\\"500\\" height=\\"657\\" style=\\"border:none;overflow:hidden\\" scrolling=\\"no\\" frameborder=\\"0\\" allowfullscreen=\\"true\\" allow=\\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\\"></iframe>", "caption": "（取自黃偵琳 進擊的令果 左營楠梓臉書）"}, "mutability": "IMMUTABLE", "type": "EMBEDDEDCODE"}}}'
 
+    const storedState3 =
+        '{"blocks":[{"key":"1rkfb","text":"駐德代表謝志偉於德國時間15日凌晨0時發文，以「從垃圾桶裡來的花」為題，回應朱學恆送花事件。他提到，有同仁一臉驚喜地告知，不知何人，拾出幾朵原本在垃圾桶裡的紅玫瑰，插入玻璃瓶後擺到洗手間鏡前，同仁描述：「簡單素樸的男女洗手間，頓時就顯得清新又溫暖。」，謝志偉看到也忍不住讚嘆插花者巧心：「哇！環保又美學！」並為它們留影紀念。","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"3nvu","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"eee7t","text":"謝志偉透露，就在他轉身準備回辦公室時，聽到同仁對玫瑰輕聲道：「你們是從『垃圾』那裡送過來的，出汙泥而不染，更彰顯你們自然美麗的本質。」謝志偉一愣，停下腳步，眼前浮現出一個「蕃薯」的圖像，不由也輕聲細語地，近乎呵護地對著「蕃薯」說：「你是從『獨裁戒嚴』裡走出來的，出汙泥而不染，更彰顯你自然樸實的本質。」言語間滿是對台灣的疼惜。","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"2qg81","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"2t663","text":"謝志偉最後話鋒一轉表示，也許有人問「有紅花，那白花呢？」他諷刺道：「有啊，有了這首詩，不就沒讓人家錢白花？」","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"bg5bg","text":" ","type":"atomic","depth":0,"inlineStyleRanges":[],"entityRanges":[{"offset":0,"length":1,"key":0}],"data":{}},{"key":"59fh2","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"4ulso","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{"0":{"type":"EMBEDDEDCODE","mutability":"IMMUTABLE","data":{"caption":"<iframe src=\\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FOfficialFansPageShieh%2Fposts%2F4447888708612200&show_text=true&width=500\\" width=\\"500\\" height=\\"715\\" style=\\"border:none;overflow:hidden\\" scrolling=\\"no\\" frameborder=\\"0\\" allowfullscreen=\\"true\\" allow=\\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\\"></iframe>","embeddedCode":""}}}}'
     let storedContentState
     // storedContentState = convertFromRaw(storedContentBlock2)
     // storedContentState = convertFromRaw(JSON.parse(storedContentBlock))
+    storedContentState = convertFromRaw(JSON.parse(storedState3))
 
     const storedEditorState = storedContentState
         ? EditorState.createWithContent(storedContentState)

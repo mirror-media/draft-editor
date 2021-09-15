@@ -56,9 +56,11 @@ export class EmbeddedCodeBlock extends AtomicBlockRendererMixin {
         )
         // const linkKey = blockWithLinkAtBeginning.getEntityAt(0)
         const data = contentState.getEntity(this.props.entityKey).getData()
+
         // const { url } = linkInstance.getData()
         const { caption, alignment } = data
-        const code = data.embeddedCode || data.code
+        const code = data.embeddedCode || data.code || ''
+
         const convertHtmlStringToReactComponent = htmlParser(code)
         return (
             <div
