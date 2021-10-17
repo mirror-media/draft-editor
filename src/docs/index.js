@@ -488,7 +488,7 @@ function Demo() {
     let storedContentState
     // storedContentState = convertFromRaw(storedContentBlock2)
     // storedContentState = convertFromRaw(JSON.parse(storedContentBlock))
-    storedContentState = convertFromRaw(JSON.parse(storedState3))
+    // storedContentState = convertFromRaw(JSON.parse(storedState3))
 
     const storedEditorState = storedContentState
         ? EditorState.createWithContent(storedContentState)
@@ -515,6 +515,8 @@ function Demo() {
                     mediaApi=""
                 />
 
+                <h1>---------</h1>
+                {JSON.stringify(content)}
                 <h1>---------</h1>
                 {cHtml}
                 <h1>---------</h1>
