@@ -27,7 +27,7 @@ function generateWhereString(columns) {
         // for video's filtering youtube
         if (column === 'youtubeUrl') {
             // prettier-ignore
-            filterString='url_not_contains:"youtube"'
+            filterString = 'url_not_contains:"youtube"'
         }
 
         // for graphQL's coverPhoto part

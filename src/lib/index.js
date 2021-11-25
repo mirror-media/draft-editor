@@ -71,12 +71,14 @@ function HtmlDraftEditor({
     customBlocktypes,
     customInlineStyles,
     customEntityList,
+    isReadOnly = false,
 }) {
+    console.log(isReadOnly)
     const initialEditorState = getInitialState(value)
     const [editorState, setEditorState] = useState(initialEditorState)
     const [isEnlarged, setIsEnlarged] = useState(false)
     const mainEditorRef = useRef()
-    const [readOnly, setReadOnly] = useState(false)
+    const [readOnly, setReadOnly] = useState(isReadOnly)
 
     // Handle both editorstate and keystone value change
     const onEditorStateChange = (newEditorState) => {
