@@ -80,6 +80,7 @@ function Demo() {
     const cHtml = JSON.stringify(DraftConverter.convertToHtml(content))
     const apiData = JSON.stringify(DraftConverter.convertToApiData(content))
 
+    const globalReadOnly = false
     return (
         <div>
             <form action="">
@@ -93,7 +94,7 @@ function Demo() {
                     customInlineStyles={inlineStyles}
                     customEntityList={entityList}
                     mediaApi=""
-                    isReadOnly={true}
+                    globalReadOnly={globalReadOnly}
                 />
 
                 <h1>---------</h1>

@@ -71,14 +71,13 @@ function HtmlDraftEditor({
     customBlocktypes,
     customInlineStyles,
     customEntityList,
-    isReadOnly = false,
+    globalReadOnly = false,
 }) {
-    console.log(isReadOnly)
     const initialEditorState = getInitialState(value)
     const [editorState, setEditorState] = useState(initialEditorState)
     const [isEnlarged, setIsEnlarged] = useState(false)
     const mainEditorRef = useRef()
-    const [readOnly, setReadOnly] = useState(isReadOnly)
+    const [readOnly, setReadOnly] = useState(false)
 
     // Handle both editorstate and keystone value change
     const onEditorStateChange = (newEditorState) => {
@@ -340,20 +339,30 @@ function HtmlDraftEditor({
                         className={`draft-editor__controls_wrapper ${expandBtnClass}`}
                     >
                         <BlockStyleButtons
-                            buttons={customBlocktypes || BLOCK_TYPES}
+                            buttons={
+                                globalReadOnly
+                                    ? {}
+                                    : customBlocktypes || BLOCK_TYPES
+                            }
                             editorState={editorState}
                             onToggle={toggleBlockType}
                         />
 
                         <InlineStyleButtons
-                            buttons={customInlineStyles || INLINE_STYLES}
+                            buttons={
+                                globalReadOnly
+                                    ? {}
+                                    : customInlineStyles || INLINE_STYLES
+                            }
                             editorState={editorState}
                             onToggle={toggleInlineStyle}
                         />
 
                         <EntityButtons
                             entities={Object.keys(
-                                customEntityList || ENTITY_LIST
+                                globalReadOnly
+                                    ? {}
+                                    : customEntityList || ENTITY_LIST
                             )}
                             editorState={editorState}
                             onToggle={toggleEntity}
@@ -382,7 +391,7 @@ function HtmlDraftEditor({
                         placeholder="Enter HTML Here..."
                         spellCheck={useSpellCheck}
                         ref={mainEditorRef}
-                        readOnly={readOnly}
+                        readOnly={readOnly || globalReadOnly}
                     />
                 </div>
             </div>
