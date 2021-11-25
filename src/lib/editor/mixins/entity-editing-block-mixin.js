@@ -323,9 +323,12 @@ export class EntityEditingBlock extends Component {
     }
 
     render() {
+        const heading = `Insert ${
+            this.props.label === 'BLOCKQUOTE' ? 'QUOTE BY' : this.props.label
+        }`
         return (
             <Dialog
-                heading={`Insert ${this.props.label}`}
+                heading={heading}
                 isOpen={this.props.isModalOpen}
                 onClose={this.toggleModal}
                 lockScroll={false}

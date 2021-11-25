@@ -36,7 +36,7 @@ export default class BlockQuoteBlock extends AtomicBlockRendererMixin {
 
         const EditBlock = (
             <BlockQuoteEditingBlock
-                label="blockquote"
+                label="BLOCKQUOTE"
                 isModalOpen={this.state.editMode}
                 onToggle={this.handleEditingBlockChange}
                 quote={quote}

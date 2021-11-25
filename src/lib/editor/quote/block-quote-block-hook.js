@@ -38,7 +38,7 @@ function BlockQuoteBlock(props) {
 
     const EditBlock = (
         <BlockQuoteEditingBlock
-            label="blockquote"
+            label="BLOCKQUOTE"
             isModalOpen={editMode}
             onToggle={handleEditingBlockChange}
             quote={quote}
