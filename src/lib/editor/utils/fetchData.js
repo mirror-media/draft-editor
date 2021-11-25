@@ -6,7 +6,7 @@ const { REACT_APP_MY_ENV } = process.env
 
 const fetch = createApolloFetch({
     uri: '/admin/api',
-    uri: 'https://cms-dev.mnews.tw/admin/api',
+    // uri: 'https://cms-dev.mnews.tw/admin/api',
 })
 
 function generateSelectString(columns) {
