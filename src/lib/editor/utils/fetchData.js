@@ -2,7 +2,6 @@ import { createApolloFetch } from 'apollo-fetch'
 import gql from 'graphql-tag'
 // this will fix webpack bundling ES7 async/await cause error
 import 'regenerator-runtime/runtime.js'
-const { REACT_APP_MY_ENV } = process.env
 
 const fetch = createApolloFetch({
     uri: '/admin/api',

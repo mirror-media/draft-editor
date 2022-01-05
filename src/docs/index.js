@@ -84,7 +84,7 @@ function Demo() {
     const apiData = JSON.stringify(DraftConverter.convertToApiData(content))
 
     // if need to make editor readonly, use this flag
-    const globalReadOnly = true
+    const globalReadOnly = false
     return (
         <div>
             <form action="">
