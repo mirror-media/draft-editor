@@ -153,9 +153,13 @@ function convertBlocksToApiData(blocks, entityMap, entityTagMap) {
                 block.type.startsWith('atomic') ||
                 block.type.startsWith('media')
             ) {
-                apiDataArr = apiDataArr.push(
-                    AtomicBlockProcessor.convertBlock(entityMap, block)
-                )
+                try {
+                    apiDataArr = apiDataArr.push(
+                        AtomicBlockProcessor.convertBlock(entityMap, block)
+                    )
+                } catch (error) {
+                    console.log('ERROR: Atomic_Convert', error)
+                }
             } else {
                 let converted = InlineStylesProcessor.convertToHtml(
                     inlineTagMap,
