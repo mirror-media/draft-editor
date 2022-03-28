@@ -1,6 +1,6 @@
 {
-    "name": "@liyibass/html-draft-editor",
-    "version": "1.1.7",
+    "name": "@mirrormedia/html-draft-editor",
+    "version": "1.1.8",
     "description": "html-draft-editor",
     "main": "lib/index.js",
     "scripts": {
@@ -12,10 +12,10 @@
     },
     "keywords": [],
     "license": "MIT",
-    "author": "liyibass",
+    "author": "mirrormedia",
     "repository": {
         "type": "git",
-        "url": "git@github.com:liyibass/html-draft-editor.git"
+        "url": "git@github.com:mirror-media/draft-editor.git"
     },
     "peerDependencies": {
         "react": "^15.3.0 || ^16.2.0",
