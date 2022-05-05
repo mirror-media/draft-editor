@@ -237,7 +237,7 @@ export class EntityEditingBlock extends Component {
                     type="text"
                     value={value ? value : ''}
                     onChange={onChange}
-                    multiline={type === 'textarea' ? 'true' : 'false'}
+                    isMultiline={type === 'textarea'}
                     placeholder={'Enter ' + field}
                     name={'form-input-' + field}
                 />
