@@ -55,146 +55,148 @@ export class AtomicBlockSwitcher extends Component {
     // }
 
     render() {
-        const contentState = this.props.contentState
-        const contentBlock = this.props.block
-        const entityKey = contentBlock.getEntityAt(0)
-        const entityInstance = contentState.getEntity(entityKey)
+        try {
+            const contentState = this.props.contentState
+            const contentBlock = this.props.block
+            const entityKey = contentBlock.getEntityAt(0)
+            const entityInstance = contentState.getEntity(entityKey)
 
-        let type = entityKey ? entityInstance.getType() : ''
-        // backward compatible. Old data type is lower case
-        type = type && type.toUpperCase()
+            let type = entityKey ? entityInstance.getType() : ''
+            // backward compatible. Old data type is lower case
+            type = type && type.toUpperCase()
 
-        const Buttons = (
-            <div style={{ textAlign: 'center' }}>
-                <span
-                    className="alignmentButton"
-                    onClick={this.alignLeft}
-                    style={{ marginLeft: '-2.4em' }}
-                    role="button"
-                    key="left"
-                >
-                    L
-                </span>
-                <span
-                    className="alignmentButton"
-                    onClick={this.alignCenter}
-                    role="button"
-                    key="center"
-                >
-                    C
-                </span>
-                <span
-                    className="alignmentButton"
-                    onClick={this.alignRight}
-                    style={{ marginLeft: '0.9em' }}
-                    role="button"
-                    key="right"
-                >
-                    R
-                </span>
-                <span
-                    className="alignmentButton"
-                    onClick={this.alignCenterSmall}
-                    style={{ marginLeft: '2.6em' }}
-                    role="button"
-                    key="center-small"
-                >
-                    S
-                </span>
-            </div>
-        )
+            const Buttons = (
+                <div style={{ textAlign: 'center' }}>
+                    <span
+                        className="alignmentButton"
+                        onClick={this.alignLeft}
+                        style={{ marginLeft: '-2.4em' }}
+                        role="button"
+                        key="left"
+                    >
+                        L
+                    </span>
+                    <span
+                        className="alignmentButton"
+                        onClick={this.alignCenter}
+                        role="button"
+                        key="center"
+                    >
+                        C
+                    </span>
+                    <span
+                        className="alignmentButton"
+                        onClick={this.alignRight}
+                        style={{ marginLeft: '0.9em' }}
+                        role="button"
+                        key="right"
+                    >
+                        R
+                    </span>
+                    <span
+                        className="alignmentButton"
+                        onClick={this.alignCenterSmall}
+                        style={{ marginLeft: '2.6em' }}
+                        role="button"
+                        key="center-small"
+                    >
+                        S
+                    </span>
+                </div>
+            )
 
-        const device = _.get(this.props, ['blockProps', 'device'], 'mobile')
-        let BlockComponent
-        let style
+            const device = _.get(this.props, ['blockProps', 'device'], 'mobile')
+            let BlockComponent
+            let style
 
-        switch (type) {
-            case ENTITY_LIST.BLOCKQUOTE.type:
-                BlockComponent = BlockQuoteBlock
-                if (device === 'mobile') {
-                    style = mobileStyle
-                } else {
-                    style = tabletMinStyle
-                }
-                break
-            case ENTITY_LIST.EMBEDDEDCODE.type:
-                BlockComponent = EmbeddedCodeBlock
-                if (device === 'mobile') {
-                    style = mobileStyle
-                } else {
-                    style = tabletMinStyle
-                }
-                break
-            case ENTITY_LIST.INFOBOX.type:
-                BlockComponent = InfoBoxBlock
-                if (device === 'mobile') {
-                    style = mobileStyle
-                } else {
-                    style = tabletMinStyle
-                }
-                break
-            case ENTITY_LIST.AUDIO.type:
-                BlockComponent = AudioBlock
-                if (device === 'mobile') {
-                    style = mobileStyle
-                } else {
-                    style = tabletMinStyle
-                }
-                break
-            case ENTITY_LIST.VIDEO.type:
-                BlockComponent = VideoBlock
-                if (device === 'mobile') {
-                    style = mobileStyle
-                } else {
-                    style = tabletMinStyle
-                }
-                break
-            case ENTITY_LIST.IMAGE.type:
-                BlockComponent = ImageBlock
-                if (device === 'mobile') {
-                    style = mobileStyle
-                } else {
-                    style = tabletMaxStyle
-                }
-                break
-            case ENTITY_LIST.IMAGELINK.type:
-                //     BlockComponent = ImageLinkBlock
-                //     if (device === 'mobile') {
-                //         style = mobileStyle
-                //     } else {
-                //         style = tabletMaxStyle
-                //     }
-                break
-            case ENTITY_LIST.IMAGEDIFF.type:
-                //     BlockComponent = ImageDiffBlock
-                //     if (device === 'mobile') {
-                //         style = mobileStyle
-                //     } else {
-                //         style = tabletMaxStyle
-                //     }
-                break
-            case ENTITY_LIST.SLIDESHOW.type:
-                BlockComponent = SlideshowBlock
-                if (device === 'mobile') {
-                    style = mobileStyle
-                } else {
-                    style = tabletMaxStyle
-                }
-                break
-            case ENTITY_LIST.YOUTUBE.type:
-                BlockComponent = YoutubeBlock
-                if (device === 'mobile') {
-                    style = mobileStyle
-                } else {
-                    style = tabletMaxStyle
-                }
-                break
-            default:
-                return null
+            switch (type) {
+                case ENTITY_LIST.BLOCKQUOTE.type:
+                    BlockComponent = BlockQuoteBlock
+                    if (device === 'mobile') {
+                        style = mobileStyle
+                    } else {
+                        style = tabletMinStyle
+                    }
+                    break
+                case ENTITY_LIST.EMBEDDEDCODE.type:
+                    BlockComponent = EmbeddedCodeBlock
+                    if (device === 'mobile') {
+                        style = mobileStyle
+                    } else {
+                        style = tabletMinStyle
+                    }
+                    break
+                case ENTITY_LIST.INFOBOX.type:
+                    BlockComponent = InfoBoxBlock
+                    if (device === 'mobile') {
+                        style = mobileStyle
+                    } else {
+                        style = tabletMinStyle
+                    }
+                    break
+                case ENTITY_LIST.AUDIO.type:
+                    BlockComponent = AudioBlock
+                    if (device === 'mobile') {
+                        style = mobileStyle
+                    } else {
+                        style = tabletMinStyle
+                    }
+                    break
+                case ENTITY_LIST.VIDEO.type:
+                    BlockComponent = VideoBlock
+                    if (device === 'mobile') {
+                        style = mobileStyle
+                    } else {
+                        style = tabletMinStyle
+                    }
+                    break
+                case ENTITY_LIST.IMAGE.type:
+                    BlockComponent = ImageBlock
+                    if (device === 'mobile') {
+                        style = mobileStyle
+                    } else {
+                        style = tabletMaxStyle
+                    }
+                    break
+                case ENTITY_LIST.IMAGELINK.type:
+                    //     BlockComponent = ImageLinkBlock
+                    //     if (device === 'mobile') {
+                    //         style = mobileStyle
+                    //     } else {
+                    //         style = tabletMaxStyle
+                    //     }
+                    break
+                case ENTITY_LIST.IMAGEDIFF.type:
+                    //     BlockComponent = ImageDiffBlock
+                    //     if (device === 'mobile') {
+                    //         style = mobileStyle
+                    //     } else {
+                    //         style = tabletMaxStyle
+                    //     }
+                    break
+                case ENTITY_LIST.SLIDESHOW.type:
+                    BlockComponent = SlideshowBlock
+                    if (device === 'mobile') {
+                        style = mobileStyle
+                    } else {
+                        style = tabletMaxStyle
+                    }
+                    break
+                case ENTITY_LIST.YOUTUBE.type:
+                    BlockComponent = YoutubeBlock
+                    if (device === 'mobile') {
+                        style = mobileStyle
+                    } else {
+                        style = tabletMaxStyle
+                    }
+                    break
+                default:
+                    return null
+            }
+        } catch (error) {
+            console.error(error)
+            return <h2 style={{color: "red"}}>{"<-- 此行為不明錯誤，請點擊箭頭位置進行刪除"}</h2>
         }
-        // if (!BlockComponent) {
-        //     return null
-        // }
 
         return (
             <div className="BlockComponent_wrapper" style={style}>

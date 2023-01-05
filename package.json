@@ -1,6 +1,6 @@
 {
     "name": "@mirrormedia/html-draft-editor",
-    "version": "1.1.10",
+    "version": "1.1.11",
     "description": "html-draft-editor",
     "main": "lib/index.js",
     "scripts": {
