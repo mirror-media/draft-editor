@@ -193,22 +193,24 @@ export class AtomicBlockSwitcher extends Component {
                 default:
                     return null
             }
+
+            return (
+                <div className="BlockComponent_wrapper" style={style}>
+                    <BlockComponent
+                        {...this.props}
+                        device={device}
+                        entityKey={entityKey}
+                    >
+                        {/* {device !== 'mobile' ? Buttons : null} */}
+                    </BlockComponent>
+                </div>
+            )
+                
         } catch (error) {
             console.error(error)
             return <h2 style={{color: "red"}}>{"<-- 此行為不明錯誤，請點擊箭頭位置進行刪除"}</h2>
         }
 
-        return (
-            <div className="BlockComponent_wrapper" style={style}>
-                <BlockComponent
-                    {...this.props}
-                    device={device}
-                    entityKey={entityKey}
-                >
-                    {/* {device !== 'mobile' ? Buttons : null} */}
-                </BlockComponent>
-            </div>
-        )
     }
 }
 
