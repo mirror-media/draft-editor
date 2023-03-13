@@ -59,9 +59,9 @@ export class EmbeddedCodeBlock extends AtomicBlockRendererMixin {
 
         // const { url } = linkInstance.getData()
         const { caption, alignment } = data
-        const code = data.embeddedCode || data.code || ''
+        // const code = data.embeddedCode || data.code || ''
 
-        const convertHtmlStringToReactComponent = htmlParser(code)
+        // const convertHtmlStringToReactComponent = htmlParser(code)
         return (
             <div
                 contentEditable={false}
@@ -72,7 +72,6 @@ export class EmbeddedCodeBlock extends AtomicBlockRendererMixin {
                     userSelect: 'none',
                 })}
             >
-                {convertHtmlStringToReactComponent}
                 {caption}
                 <EditingBt onClick={this.toggleEditMode} />
                 {EditBlock}
